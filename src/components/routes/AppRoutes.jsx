@@ -12,6 +12,7 @@ import ProjectDetail from "../pages/projects/ProjectDetail";
 import FAQ from "../pages/faq/FAQ";
 import NotFound from "../pages/notfound/NotFound";
 import AboutUsPage from "../pages/about-us/AboutUsPage";
+import MagazinePage from "../pages/magazine/MagazinePage";
 
 export default function AppRoutes() {
     return (
@@ -28,6 +29,7 @@ export default function AppRoutes() {
                     <Route path="contact" element={<ContactForm />} />
                     <Route path="faq" element={<FAQ />} />
                     <Route path="aboutus" element={<AboutUsPage />} />
+                    <Route path="magazine" element={<MagazinePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

@@ -51,6 +51,7 @@ export default function Header() {
     const navigationItems = [
         { label: "Home", path: "/" },
         { label: "Projects", path: "/projects" },
+        { label: "Magazine", path: "/magazine" },
         {
             label: "Designs",
             path: "/designs",

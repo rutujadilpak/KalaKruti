@@ -153,17 +153,17 @@ export default function ContactForm() {
 
     const contactInfo = [
         {
-            icon: <PhoneIcon sx={{ fontSize: 40, color: 'white' }} />,
+            icon: <PhoneIcon sx={{ fontSize: 24, color: 'white' }} />,
             title: 'Phone',
             details: '+1 (555) 123-4567'
         },
         {
-            icon: <EmailIcon sx={{ fontSize: 40, color: 'white' }} />,
+            icon: <EmailIcon sx={{ fontSize: 24, color: 'white' }} />,
             title: 'Email',
             details: 'info@kalakruti.com'
         },
         {
-            icon: <LocationIcon sx={{ fontSize: 40, color: 'white' }} />,
+            icon: <LocationIcon sx={{ fontSize: 24, color: 'white' }} />,
             title: 'Address',
             details: '123 Design Street, Creative City, CC 12345'
         }
@@ -179,7 +179,7 @@ export default function ContactForm() {
             {/* Left Section - Contact Form */}
             <Box 
                 sx={{ 
-                    flex: { xs: 'none', lg: '0 0 60%' },
+                    flex: { xs: 'none', lg: '0 0 50%' },
                     minHeight: { xs: 'auto', lg: 'auto' },
                     display: 'flex',
                     alignItems: 'center',
@@ -318,7 +318,6 @@ export default function ContactForm() {
                             rows={2}
                             value={formData.message}
                             onChange={handleChange}
-                            required
                             variant="outlined"
                             placeholder="Type your message here"
                             error={!!errors.message}
@@ -358,95 +357,120 @@ export default function ContactForm() {
             {/* Right Section - Contact Information with Theme Background */}
             <Box 
                 sx={{ 
-                    flex: { xs: 'none', lg: '0 0 40%' },
+                    flex: { xs: 'none', lg: '0 0 50%' },
                     minHeight: { xs: 'auto', lg: 'auto' },
-                    background: 'linear-gradient(135deg, #B28E52 0%, #D1BC98 100%)',
-                    position: 'relative',
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     p: { xs: 3, md: 4 },
-                    '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: 'radial-gradient(circle at 20% 80%, rgba(178, 142, 82, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(209, 188, 152, 0.2) 0%, transparent 50%)',
-                        pointerEvents: 'none'
-                    }
+                    backgroundColor: '#ECE9E3',
+                    position: 'relative'
                 }}
             >
-                <Box sx={{ position: 'relative', zIndex: 1, textAlign: 'center', color: 'white' }}>
-                    <Typography 
-                        variant="h4" 
-                        component="h1" 
-                        gutterBottom 
-                        sx={{ 
-                            fontWeight: 'bold',
-                            mb: 2,
-                            fontSize: { xs: '1.8rem', md: '2.2rem' }
-                        }}
-                    >
-                        Contact Us
-                    </Typography>
-                    
-                    <Typography 
-                        variant="body1" 
-                        sx={{ 
-                            mb: 4,
-                            maxWidth: 350,
-                            lineHeight: 1.5,
-                            opacity: 0.9,
-                            fontSize: { xs: '0.9rem', md: '1rem' }
-                        }}
-                    >
-                        Not sure what you need? The team at KalaKruti will be happy to listen to you and suggest design ideas you hadn't considered.
-                    </Typography>
+                <Card 
+                    sx={{ 
+                        p: { xs: 3, md: 4 },
+                        maxWidth: 600,
+                        width: '100%',
+                        borderRadius: 3,
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                        position: 'relative',
+                        background: 'linear-gradient(135deg, #B28E52 0%, #D1BC98 100%)',
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: -15,
+                            right: -15,
+                            width: 80,
+                            height: 80,
+                            background: 'radial-gradient(circle, rgba(178, 142, 82, 0.1) 0%, transparent 70%)',
+                            borderRadius: '50%',
+                            pointerEvents: 'none'
+                        },
+                        '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: 'radial-gradient(circle at 20% 80%, rgba(178, 142, 82, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(209, 188, 152, 0.2) 0%, transparent 50%)',
+                            pointerEvents: 'none',
+                            borderRadius: 3
+                        }
+                    }}
+                >
+                    <CardContent sx={{ position: 'relative', zIndex: 1, textAlign: 'left', color: 'white' }}>
+                        <Typography 
+                            variant="h4" 
+                            component="h1" 
+                            gutterBottom 
+                            sx={{ 
+                                fontWeight: 'bold',
+                                mb: 2,
+                                fontSize: { xs: '1.8rem', md: '2.2rem' },
+                                color: 'white'
+                            }}
+                        >
+                            Contact Us
+                        </Typography>
+                        
+                        <Typography 
+                            variant="body1" 
+                            sx={{ 
+                                mb: 4,
+                                maxWidth: 350,
+                                lineHeight: 1.5,
+                                opacity: 0.9,
+                                fontSize: { xs: '0.9rem', md: '1rem' },
+                                color: 'white'
+                            }}
+                        >
+                            {/* Not sure what you need? The team at KalaKruti will be happy to listen to you and suggest design ideas you hadn't considered. */}
+                        </Typography>
 
-                    {/* Contact Details */}
-                    <Box sx={{ textAlign: 'left', maxWidth: 350 }}>
-                        {contactInfo.map((info, index) => (
-                            <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <Box sx={{ 
-                                    mr: 2, 
-                                    display: 'flex', 
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: 50,
-                                    height: 50,
-                                    borderRadius: '50%',
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                    backdropFilter: 'blur(10px)',
-                                    border: '1px solid rgba(255, 255, 255, 0.3)'
-                                }}>
-                                    {info.icon}
+                        {/* Contact Details */}
+                        <Box sx={{ textAlign: 'left', maxWidth: 350 }}>
+                            {contactInfo.map((info, index) => (
+                                <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                    <Box sx={{ 
+                                        mr: 2, 
+                                        display: 'flex', 
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        width: 40,
+                                        height: 40,
+                                        borderRadius: '50%',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                        backdropFilter: 'blur(10px)',
+                                        border: '1px solid rgba(255, 255, 255, 0.3)'
+                                    }}>
+                                        {info.icon}
+                                    </Box>
+                                    <Typography variant="body2" sx={{ color: 'white', fontSize: { xs: '0.85rem', md: '0.9rem' } }}>
+                                        {info.details}
+                                    </Typography>
                                 </Box>
-                                <Typography variant="body2" sx={{ color: 'white', fontSize: { xs: '0.85rem', md: '0.9rem' } }}>
-                                    {info.details}
-                                </Typography>
-                            </Box>
-                        ))}
-                    </Box>
+                            ))}
+                        </Box>
 
-                    {/* Consultation Hours */}
-                    <Box sx={{ mt: 4, textAlign: 'left', maxWidth: 350 }}>
-                        <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'bold', fontSize: { xs: '0.9rem', md: '1rem' } }}>
-                            Consultation Hours
-                        </Typography>
-                        <Typography variant="body2" sx={{ mb: 0.5, opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' } }}>
-                            Monday - Friday: 9:00 AM - 6:00 PM
-                        </Typography>
-                        <Typography variant="body2" sx={{ mb: 0.5, opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' } }}>
-                            Saturday: 10:00 AM - 4:00 PM
-                        </Typography>
-                        <Typography variant="body2" sx={{ opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' } }}>
-                            Sunday: By Appointment
-                        </Typography>
-                    </Box>
-                </Box>
+                        {/* Consultation Hours */}
+                        <Box sx={{ mt: 4, textAlign: 'left', maxWidth: 350 }}>
+                            <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 'bold', fontSize: { xs: '0.9rem', md: '1rem' }, color: 'white' }}>
+                                Consultation Hours
+                            </Typography>
+                            <Typography variant="body2" sx={{ mb: 0.5, opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' }, color: 'white' }}>
+                                Monday - Friday: 9:00 AM - 6:00 PM
+                            </Typography>
+                            <Typography variant="body2" sx={{ mb: 0.5, opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' }, color: 'white' }}>
+                                Saturday: 10:00 AM - 4:00 PM
+                            </Typography>
+                            <Typography variant="body2" sx={{ opacity: 0.9, fontSize: { xs: '0.8rem', md: '0.85rem' }, color: 'white' }}>
+                                Sunday: By Appointment
+                            </Typography>
+                        </Box>
+                    </CardContent>
+                </Card>
             </Box>
         </Box>
 
