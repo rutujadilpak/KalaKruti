@@ -13,6 +13,9 @@ import FAQ from "../pages/faq/FAQ";
 import NotFound from "../pages/notfound/NotFound";
 import AboutUsPage from "../pages/about-us/AboutUsPage";
 import MagazinePage from "../pages/magazine/MagazinePage";
+import HowItWorks from "../pages/second-nav-pages/HowItWorks";
+import OfferingPage from "../pages/second-nav-pages/offering-page";
+
 
 export default function AppRoutes() {
     return (
@@ -30,6 +33,8 @@ export default function AppRoutes() {
                     <Route path="faq" element={<FAQ />} />
                     <Route path="aboutus" element={<AboutUsPage />} />
                     <Route path="magazine" element={<MagazinePage />} />
+                    <Route path="how-it-works" element={<HowItWorks />} />
+                    <Route path="offerings" element={<OfferingPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
