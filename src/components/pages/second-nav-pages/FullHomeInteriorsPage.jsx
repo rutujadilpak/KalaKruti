@@ -56,7 +56,7 @@ const FloatingWidget = styled(Box)(({ theme }) => ({
     transition: 'transform 0.3s ease',
 }));
 
-export default function OfferingPage() {
+export default function FullHomeInteriorsPage() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -209,26 +209,26 @@ export default function OfferingPage() {
                         }}
                     >
                         {/* Service Card 1 - Design */}
-                        <Card
-                            sx={{
+                            <Card
+                                sx={{
                                 height: '400px',
-                                borderRadius: 2,
-                                overflow: 'hidden',
-                                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-                                transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                                '&:hover': {
-                                    transform: 'translateY(-8px)',
-                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-                                },
-                            }}
-                        >
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    borderRadius: 2,
+                                    overflow: 'hidden',
+                                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+                                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'translateY(-8px)',
+                                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                                    },
+                                }}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                                 alt="Interior Design"
-                                sx={{ objectFit: 'cover' }}
-                            />
+                                    sx={{ objectFit: 'cover' }}
+                                />
                             <CardContent sx={{ p: 2.5, height: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <Box>
                                     <Typography
@@ -249,32 +249,32 @@ export default function OfferingPage() {
                                         sx={{ lineHeight: 1.5, fontSize: '0.9rem' }}
                                     >
                                         Expert design consultation and space planning to create your dream home.
-                                    </Typography>
-                                </Box>
-                            </CardContent>
-                        </Card>
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                            </Card>
 
                         {/* Service Card 2 - Construction */}
-                        <Card
-                            sx={{
+                            <Card
+                                sx={{
                                 height: '400px',
-                                borderRadius: 2,
-                                overflow: 'hidden',
-                                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-                                transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                                '&:hover': {
-                                    transform: 'translateY(-8px)',
-                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-                                },
-                            }}
-                        >
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    borderRadius: 2,
+                                    overflow: 'hidden',
+                                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+                                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'translateY(-8px)',
+                                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                                    },
+                                }}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
                                 alt="Construction & Installation"
-                                sx={{ objectFit: 'cover' }}
-                            />
+                                    sx={{ objectFit: 'cover' }}
+                                />
                             <CardContent sx={{ p: 2.5, height: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <Box>
                                     <Typography
@@ -295,7 +295,7 @@ export default function OfferingPage() {
                                         sx={{ lineHeight: 1.5, fontSize: '0.9rem' }}
                                     >
                                         Professional construction and installation services for all your interior needs.
-                                    </Typography>
+                                        </Typography>
                                 </Box>
                             </CardContent>
                         </Card>
@@ -334,18 +334,18 @@ export default function OfferingPage() {
                                         }}
                                     >
                                         Kitchen Design
-                                    </Typography>
+                                        </Typography>
                                     <Typography
                                         variant="body2"
                                         color="text.secondary"
                                         sx={{ lineHeight: 1.5, fontSize: '0.9rem' }}
                                     >
                                         Modern kitchen designs with premium materials and smart storage solutions.
-                                    </Typography>
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Box>
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                </Box>
                 </Box>
             </Container>
 
@@ -358,18 +358,18 @@ export default function OfferingPage() {
                     mb: 3
                 }}>
                     <Box sx={{ textAlign: 'left', mb: 6 }}>
-                        <Typography
+                    <Typography
                             variant="h2"
-                            component="h2"
-                            sx={{
+                        component="h2"
+                        sx={{
                                 fontSize: { xs: '2rem', md: '2.5rem' },
-                                fontWeight: 'bold',
-                                color: '#505B5F',
+                            fontWeight: 'bold',
+                            color: '#505B5F',
                                 mb: 2
-                            }}
-                        >
+                        }}
+                    >
                             Your journey in a snapshot
-                        </Typography>
+                    </Typography>
                         <Typography
                             variant="body1"
                             sx={{
@@ -388,16 +388,16 @@ export default function OfferingPage() {
                     <Grid item xs={12} md={6}>
                         <Stack spacing={3}>
                             {/* Step 1: Booking */}
-                            <Paper
-                                sx={{
-                                    p: 3,
+                                <Paper
+                                    sx={{
+                                        p: 3,
                                     backgroundColor: '#fff5f5',
                                     borderLeft: '4px solid #ff6b6b',
-                                    borderRadius: 2,
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                                        borderRadius: 2,
+                                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                                     position: 'relative'
-                                }}
-                            >
+                                    }}
+                                >
                                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                                     <Box
                                         sx={{
@@ -688,23 +688,23 @@ export default function OfferingPage() {
                                         }}
                                     />
                                     <Box>
-                                        <Typography
-                                            variant="h6"
-                                            sx={{
-                                                fontWeight: 'bold',
-                                                color: '#505B5F',
-                                                mb: 1,
-                                                fontSize: '1rem'
-                                            }}
-                                        >
+                                    <Typography
+                                        variant="h6"
+                                        sx={{
+                                            fontWeight: 'bold',
+                                            color: '#505B5F',
+                                            mb: 1,
+                                            fontSize: '1rem'
+                                        }}
+                                    >
                                             Fill form
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            sx={{ color: '#666', lineHeight: 1.5 }}
-                                        >
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{ color: '#666', lineHeight: 1.5 }}
+                                    >
                                             Share your basic information and property details in a quiz.
-                                        </Typography>
+                                    </Typography>
                                     </Box>
                                 </Box>
 
@@ -955,8 +955,8 @@ export default function OfferingPage() {
                                 </Box>
                             </Stack>
                         </Box>
+                            </Grid>
                     </Grid>
-                </Grid>
                 </Box>
             </Container>
 
@@ -1048,7 +1048,7 @@ export default function OfferingPage() {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        color: 'white',
+                            color: 'white',
                                         fontSize: '1.5rem'
                                     }}
                                 >
@@ -1061,7 +1061,7 @@ export default function OfferingPage() {
                                 variant="h5"
                                 component="h3"
                                 sx={{
-                                    fontWeight: 'bold',
+                            fontWeight: 'bold',
                                     color: '#505B5F',
                                     mb: 1,
                                     textAlign: 'center'
@@ -1376,7 +1376,7 @@ export default function OfferingPage() {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        color: 'white',
+                            color: 'white',
                                         fontSize: '1.5rem'
                                     }}
                                 >
@@ -1416,12 +1416,12 @@ export default function OfferingPage() {
                                 sx={{
                                     color: '#666',
                                     lineHeight: 1.6,
-                                    mb: 3,
+                            mb: 3,
                                     textAlign: 'center'
-                                }}
-                            >
+                        }}
+                    >
                                 Your designer will translate your family's personality and needs into a wholesome design.
-                            </Typography>
+                    </Typography>
 
                             {/* Details */}
                             <Box sx={{ flex: 1 }}>
@@ -1690,7 +1690,7 @@ export default function OfferingPage() {
                                     cursor: 'pointer',
                                     transition: 'all 0.3s ease',
                                     '&:hover': {
-                                        backgroundColor: 'white',
+                            backgroundColor: 'white',
                                         transform: 'scale(1.1)',
                                     }
                                 }}
@@ -1724,7 +1724,7 @@ export default function OfferingPage() {
                                 <Typography
                                     variant="h6"
                                     sx={{
-                                        fontWeight: 'bold',
+                            fontWeight: 'bold',
                                         color: '#505B5F',
                                         mb: 0.5,
                                         fontSize: '1rem'

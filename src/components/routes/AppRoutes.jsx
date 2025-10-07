@@ -15,6 +15,9 @@ import AboutUsPage from "../pages/about-us/AboutUsPage";
 import MagazinePage from "../pages/magazine/MagazinePage";
 import HowItWorks from "../pages/second-nav-pages/HowItWorks";
 import OfferingPage from "../pages/second-nav-pages/offering-page";
+import ModularInteriorsPage from "../pages/second-nav-pages/offerings/ModularInteriors";
+import FullHomeInteriorsPage from "../pages/second-nav-pages/FullHomeInteriorsPage";
+import LuxuryInteriorPage from "../pages/second-nav-pages/offerings/LuxuryInterior";
 
 
 export default function AppRoutes() {
@@ -35,6 +38,18 @@ export default function AppRoutes() {
                     <Route path="magazine" element={<MagazinePage />} />
                     <Route path="how-it-works" element={<HowItWorks />} />
                     <Route path="offerings" element={<OfferingPage />} />
+                    <Route path="offerings/modular-interiors" element={<ModularInteriorsPage />} />
+                    <Route path="designs/full-home-interiors" element={<FullHomeInteriorsPage />} />
+                    <Route path="designs/modular-interiors" element={<ModularInteriorsPage />} />
+                    <Route path="price-calculators" element={<OfferingPage />} />
+                    <Route path="modular-journey" element={<OfferingPage />} />
+                    <Route path="kitchen/know-your-kitchen" element={<OfferingPage />} />
+                    <Route path="kitchen/price-calculator" element={<OfferingPage />} />
+                    <Route path="kitchen/components" element={<OfferingPage />} />
+                    <Route path="wardrobe/know-your-wardrobe" element={<OfferingPage />} />
+                    <Route path="wardrobe/price-calculator" element={<OfferingPage />} />
+                    <Route path="wardrobe/components" element={<OfferingPage />} />
+                    <Route path="designs/luxury-interiors" element={<LuxuryInteriorPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

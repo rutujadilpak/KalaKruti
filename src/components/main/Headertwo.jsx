@@ -229,54 +229,62 @@ export default function Headertwo() {
                                             >
                                                 EXPLORE OFFERINGS
                                             </Typography>
-                                            <Grid container spacing={2}>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                                                 {offeringsData.exploreOfferings.map((offering, index) => (
-                                                    <Grid item xs={12} sm={4} key={index}>
-                                                        <Card
-                                                            component={Link}
-                                                            to={offering.path}
+                                                    <Card
+                                                        key={index}
+                                                        component={Link}
+                                                        to={offering.path}
+                                                        sx={{
+                                                            textDecoration: 'none',
+                                                            height: '80px',
+                                                            display: 'flex',
+                                                            flexDirection: 'row',
+                                                            alignItems: 'center',
+                                                            transition: 'transform 0.2s ease-in-out',
+                                                            '&:hover': {
+                                                                transform: 'translateY(-2px)',
+                                                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                                            }
+                                                        }}
+                                                    >
+                                                        <CardMedia
+                                                            component="img"
                                                             sx={{
-                                                                textDecoration: 'none',
-                                                                height: '100%',
-                                                                transition: 'transform 0.2s ease-in-out',
-                                                                '&:hover': {
-                                                                    transform: 'translateY(-4px)',
-                                                                    boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
-                                                                }
+                                                                width: '60px',
+                                                                height: '60px',
+                                                                objectFit: 'cover',
+                                                                borderRadius: 1,
+                                                                ml: 1.5
                                                             }}
-                                                        >
-                                                            <CardMedia
-                                                                component="img"
-                                                                height="120"
-                                                                image={offering.image}
-                                                                alt={offering.title}
-                                                                sx={{ objectFit: 'cover' }}
-                                                            />
-                                                            <CardContent sx={{ p: 2 }}>
-                                                                <Typography
-                                                                    variant="subtitle1"
-                                                                    sx={{
-                                                                        fontWeight: 'bold',
-                                                                        color: 'text.primary',
-                                                                        mb: 0.5
-                                                                    }}
-                                                                >
-                                                                    {offering.title}
-                                                                </Typography>
-                                                                <Typography
-                                                                    variant="body2"
-                                                                    sx={{
-                                                                        color: 'text.secondary',
-                                                                        fontSize: '0.875rem'
-                                                                    }}
-                                                                >
-                                                                    {offering.subtitle}
-                                                                </Typography>
-                                                            </CardContent>
-                                                        </Card>
-                                                    </Grid>
+                                                            image={offering.image}
+                                                            alt={offering.title}
+                                                        />
+                                                        <CardContent sx={{ p: 1.5, flex: 1 }}>
+                                                            <Typography
+                                                                variant="subtitle1"
+                                                                sx={{
+                                                                    fontWeight: 'bold',
+                                                                    color: 'text.primary',
+                                                                    mb: 0.25,
+                                                                    fontSize: '0.9rem'
+                                                                }}
+                                                            >
+                                                                {offering.title}
+                                                            </Typography>
+                                                            <Typography
+                                                                variant="body2"
+                                                                sx={{
+                                                                    color: 'text.secondary',
+                                                                    fontSize: '0.8rem'
+                                                                }}
+                                                            >
+                                                                {offering.subtitle}
+                                                            </Typography>
+                                                        </CardContent>
+                                                    </Card>
                                                 ))}
-                                            </Grid>
+                                            </Box>
                                         </Grid>
 
                                         {/* Kitchen Section */}
