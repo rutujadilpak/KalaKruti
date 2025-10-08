@@ -1921,70 +1921,7 @@ export default function FullHomeInteriorsPage() {
                 </Box>
             </Container>
 
-            {/* Floating Chat Widget */}
-            <FloatingWidget
-                sx={{
-                    bottom: 20,
-                    right: 20,
-                }}
-            >
-                <Box
-                    sx={{
-                        position: 'relative',
-                        cursor: 'pointer',
-                    }}
-                >
-                    {/* Speech Bubble */}
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            bottom: '100%',
-                            right: 0,
-                            mb: 1,
-                            backgroundColor: 'white',
-                            color: '#333',
-                            padding: '8px 12px',
-                            borderRadius: '20px',
-                            fontSize: '0.8rem',
-                            fontWeight: '500',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                            whiteSpace: 'nowrap',
-                            '&::after': {
-                                content: '""',
-                                position: 'absolute',
-                                top: '100%',
-                                right: '20px',
-                                width: 0,
-                                height: 0,
-                                borderLeft: '8px solid transparent',
-                                borderRight: '8px solid transparent',
-                                borderTop: '8px solid white',
-                            }
-                        }}
-                    >
-                        We're online. How may I assist you?
-                    </Box>
-                    
-                    {/* Chat Icon */}
-                    <IconButton
-                        sx={{
-                            width: 60,
-                            height: 60,
-                            backgroundColor: '#ff4444',
-                            color: 'white',
-                            borderRadius: '50%',
-                            boxShadow: '0 4px 16px rgba(255, 68, 68, 0.3)',
-                            '&:hover': {
-                                backgroundColor: '#e63939',
-                                transform: 'scale(1.05)',
-                            },
-                            transition: 'all 0.3s ease',
-                        }}
-                    >
-                        <ChatIcon sx={{ fontSize: '1.5rem' }} />
-                    </IconButton>
-                </Box>
-            </FloatingWidget>
+         
 
         </Box>
     );

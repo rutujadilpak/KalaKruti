@@ -18,6 +18,9 @@ import OfferingPage from "../pages/second-nav-pages/offering-page";
 import ModularInteriorsPage from "../pages/second-nav-pages/offerings/ModularInteriors";
 import FullHomeInteriorsPage from "../pages/second-nav-pages/FullHomeInteriorsPage";
 import LuxuryInteriorPage from "../pages/second-nav-pages/offerings/LuxuryInterior";
+import BookOnlineConsultation from "../pages/second-nav-pages/offerings/BookOnlineConsultation";
+import LearnMore from "../pages/second-nav-pages/offerings/Learn-more";
+import QuoteForm from "../pages/enquiries/QuoteForm";
 
 
 export default function AppRoutes() {
@@ -50,6 +53,9 @@ export default function AppRoutes() {
                     <Route path="wardrobe/price-calculator" element={<OfferingPage />} />
                     <Route path="wardrobe/components" element={<OfferingPage />} />
                     <Route path="designs/luxury-interiors" element={<LuxuryInteriorPage />} />
+                    <Route path="offerings/book-online-consultation" element={<BookOnlineConsultation />} />
+                    <Route path="offerings/learn-more" element={<LearnMore />} />
+                    <Route path="enquiries/quote-form" element={<QuoteForm />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

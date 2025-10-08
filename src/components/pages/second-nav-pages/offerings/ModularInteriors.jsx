@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ChatIcon from '@mui/icons-material/Chat';
 import HomeIcon from '@mui/icons-material/Home';
+import themeNeutral from '../../../../themeNeutral';
 
 // Styled components for custom styling
 const HeroSection = styled(Box)(({ theme }) => ({
@@ -28,7 +29,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '70vh',
     minHeight: '500px',
-    backgroundImage: `url('https://cdn.prod.website-files.com/5894a32730554b620f7bf36d/6360fcebbccf18cb7523cba1_3D%20Interior%20Design%20EASY%20RENDER.webp')`,
+    backgroundImage: `url('https://mydecomarketing.com/wp-content/uploads/2020/05/Living-Room-3D-Design-by-Anna-K-Studio.png')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -104,7 +105,7 @@ function ModularInteriors() {
 
           <Button
             component={Link}
-            to="/contact"
+            to="/offerings/book-online-consultation"
             variant="contained"
             size="medium"
             sx={{
@@ -270,9 +271,9 @@ function ModularInteriors() {
                                                 </Typography>
                                             <Typography
                                                 component={Link}
-                                                to="/designs"
+                                                to="/offerings/learn-more"
                                                 sx={{
-                                                    color: '#B1B6B8',
+                                                    color: themeNeutral.palette.primary.main,
                                                     textDecoration: 'none',
                                                     fontSize: '0.9rem',
                                                     fontWeight: 'bold',
@@ -331,9 +332,9 @@ function ModularInteriors() {
                                                 </Typography>
                                             <Typography
                                                 component={Link}
-                                                to="/contact"
+                                                to="/offerings/learn-more"
                                                 sx={{
-                                                    color: '#B1B6B8',
+                                                    color: themeNeutral.palette.primary.main,
                                                     textDecoration: 'none',
                                                     fontSize: '0.9rem',
                                                     fontWeight: 'bold',
@@ -392,9 +393,9 @@ function ModularInteriors() {
                                                 </Typography>
                                             <Typography
                                                 component={Link}
-                                                to="/designs/kitchen"
+                                                to="/offerings/learn-more"
                                                 sx={{
-                                                    color: '#B1B6B8',
+                                                    color: themeNeutral.palette.primary.main,
                                                     textDecoration: 'none',
                                                     fontSize: '0.9rem',
                                                     fontWeight: 'bold',
