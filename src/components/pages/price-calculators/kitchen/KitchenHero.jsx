@@ -18,8 +18,8 @@ export default function KitchenHero() {
         },
         {
             icon: "https://cdn-icons-png.flaticon.com/512/992/992651.png", // Package icon
-            title: "Pick a package as per your requirements",
-            description: "Our packages will offer you a choice of accessories to pick from, based on your preference.",
+            title: "Choose your kitchen package",
+            description: "Select from our curated packages - Essentials, Premium, Luxe, or build your own custom package.",
         },
     ];
 
@@ -165,7 +165,7 @@ export default function KitchenHero() {
                 <Button
                     variant="contained"
                     size="large"
-                    onClick={() => navigate("/price-calculators/kitchen/layout")}
+                    onClick={() => navigate("/price-calculators/kitchen/calculator/layout")}
                     sx={{
                         backgroundColor: "#E84E57",
                         color: "#fff",
