@@ -3,6 +3,7 @@ import KitchenHeroSection from "./KitchenHeroSection";
 import KitchenHero from "./KitchenHero";
 import KitchenLayoutSelector from "./KitchenLayoutSelector";
 import KitchenHowItWorks from "./KitchenHowItWorks";
+import KitchenEstimatorFAQs from "./KitchenEstimatorFAQs";
 
 export default function KitchenPriceCalculator() {
     return (
@@ -11,6 +12,7 @@ export default function KitchenPriceCalculator() {
             <KitchenHero />
             <KitchenLayoutSelector />
             <KitchenHowItWorks />
+            <KitchenEstimatorFAQs />
         </>
     );
 }

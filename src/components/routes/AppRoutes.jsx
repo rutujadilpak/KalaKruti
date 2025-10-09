@@ -26,6 +26,7 @@ import QuoteForm from "../pages/enquiries/QuoteForm";
 // Price Calculator Components
 import HomeInteriorCalculator from "../pages/price-calculators/home/HomeInteriorCalculator";
 import KitchenPriceCalculator from "../pages/price-calculators/kitchen/KitchenPriceCalculator";
+import WardrobePriceCalculator from "../pages/price-calculators/wardrobe/WardrobePriceCalculator";
 
 // New Project Components
 import ProjectsPage from "../pages/projects/ProjectsPage";
@@ -72,6 +73,7 @@ export default function AppRoutes() {
                     <Route path="price-calculators" element={<OfferingPage />} />
                     <Route path="price-calculators/home" element={<HomeInteriorCalculator />} />
                     <Route path="price-calculators/kitchen" element={<KitchenPriceCalculator />} />
+                    <Route path="price-calculators/wardrobe" element={<WardrobePriceCalculator />} />
                     <Route path="modular-journey" element={<OfferingPage />} />
                     <Route path="kitchen/know-your-kitchen" element={<OfferingPage />} />
                     <Route path="kitchen/price-calculator" element={<OfferingPage />} />

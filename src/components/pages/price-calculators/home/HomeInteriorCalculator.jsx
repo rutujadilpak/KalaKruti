@@ -4,6 +4,7 @@ import PriceCalculatorIntro from "./PriceCalculatorIntro";
 import EstimateSteps from "./EstimateSteps";
 import EstimateCarousel from "./EstimateCarousel";
 import CalculatorHowItWorks from "./CalculatorHowItWorks";
+import HomeInteriorEstimatorFAQs from "./HomeInteriorEstimatorFAQs";
 
 export default function HomeInteriorCalculator() {
     return (
@@ -13,6 +14,7 @@ export default function HomeInteriorCalculator() {
             <EstimateSteps />
             <EstimateCarousel />
             <CalculatorHowItWorks />
+            <HomeInteriorEstimatorFAQs />
         </>
     );
 }
