@@ -12,18 +12,18 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const inspirationItems = [
-    { title: 'Living Room', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Master Bedroom', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'False Ceiling', image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Homes by Livspace', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Kitchen', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Wardrobe', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Kids Room', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Home Office', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Guest Bedroom', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Foyer', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Dining Room', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Bathroom', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' },
+    { title: 'Living Room', image: 'https://plus.unsplash.com/premium_photo-1676823547752-1d24e8597047?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { title: 'Master Bedroom', image: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+    { title: 'False Ceiling', image: 'https://i.pinimg.com/736x/71/4b/17/714b1787c714501e64afb9df9d9b29b5.jpg' },
+    { title: 'Homes by Livspace', image: 'https://i.pinimg.com/736x/a2/91/37/a2913749dfb96ac7cee1872003ffc77c.jpg' },
+    { title: 'Kitchen', image: 'https://i.pinimg.com/1200x/85/17/d5/8517d53084ad0351019298eedab8fff3.jpg' },
+    { title: 'Wardrobe', image: 'https://i.pinimg.com/1200x/f7/58/33/f75833d9a822a49b072636e894d8db30.jpg' },
+    { title: 'Kids Room', image: 'https://i.pinimg.com/1200x/18/e6/cf/18e6cf09e770662eda38fb7fcbe6cb04.jpg' },
+    { title: 'Home Office', image: 'https://i.pinimg.com/736x/a6/f7/3f/a6f73fbe18db7e69c26cab307f6685e3.jpg' },
+    { title: 'Guest Bedroom', image: 'https://i.pinimg.com/736x/84/2e/d1/842ed1f7f89cc954a9deab56c05c9036.jpg' },
+    { title: 'Foyer', image: 'https://i.pinimg.com/1200x/b2/5e/df/b25edffe956b4a0e6ed7f77444a79371.jpg' },
+    { title: 'Dining Room', image: 'https://i.pinimg.com/736x/7b/e1/13/7be1132f8f1799d86cbb7fe4709f3bb2.jpg' },
+    { title: 'Bathroom', image: 'https://i.pinimg.com/736x/08/75/5e/08755ed10bf6b4a8741f8361d299f5fb.jpg' },
 ];
 
 export default function HomeInspiration() {
@@ -49,7 +49,7 @@ export default function HomeInspiration() {
 
     return (
         <Box sx={{ py: { xs: 4, md: 10 }, backgroundColor: '#f9f9f9' }}>
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
                 <Typography variant="h3" textAlign="center" fontWeight={700} mb={2}>
                     Inspiration for home interior designs
                 </Typography>
@@ -76,7 +76,7 @@ export default function HomeInspiration() {
                                     sx={{ width: '100%', height: 200, objectFit: 'cover' }}
                                 />
                                 <Box sx={{ p: 2, background: '#fff' }}>
-                                    <Typography fontWeight={600}>{item.title}</Typography>
+                                    <Typography fontWeight={600} sx={{ color: 'white' }}>{item.title}</Typography>
                                 </Box>
                             </Box>
                         ))}
@@ -159,6 +159,7 @@ export default function HomeInspiration() {
                                                 fontWeight={600}
                                                 variant={i === 0 ? "h5" : "h6"}
                                                 sx={{
+                                                    color: 'white',
                                                     textShadow: '0 2px 4px rgba(0,0,0,0.8)',
                                                     fontSize: i === 0 ? '1.4rem' : '1rem',
                                                 }}

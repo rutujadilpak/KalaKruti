@@ -1,15 +1,16 @@
 import React from "react";
-import { Box, Container, Typography, Link } from "@mui/material";
+import { Box, Container, Typography, Link, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function WardrobeHowItWorks() {
+    const theme = useTheme();
     const navigate = useNavigate();
 
     return (
         <Box
             sx={{
                 py: { xs: 6, md: 10 },
-                backgroundColor: "#f8f7f8",
+                backgroundColor: theme.palette.background.default,
                 textAlign: "center",
             }}
         >
@@ -20,9 +21,10 @@ export default function WardrobeHowItWorks() {
                     sx={{
                         fontWeight: 700,
                         mb: 2,
-                        color: "#3a2f3c",
+                        color: theme.palette.text.primary,
                         fontSize: { xs: "1.8rem", md: "2.2rem" },
                         textAlign: "left",
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     Here's how the wardrobe price calculator works
@@ -32,11 +34,12 @@ export default function WardrobeHowItWorks() {
                 <Typography
                     variant="body1"
                     sx={{
-                        color: "text.secondary",
+                        color: theme.palette.text.secondary,
                         mb: 4,
                         lineHeight: 1.8,
                         fontSize: { xs: "1rem", md: "1.1rem" },
                         textAlign: "left",
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     The Livspace Wardrobe Price Calculator considers factors like dimension, type, material,
@@ -55,16 +58,22 @@ export default function WardrobeHowItWorks() {
                     {/* 1️⃣ Length */}
                     <Typography
                         variant="h6"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 1 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 1,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Length of the wardrobe
                     </Typography>
                     <Typography
                         variant="body2"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 3,
                             lineHeight: 1.8,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         The dimension of a wardrobe is a significant factor in calculating its price. The modular
@@ -75,16 +84,22 @@ export default function WardrobeHowItWorks() {
                     {/* 2️⃣ Type */}
                     <Typography
                         variant="h6"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 1 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 1,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Type of the wardrobe
                     </Typography>
                     <Typography
                         variant="body2"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 3,
                             lineHeight: 1.8,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         The make of a wardrobe is another contributing factor towards wardrobe price estimation.
@@ -96,16 +111,22 @@ export default function WardrobeHowItWorks() {
                     {/* 3️⃣ Material & Finishes */}
                     <Typography
                         variant="h6"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 1 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 1,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Material and finishes
                     </Typography>
                     <Typography
                         variant="body2"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 3,
                             lineHeight: 1.8,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         The kind of material and the finish you pick determines not only the cost of a modular
@@ -116,16 +137,22 @@ export default function WardrobeHowItWorks() {
                     {/* 4️⃣ Accessories */}
                     <Typography
                         variant="h6"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 1 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 1,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Accessories
                     </Typography>
                     <Typography
                         variant="body2"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 5,
                             lineHeight: 1.8,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         There's always scope for accessories, especially when you get to choose from our trendy
@@ -138,16 +165,20 @@ export default function WardrobeHowItWorks() {
                 <Link
                     component="button"
                     underline="none"
-                    onClick={() => navigate("/price-calculators/wardrobe")}
+                    onClick={() => navigate("/price-calculators/wardrobe/calculator/length")}
                     sx={{
-                        color: "#E84E57",
-                        fontWeight: 500,
+                        color: theme.palette.primary.main,
+                        fontWeight: 600,
                         fontSize: "1rem",
                         display: "inline-flex",
                         alignItems: "center",
                         gap: 0.5,
                         transition: "color 0.2s ease",
-                        "&:hover": { color: "#d13f47" },
+                        fontFamily: theme.typography.fontFamily,
+                        "&:hover": {
+                            color: theme.palette.primary.dark,
+                            textDecoration: "underline"
+                        },
                     }}
                 >
                     Calculate Now →

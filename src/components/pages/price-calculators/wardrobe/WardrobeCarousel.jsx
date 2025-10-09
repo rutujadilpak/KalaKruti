@@ -8,6 +8,7 @@ import {
     CardMedia,
     CardContent,
     IconButton,
+    useTheme,
 } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -15,6 +16,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 
 export default function WardrobeCarousel() {
+    const theme = useTheme();
     const navigate = useNavigate();
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
@@ -30,7 +32,7 @@ export default function WardrobeCarousel() {
             description:
                 "Built with hinged doors to offer more space for storage and visibility.",
             image:
-                "https://images.unsplash.com/photo-1616627562164-e9b1864a6422?w=1200", // Example wardrobe image
+                "https://images.unsplash.com/photo-1672137233327-37b0c1049e77?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FyZHJvYmV8ZW58MHx8MHx8fDA%3D", // Example wardrobe image
         },
         {
             title: "Sliding Wardrobe",
@@ -38,7 +40,7 @@ export default function WardrobeCarousel() {
             description:
                 "Modern designs with horizontally movable doors to save floor space.",
             image:
-                "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200", // Example wardrobe image
+                "https://images.unsplash.com/photo-1662454419622-a41092ecd245?q=80&w=1118&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Example wardrobe image
         },
     ];
 
@@ -57,7 +59,7 @@ export default function WardrobeCarousel() {
     }, [emblaApi, onSelect]);
 
     return (
-        <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#fff" }}>
+        <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: theme.palette.background.paper }}>
             <Container maxWidth="lg">
                 {/* Heading */}
                 <Box
@@ -75,9 +77,10 @@ export default function WardrobeCarousel() {
                             variant="h4"
                             sx={{
                                 fontWeight: 700,
-                                color: "#3a2f3c",
+                                color: theme.palette.text.primary,
                                 mb: 1,
                                 fontSize: { xs: "1.8rem", md: "2.2rem" },
+                                fontFamily: theme.typography.fontFamily
                             }}
                         >
                             Since one type doesn't fit all
@@ -85,8 +88,9 @@ export default function WardrobeCarousel() {
                         <Typography
                             variant="subtitle1"
                             sx={{
-                                color: "text.secondary",
+                                color: theme.palette.text.secondary,
                                 fontSize: "1.1rem",
+                                fontFamily: theme.typography.fontFamily
                             }}
                         >
                             No matter your style, our wardrobe price calculator has got you covered.
@@ -97,14 +101,18 @@ export default function WardrobeCarousel() {
                         variant="contained"
                         onClick={() => navigate("/price-calculators/wardrobe/calculator/length")}
                         sx={{
-                            backgroundColor: "#E84E57",
-                            color: "#fff",
-                            textTransform: "uppercase",
-                            fontWeight: "bold",
-                            borderRadius: "50px",
+                            backgroundColor: theme.palette.primary.main,
+                            color: theme.palette.primary.contrastText,
+                            textTransform: "none",
+                            fontWeight: 600,
+                            borderRadius: 10,
                             px: 4,
                             py: 1.5,
-                            "&:hover": { backgroundColor: "#d13f47" },
+                            fontFamily: theme.typography.fontFamily,
+                            "&:hover": {
+                                backgroundColor: theme.palette.primary.dark,
+                                transform: "translateY(-2px)"
+                            },
                         }}
                     >
                         Get Started
@@ -134,14 +142,16 @@ export default function WardrobeCarousel() {
                                 >
                                     <Card
                                         sx={{
-                                            borderRadius: 3,
-                                            boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
+                                            borderRadius: 14,
+                                            boxShadow: "0 6px 20px rgba(0,0,0,0.05)",
                                             overflow: "hidden",
                                             width: "90%",
                                             height: 500,
+                                            backgroundColor: theme.palette.background.paper,
                                             "&:hover": {
                                                 transform: "translateY(-6px)",
                                                 transition: "0.3s ease",
+                                                boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
                                             },
                                         }}
                                     >
@@ -159,9 +169,10 @@ export default function WardrobeCarousel() {
                                                 variant="h6"
                                                 sx={{
                                                     fontWeight: 700,
-                                                    color: "#3a2f3c",
+                                                    color: theme.palette.text.primary,
                                                     mb: 0.5,
                                                     fontSize: "1.25rem",
+                                                    fontFamily: theme.typography.fontFamily
                                                 }}
                                             >
                                                 {item.title}
@@ -170,9 +181,10 @@ export default function WardrobeCarousel() {
                                                 variant="subtitle1"
                                                 sx={{
                                                     fontWeight: 600,
-                                                    color: "text.primary",
+                                                    color: theme.palette.text.primary,
                                                     mb: 1,
                                                     opacity: 0.85,
+                                                    fontFamily: theme.typography.fontFamily
                                                 }}
                                             >
                                                 {item.subtitle}
@@ -180,9 +192,10 @@ export default function WardrobeCarousel() {
                                             <Typography
                                                 variant="body2"
                                                 sx={{
-                                                    color: "text.secondary",
+                                                    color: theme.palette.text.secondary,
                                                     fontSize: "1rem",
                                                     lineHeight: 1.6,
+                                                    fontFamily: theme.typography.fontFamily
                                                 }}
                                             >
                                                 {item.description}
@@ -202,9 +215,13 @@ export default function WardrobeCarousel() {
                             top: "50%",
                             left: "-25px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
+                            color: theme.palette.primary.main,
+                            "&:hover": {
+                                backgroundColor: theme.palette.action.hover,
+                                color: theme.palette.primary.dark
+                            },
                         }}
                     >
                         <ChevronLeftIcon />
@@ -217,9 +234,13 @@ export default function WardrobeCarousel() {
                             top: "50%",
                             right: "-25px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
+                            color: theme.palette.primary.main,
+                            "&:hover": {
+                                backgroundColor: theme.palette.action.hover,
+                                color: theme.palette.primary.dark
+                            },
                         }}
                     >
                         <ChevronRightIcon />

@@ -1,100 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     Box,
     Typography,
     Grid,
     Card,
     CardContent,
+    CardMedia,
     Button,
-    Radio,
     useTheme,
-    Tooltip,
-    IconButton,
-    Chip,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText
-} from '@mui/material';
-import {
-    Info as InfoIcon,
-    Check as CheckIcon,
-    Star as StarIcon,
-    Diamond as DiamondIcon
-} from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+    Radio,
+} from "@mui/material";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const packages = [
     {
-        id: 'essentials',
-        name: 'Essentials',
-        priceRange: '₹₹',
-        description: 'Affordable modular kitchen setups that offer style, comfort, and functionality.',
-        features: [
-            'Affordable pricing',
-            'Convenient designs',
-            'Basic accessories',
-            'Standard materials',
-            '1-year warranty'
-        ],
-        color: '#4CAF50',
-        icon: CheckIcon
+        id: "essentials",
+        name: "Essentials",
+        description: "Affordable modular kitchens with essential storage and design features.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", // example
     },
     {
-        id: 'premium',
-        name: 'Premium',
-        priceRange: '₹₹₹',
-        description: 'Sleek and sophisticated designs with premium fittings, finishes, and durable materials.',
-        features: [
-            'Mid-range pricing',
-            'Premium designs',
-            'Wide-range of accessories',
-            'Quality materials',
-            '2-year warranty',
-            'Design consultation'
-        ],
-        color: '#2196F3',
-        icon: StarIcon
+        id: "premium",
+        name: "Premium",
+        description: "Modern kitchens with stylish finishes and advanced storage options.",
+        image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", // example
     },
     {
-        id: 'luxe',
-        name: 'Luxe',
-        priceRange: '₹₹₹₹',
-        description: 'Luxury kitchen solutions with high-end materials, exclusive fittings, and a personal touch.',
-        features: [
-            'Premium pricing',
-            'Luxury designs',
-            'Exclusive accessories',
-            'Premium materials',
-            '3-year warranty',
-            'Personal designer',
-            'Premium installation'
-        ],
-        color: '#FF9800',
-        icon: DiamondIcon
+        id: "luxe",
+        name: "Luxe",
+        description: "High-end kitchen designs using luxurious materials and exclusive fittings.",
+        image: "https://images.unsplash.com/photo-1598300053650-0d64b6f6b40e?w=800", // example
     },
     {
-        id: 'build-your-own',
-        name: 'Build your own package',
-        priceRange: 'Customised',
-        description: 'A flexible, built-to-suit option that lets you pick and choose finishes and accessories.',
-        features: [
-            'Customised pricing',
-            'Flexible designs',
-            'Range of accessories to pick from',
-            'Personalized selection',
-            'Full customization'
-        ],
-        color: '#9C27B0',
-        icon: DiamondIcon
-    }
+        id: "build-your-own",
+        name: "Build Your Own",
+        description: "Customize every detail of your kitchen with our flexible build-your-own option.",
+        image: "https://images.unsplash.com/photo-1598300053595-cb3f02fb3f57?w=800", // example
+    },
 ];
 
 export default function KitchenPackageStep() {
     const theme = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState("");
 
     const handlePackageSelect = (packageId) => {
         setSelected(packageId);
@@ -104,20 +53,16 @@ export default function KitchenPackageStep() {
         if (selected) {
             const searchParams = new URLSearchParams(location.search);
             const queryParams = new URLSearchParams({
-                layout: searchParams.get('layout'),
-                length: searchParams.get('length'),
-                width: searchParams.get('width'),
-                height: searchParams.get('height'),
-                cabinetLength: searchParams.get('cabinetLength'),
-                cabinetHeight: searchParams.get('cabinetHeight'),
-                package: selected
+                layout: searchParams.get("layout"),
+                A: searchParams.get("A"),
+                B: searchParams.get("B"),
+                C: searchParams.get("C"),
+                package: selected,
             });
 
-            // If "Build Your Own" is selected, go to materials step
-            if (selected === 'build-your-own') {
+            if (selected === "build-your-own") {
                 navigate(`/price-calculators/kitchen/calculator/materials?${queryParams.toString()}`);
             } else {
-                // For other packages, go directly to estimate
                 navigate(`/price-calculators/kitchen/calculator/estimate?${queryParams.toString()}`);
             }
         }
@@ -126,198 +71,116 @@ export default function KitchenPackageStep() {
     const handleBack = () => {
         const searchParams = new URLSearchParams(location.search);
         const queryParams = new URLSearchParams({
-            layout: searchParams.get('layout'),
-            length: searchParams.get('length'),
-            width: searchParams.get('width'),
-            height: searchParams.get('height'),
-            cabinetLength: searchParams.get('cabinetLength'),
-            cabinetHeight: searchParams.get('cabinetHeight')
+            layout: searchParams.get("layout"),
+            A: searchParams.get("A"),
+            B: searchParams.get("B"),
+            C: searchParams.get("C"),
         });
         navigate(`/price-calculators/kitchen/calculator/measurements?${queryParams.toString()}`);
     };
 
     return (
-        <Box sx={{ maxWidth: 1200, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 1000, mx: "auto", p: 3 }}>
             {/* Header */}
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Box sx={{ textAlign: "center", mb: 5 }}>
                 <Typography
                     variant="h4"
                     sx={{
                         fontWeight: 600,
                         color: theme.palette.text.primary,
-                        mb: 2
+                        mb: 1,
                     }}
                 >
-                    Select your kitchen package
+                    Select Your Kitchen Package
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-                    <Typography variant="body1" sx={{ color: theme.palette.text.secondary }}>
-                        Want to know more?
-                    </Typography>
-                    <Tooltip title="Learn more about kitchen packages">
-                        <IconButton size="small" sx={{ color: theme.palette.primary.main }}>
-                            <InfoIcon />
-                        </IconButton>
-                    </Tooltip>
-                </Box>
+                <Typography
+                    variant="body1"
+                    sx={{
+                        color: theme.palette.text.secondary,
+                    }}
+                >
+                    Choose the type of kitchen package that best fits your needs.
+                </Typography>
             </Box>
 
-            {/* Package Options */}
-            <Grid
-                container
-                spacing={3}
-                justifyContent="center"
-                alignItems="stretch"
-                sx={{ mb: 4 }}
-            >
-                {packages.map((pkg) => {
-                    const IconComponent = pkg.icon;
-                    return (
-                        <Grid item xs={12} sm={6} md={3} key={pkg.id} display="flex">
-                            <Card
+            {/* Package Grid */}
+            <Grid container spacing={3} justifyContent="center">
+                {packages.map((pkg) => (
+                    <Grid item xs={12} sm={6} md={3} key={pkg.id} display="flex">
+                        <Card
+                            onClick={() => handlePackageSelect(pkg.id)}
+                            sx={{
+                                flexGrow: 1,
+                                cursor: "pointer",
+                                border:
+                                    selected === pkg.id
+                                        ? `2px solid ${theme.palette.primary.main}`
+                                        : "1px solid #ddd",
+                                borderRadius: 2,
+                                transition: "all 0.3s ease",
+                                "&:hover": {
+                                    transform: "translateY(-4px)",
+                                    boxShadow: theme.shadows[6],
+                                },
+                            }}
+                        >
+                            <CardMedia
+                                component="img"
+                                height="180"
+                                image={pkg.image}
+                                alt={pkg.name}
                                 sx={{
-                                    flexGrow: 1,
-                                    cursor: 'pointer',
-                                    border: selected === pkg.id ? `2px solid ${pkg.color}` : '2px solid transparent',
-                                    transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    height: '100%',
-                                    '&:hover': {
-                                        transform: 'translateY(-4px)',
-                                        boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
-                                    },
+                                    objectFit: "cover",
+                                    borderTopLeftRadius: "8px",
+                                    borderTopRightRadius: "8px",
                                 }}
-                                onClick={() => handlePackageSelect(pkg.id)}
-                            >
-                                {/* Radio Button */}
-                                <Box sx={{ position: 'absolute', top: 12, right: 12, zIndex: 1 }}>
-                                    <Radio
-                                        checked={selected === pkg.id}
-                                        onChange={() => handlePackageSelect(pkg.id)}
-                                        sx={{
-                                            color: pkg.color,
-                                            '&.Mui-checked': {
-                                                color: pkg.color,
-                                            },
-                                        }}
-                                    />
-                                </Box>
-
-                                <CardContent sx={{ p: 3, textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-                                    {/* Icon */}
-                                    <Box sx={{
-                                        mb: 2,
-                                        height: 120,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        backgroundColor: theme.palette.background.default,
-                                        borderRadius: 2
-                                    }}>
-                                        <IconComponent sx={{ fontSize: 48, color: pkg.color, opacity: 0.8 }} />
-                                    </Box>
-
-                                    {/* Package Name */}
-                                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: theme.palette.text.primary }}>
-                                        {pkg.name}
-                                    </Typography>
-
-                                    {/* Price Range */}
-                                    <Chip
-                                        label={pkg.priceRange}
-                                        sx={{
-                                            mb: 2,
-                                            backgroundColor: pkg.color,
-                                            color: 'white',
-                                            fontWeight: 600,
-                                            fontSize: '0.85rem'
-                                        }}
-                                    />
-
-                                    {/* Description */}
-                                    <Typography
-                                        variant="body2"
-                                        sx={{
-                                            color: theme.palette.text.secondary,
-                                            mb: 3,
-                                            lineHeight: 1.6
-                                        }}
-                                    >
-                                        {pkg.description}
-                                    </Typography>
-
-                                    {/* Features */}
-                                    <List dense sx={{ p: 0 }}>
-                                        {pkg.features.map((feature, index) => (
-                                            <ListItem key={index} sx={{ px: 0, py: 0.3 }}>
-                                                <ListItemIcon sx={{ minWidth: 30 }}>
-                                                    <CheckIcon sx={{ fontSize: 18, color: pkg.color }} />
-                                                </ListItemIcon>
-                                                <ListItemText
-                                                    primary={feature}
-                                                    primaryTypographyProps={{
-                                                        variant: 'body2',
-                                                        color: theme.palette.text.primary
-                                                    }}
-                                                />
-                                            </ListItem>
-                                        ))}
-                                    </List>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    );
-                })}
-            </Grid>
-
-            {/* Package Comparison */}
-            <Box sx={{
-                backgroundColor: theme.palette.background.default,
-                borderRadius: 2,
-                p: 3,
-                mb: 4
-            }}>
-                <Typography
-                    variant="h6"
-                    sx={{
-                        fontWeight: 600,
-                        color: theme.palette.text.primary,
-                        mb: 2,
-                        textAlign: 'center'
-                    }}
-                >
-                    Package Comparison
-                </Typography>
-
-                <Grid container spacing={2} justifyContent="center" alignItems="center">
-                    {[
-                        { name: 'Essentials', color: '#4CAF50', price: '₹2-4 Lakhs' },
-                        { name: 'Premium', color: '#2196F3', price: '₹4-8 Lakhs' },
-                        { name: 'Luxe', color: '#FF9800', price: '₹8+ Lakhs' },
-                        { name: 'Build Your Own', color: '#9C27B0', price: 'Customised' }
-                    ].map((pkg) => (
-                        <Grid item xs={12} sm={6} md={3} key={pkg.name}>
-                            <Box sx={{ textAlign: 'center' }}>
-                                <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mb: 1 }}>
+                            />
+                            <CardContent sx={{ textAlign: "center", p: 2 }}>
+                                <Radio
+                                    checked={selected === pkg.id}
+                                    onChange={() => handlePackageSelect(pkg.id)}
+                                    sx={{
+                                        color: theme.palette.primary.main,
+                                        "&.Mui-checked": {
+                                            color: theme.palette.primary.main,
+                                        },
+                                    }}
+                                />
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        fontWeight: 600,
+                                        color: theme.palette.text.primary,
+                                        mb: 1,
+                                    }}
+                                >
                                     {pkg.name}
                                 </Typography>
-                                <Typography variant="h6" sx={{ color: pkg.color, fontWeight: 600 }}>
-                                    {pkg.price}
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={{
+                                        lineHeight: 1.5,
+                                        fontSize: "0.9rem",
+                                    }}
+                                >
+                                    {pkg.description}
                                 </Typography>
-                            </Box>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
 
             {/* Navigation */}
             <Box
                 sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    mt: 5,
                     pt: 3,
-                    borderTop: `1px solid ${theme.palette.divider}`
+                    borderTop: `1px solid ${theme.palette.divider}`,
                 }}
             >
                 <Button
@@ -325,8 +188,8 @@ export default function KitchenPackageStep() {
                     onClick={handleBack}
                     sx={{
                         color: theme.palette.primary.main,
-                        textTransform: 'none',
-                        fontSize: '1rem'
+                        textTransform: "none",
+                        fontSize: "1rem",
                     }}
                 >
                     BACK
@@ -337,23 +200,23 @@ export default function KitchenPackageStep() {
                     onClick={handleNext}
                     disabled={!selected}
                     sx={{
-                        backgroundColor: '#E84E57',
-                        color: 'white',
-                        textTransform: 'none',
-                        fontSize: '1rem',
+                        backgroundColor: theme.palette.primary.main,
+                        color: "white",
+                        textTransform: "none",
+                        fontSize: "1rem",
                         px: 4,
-                        py: 1.5,
+                        py: 1.3,
                         borderRadius: 2,
-                        '&:hover': {
-                            backgroundColor: '#d13f47',
+                        "&:hover": {
+                            backgroundColor: theme.palette.primary.dark,
                         },
-                        '&:disabled': {
+                        "&:disabled": {
                             backgroundColor: theme.palette.action.disabled,
-                            color: theme.palette.action.disabled,
-                        }
+                            color: theme.palette.text.disabled,
+                        },
                     }}
                 >
-                    GET ESTIMATE
+                    NEXT
                 </Button>
             </Box>
         </Box>

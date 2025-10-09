@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Box,
     Button,
@@ -10,12 +10,20 @@ import {
     ListItem,
     ListItemText,
     Typography,
+    Paper,
+    Grid,
+    Card,
+    CardContent,
+    CardMedia,
+    ListItemButton
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-// ✅ Ant Design imports for professional dropdown
+// ✅ Ant Design imports for Price Calculators dropdown
 import { Dropdown, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
@@ -24,24 +32,66 @@ export default function Headertwo() {
     const location = useLocation();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [offeringsOpen, setOfferingsOpen] = useState(false);
 
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+    const handleOfferingsToggle = () => setOfferingsOpen(!offeringsOpen);
+
+    const offeringsData = {
+        exploreOfferings: [
+            {
+                title: "Modular Interiors",
+                subtitle: "Kitchens, wardrobes and storage",
+                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=500&q=80",
+                path: "/designs/modular-interiors"
+            },
+            {
+                title: "Full Home Interiors",
+                subtitle: "End-to-end home interiors",
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=80",
+                path: "/designs/full-home-interiors"
+            },
+            {
+                title: "Luxury interiors",
+                subtitle: "Homes that redefine elegance",
+                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80",
+                path: "/designs/luxury-interiors"
+            }
+        ],
+        kitchen: [
+            { label: "Know Your Kitchen", path: "/kitchen/know-your-kitchen" },
+            { label: "Kitchen Price Calculator", path: "/kitchen/price-calculator" },
+            { label: "Kitchen Components", path: "/kitchen/components", hasSubmenu: true }
+        ],
+        wardrobe: [
+            { label: "Know Your Wardrobe", path: "/wardrobe/know-your-wardrobe" },
+            { label: "Wardrobe Price Calculator", path: "/wardrobe/price-calculator" },
+            { label: "Wardrobe Components", path: "/wardrobe/components", hasSubmenu: true }
+        ]
+    };
+
+    const priceCalculatorsDropdown = [
+        { label: 'Home Interior Calculator', path: '/price-calculators/home' },
+        { label: 'Kitchen Calculator', path: '/price-calculators/kitchen' },
+        { label: 'Wardrobe Calculator', path: '/price-calculators/wardrobe' },
+    ];
 
     const navItems = [
         { label: 'How it works', path: '/how-it-works' },
-        { label: 'Offerings', path: '/offerings' },
-        {
-            label: 'Price Calculators',
-            path: '/price-calculators',
-            dropdown: [
-                { label: 'Home Interior Calculator', path: '/price-calculators/home' },
-                { label: 'Kitchen Calculator', path: '/price-calculators/kitchen' },
-                { label: 'Wardrobe Calculator', path: '/price-calculators/wardrobe' },
-            ],
-        },
+        { label: 'Offerings', path: '/offerings', hasDropdown: true },
+        { label: 'Price Calculators', path: '/price-calculators', dropdown: priceCalculatorsDropdown },
         { label: 'Modular Journey', path: '/modular-journey' },
     ];
+
+    useEffect(() => {
+        if (location.pathname === '/offerings') {
+            setOfferingsOpen(true);
+        } else {
+            setOfferingsOpen(false);
+        }
+    }, [location.pathname]);
 
     const drawer = (
         <Box sx={{ width: 250, pt: 2 }}>
@@ -93,8 +143,6 @@ export default function Headertwo() {
                     left: 0,
                     right: 0,
                     zIndex: 1299,
-                    minHeight: '60px',
-                    boxSizing: 'border-box',
                 }}
             >
                 {isMobile ? (
@@ -102,24 +150,20 @@ export default function Headertwo() {
                         onClick={handleDrawerToggle}
                         sx={{
                             color: theme.palette.text.primary,
-                            minHeight: '40px',
-                            minWidth: '40px',
-                            '&:hover': {
-                                backgroundColor: theme.palette.action.hover,
-                            },
+                            '&:hover': { backgroundColor: theme.palette.action.hover },
                         }}
                     >
                         <MenuIcon />
                     </IconButton>
                 ) : (
-                    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                    <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1 }}>
                         {navItems.map((item) =>
                             item.dropdown ? (
                                 <Dropdown
                                     key={item.label}
                                     trigger={["hover"]}
                                     getPopupContainer={() => document.body}
-                                    overlayStyle={{ zIndex: 9999 }}
+                                    overlayStyle={{ zIndex: 2000 }}
                                     dropdownRender={() => (
                                         <Box
                                             sx={{
@@ -130,7 +174,7 @@ export default function Headertwo() {
                                                 backgroundColor: "#fff",
                                                 borderRadius: 2,
                                                 boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-                                                minWidth: 300,
+                                                minWidth: 250,
                                             }}
                                         >
                                             {item.dropdown.map((sub, index) => (
@@ -142,15 +186,12 @@ export default function Headertwo() {
                                                         textDecoration: "none",
                                                         color: theme.palette.text.primary,
                                                         fontSize: "0.9rem",
-                                                        fontWeight: 400,
                                                         py: 0.8,
                                                         px: 1.5,
                                                         borderRadius: 1,
-                                                        transition: "all 0.2s ease",
                                                         "&:hover": {
                                                             color: theme.palette.primary.main,
-                                                            backgroundColor:
-                                                                theme.palette.action.hover,
+                                                            backgroundColor: theme.palette.action.hover,
                                                         },
                                                     }}
                                                 >
@@ -164,9 +205,7 @@ export default function Headertwo() {
                                         type="text"
                                         onClick={() => navigate(item.path)}
                                         style={{
-                                            fontWeight: location.pathname.startsWith(item.path)
-                                                ? "bold"
-                                                : "500",
+                                            fontWeight: location.pathname.startsWith(item.path) ? "bold" : "500",
                                             color: location.pathname.startsWith(item.path)
                                                 ? theme.palette.primary.main
                                                 : theme.palette.text.primary,
@@ -181,35 +220,171 @@ export default function Headertwo() {
                                         </Space>
                                     </Button>
                                 </Dropdown>
+                            ) : item.hasDropdown ? (
+                                <Button
+                                    key={item.label}
+                                    onClick={handleOfferingsToggle}
+                                    sx={{
+                                        color: location.pathname === item.path ? theme.palette.primary.main : 'text.primary',
+                                        fontWeight: location.pathname === item.path ? 'bold' : '500',
+                                        mx: 2,
+                                        textTransform: 'none',
+                                        fontSize: '1rem',
+                                        '&:hover': { backgroundColor: theme.palette.action.hover },
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 0.5
+                                    }}
+                                >
+                                    {item.label}
+                                    {offeringsOpen ? (
+                                        <ExpandLessIcon fontSize="small" />
+                                    ) : (
+                                        <ExpandMoreIcon fontSize="small" />
+                                    )}
+                                </Button>
                             ) : (
                                 <Button
                                     key={item.label}
                                     component={Link}
                                     to={item.path}
                                     sx={{
-                                        color:
-                                            location.pathname === item.path
-                                                ? theme.palette.primary.main
-                                                : theme.palette.text.primary,
-                                        fontWeight:
-                                            location.pathname === item.path ? "bold" : "500",
-                                        fontSize: "1rem",
-                                        padding: "8px 16px",
-                                        borderRadius: 1,
-                                        textTransform: "none",
-                                        "&:hover": {
-                                            backgroundColor: theme.palette.action.hover,
-                                        },
+                                        color: location.pathname === item.path
+                                            ? theme.palette.primary.main
+                                            : 'text.primary',
+                                        fontWeight: location.pathname === item.path ? 'bold' : '500',
+                                        mx: 2,
+                                        textTransform: 'none',
+                                        fontSize: '1rem',
+                                        '&:hover': { backgroundColor: theme.palette.action.hover },
                                     }}
                                 >
                                     {item.label}
                                 </Button>
                             )
                         )}
+
+                        {/* Offerings Dropdown */}
+                        {offeringsOpen && (
+                            <Paper
+                                sx={{
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    mt: 1,
+                                    width: '90vw',
+                                    maxWidth: '1200px',
+                                    borderRadius: 2,
+                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
+                                    zIndex: 1300,
+                                    overflow: 'hidden'
+                                }}
+                                onMouseLeave={() => setOfferingsOpen(false)}
+                            >
+                                <Box sx={{ p: 4 }}>
+                                    <Grid container spacing={4}>
+                                        {/* Explore Offerings */}
+                                        <Grid item xs={12} md={6}>
+                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                                EXPLORE OFFERINGS
+                                            </Typography>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mt: 1 }}>
+                                                {offeringsData.exploreOfferings.map((offering, index) => (
+                                                    <Card
+                                                        key={index}
+                                                        component={Link}
+                                                        to={offering.path}
+                                                        sx={{
+                                                            textDecoration: 'none',
+                                                            height: '80px',
+                                                            display: 'flex',
+                                                            flexDirection: 'row',
+                                                            alignItems: 'center',
+                                                            transition: 'transform 0.2s ease-in-out',
+                                                            '&:hover': {
+                                                                transform: 'translateY(-2px)',
+                                                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                                            }
+                                                        }}
+                                                    >
+                                                        <CardMedia
+                                                            component="img"
+                                                            sx={{
+                                                                width: '60px',
+                                                                height: '60px',
+                                                                objectFit: 'cover',
+                                                                borderRadius: 1,
+                                                                ml: 1.5
+                                                            }}
+                                                            image={offering.image}
+                                                            alt={offering.title}
+                                                        />
+                                                        <CardContent sx={{ p: 1.5, flex: 1 }}>
+                                                            <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                                                                {offering.title}
+                                                            </Typography>
+                                                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                                                {offering.subtitle}
+                                                            </Typography>
+                                                        </CardContent>
+                                                    </Card>
+                                                ))}
+                                            </Box>
+                                        </Grid>
+
+                                        {/* Kitchen Section */}
+                                        <Grid item xs={12} md={3}>
+                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                                KITCHEN
+                                            </Typography>
+                                            <List sx={{ p: 0 }}>
+                                                {offeringsData.kitchen.map((item, index) => (
+                                                    <ListItem key={index} sx={{ p: 0, mb: 1 }}>
+                                                        <ListItemButton component={Link} to={item.path} sx={{ borderRadius: 1 }}>
+                                                            <ListItemText
+                                                                primary={item.label}
+                                                                sx={{ '& .MuiListItemText-primary': { fontSize: '0.9rem' } }}
+                                                            />
+                                                            {item.hasSubmenu && (
+                                                                <ExpandMoreIcon fontSize="small" color="action" />
+                                                            )}
+                                                        </ListItemButton>
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Grid>
+
+                                        {/* Wardrobe Section */}
+                                        <Grid item xs={12} md={3}>
+                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                                WARDROBE
+                                            </Typography>
+                                            <List sx={{ p: 0 }}>
+                                                {offeringsData.wardrobe.map((item, index) => (
+                                                    <ListItem key={index} sx={{ p: 0, mb: 1 }}>
+                                                        <ListItemButton component={Link} to={item.path} sx={{ borderRadius: 1 }}>
+                                                            <ListItemText
+                                                                primary={item.label}
+                                                                sx={{ '& .MuiListItemText-primary': { fontSize: '0.9rem' } }}
+                                                            />
+                                                            {item.hasSubmenu && (
+                                                                <ExpandMoreIcon fontSize="small" color="action" />
+                                                            )}
+                                                        </ListItemButton>
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Paper>
+                        )}
                     </Box>
                 )}
             </Box>
 
+            {/* Mobile Drawer */}
             {isMobile && (
                 <Drawer
                     variant="temporary"

@@ -9,10 +9,10 @@ export default function Hero() {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const images = [
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200",
+        "https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200",
         "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200",
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200",];
+        "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",];
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
         {

@@ -8,31 +8,33 @@ import {
     Avatar,
     useTheme,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function EstimateSteps() {
     const theme = useTheme();
+    const navigate = useNavigate();
 
     const steps = [
         {
-            icon: "https://cdn-icons-png.flaticon.com/512/1046/1046873.png", // 🏠 BHK type icon
+            icon: "https://cdn-icons-png.flaticon.com/128/489/489870.png", // 🏠 BHK type icon
             title: "Choose your BHK type",
             description:
                 "The type of house helps us understand the configuration of your home.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/512/1034/1034158.png", // 📏 Size of house
+            icon: "https://cdn-icons-png.flaticon.com/128/3638/3638360.png", // 📏 Size of house
             title: "Select the size of your house",
             description:
                 "This will help us give you a more accurate estimate for your interiors.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/512/814/814513.png", // 🏡 Rooms to design
+            icon: "https://cdn-icons-png.flaticon.com/128/5436/5436184.png", // 🏡 Rooms to design
             title: "Pick the rooms to be designed",
             description:
                 "This will help us understand the scope of work for your home interiors.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/512/992/992651.png", // 🧾 Package
+            icon: "https://cdn-icons-png.flaticon.com/128/1442/1442912.png", // 🧾 Package
             title: "Pick a package as per your preference",
             description:
                 "This helps us fine tune the calculation based on the products and accessories that match your lifestyle.",
@@ -43,7 +45,7 @@ export default function EstimateSteps() {
         <Box
             sx={{
                 py: { xs: 6, md: 10 },
-                backgroundColor: "#f8f7f8",
+                backgroundColor: theme.palette.background.default,
                 textAlign: "center",
             }}
         >
@@ -54,8 +56,9 @@ export default function EstimateSteps() {
                     sx={{
                         fontWeight: 700,
                         mb: 1,
-                        color: "#3a2f3c",
+                        color: theme.palette.text.primary,
                         fontSize: { xs: "1.8rem", md: "2.2rem" },
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     Get your estimate in 4 simple steps
@@ -63,7 +66,12 @@ export default function EstimateSteps() {
 
                 <Typography
                     variant="subtitle1"
-                    sx={{ color: "text.secondary", mb: 6, fontSize: "1.1rem" }}
+                    sx={{
+                        color: theme.palette.text.secondary,
+                        mb: 6,
+                        fontSize: "1.1rem",
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     It's that simple and convenient!
                 </Typography>
@@ -95,7 +103,7 @@ export default function EstimateSteps() {
                                         right: "-50%",
                                         width: "100%",
                                         height: "2px",
-                                        backgroundColor: "#ddd",
+                                        backgroundColor: theme.palette.neutral.lightGray,
                                         transform: "translateY(-50%)",
                                         zIndex: 0,
                                         display: { xs: "none", md: "block" },
@@ -108,8 +116,8 @@ export default function EstimateSteps() {
                                     sx={{
                                         width: 80,
                                         height: 80,
-                                        backgroundColor: "#fff",
-                                        border: "1px solid #ddd",
+                                        backgroundColor: theme.palette.background.paper,
+                                        border: `1px solid ${theme.palette.neutral.lightGray}`,
                                         boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
                                         p: 2,
                                         zIndex: 1,
@@ -122,8 +130,9 @@ export default function EstimateSteps() {
                                 variant="subtitle1"
                                 sx={{
                                     fontWeight: 600,
-                                    color: "#3a2f3c",
+                                    color: theme.palette.text.primary,
                                     mb: 1,
+                                    fontFamily: theme.typography.fontFamily
                                 }}
                             >
                                 {step.title}
@@ -133,9 +142,10 @@ export default function EstimateSteps() {
                             <Typography
                                 variant="body2"
                                 sx={{
-                                    color: "text.secondary",
+                                    color: theme.palette.text.secondary,
                                     maxWidth: 250,
                                     lineHeight: 1.6,
+                                    fontFamily: theme.typography.fontFamily
                                 }}
                             >
                                 {step.description}
@@ -148,17 +158,20 @@ export default function EstimateSteps() {
                 <Button
                     variant="contained"
                     size="large"
+                    onClick={() => navigate("/price-calculators/home/calculator/bhk")}
                     sx={{
-                        backgroundColor: "#E84E57",
-                        color: "#fff",
-                        textTransform: "uppercase",
-                        fontWeight: "bold",
-                        borderRadius: "50px",
+                        backgroundColor: theme.palette.primary.main,
+                        color: theme.palette.primary.contrastText,
+                        textTransform: "none",
+                        fontWeight: 600,
+                        borderRadius: 10,
                         px: 4,
                         py: 1.5,
                         mt: 6,
+                        fontFamily: theme.typography.fontFamily,
                         "&:hover": {
-                            backgroundColor: "#d13f47",
+                            backgroundColor: theme.palette.primary.dark,
+                            transform: "translateY(-2px)",
                         },
                     }}
                 >

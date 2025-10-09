@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Box, Container, Typography, Button, Card, CardMedia, CardContent, IconButton } from "@mui/material";
+import { Box, Container, Typography, Button, Card, CardMedia, CardContent, IconButton, useTheme } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 
 export default function KitchenLayoutSelector() {
+    const theme = useTheme();
     const navigate = useNavigate();
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", skipSnaps: false });
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -47,11 +48,11 @@ export default function KitchenLayoutSelector() {
 
     const handleStartNow = (layout) => {
         // Navigate to the next step with the selected layout
-        navigate(`/price-calculators/kitchen/measurements?layout=${layout}`);
+        navigate(`/price-calculators/kitchen/calculator/measurements?layout=${layout}`);
     };
 
     return (
-        <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#f8f7f8" }}>
+        <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: theme.palette.background.default }}>
             <Container maxWidth="lg">
                 {/* Heading */}
                 <Box
@@ -64,9 +65,10 @@ export default function KitchenLayoutSelector() {
                         variant="h3"
                         sx={{
                             fontWeight: 700,
-                            color: "#3a2f3c",
+                            color: theme.palette.text.primary,
                             mb: 2,
                             fontSize: { xs: "2rem", md: "3rem" },
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         Estimates for every kitchen
@@ -74,10 +76,11 @@ export default function KitchenLayoutSelector() {
                     <Typography
                         variant="h6"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             fontSize: { xs: "1.1rem", md: "1.3rem" },
                             maxWidth: 600,
                             mx: "auto",
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         Choose your preferred kitchen layout, and let our estimator work its magic.
@@ -92,14 +95,15 @@ export default function KitchenLayoutSelector() {
                                 <div className="embla__slide" key={index} style={{ flex: "0 0 33.333%" }}>
                                     <Card
                                         sx={{
-                                            borderRadius: 3,
-                                            boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                                            borderRadius: 14,
+                                            boxShadow: "0 6px 20px rgba(0,0,0,0.05)",
                                             overflow: "hidden",
                                             height: "100%",
+                                            backgroundColor: theme.palette.background.paper,
                                             transition: "all 0.3s ease",
                                             "&:hover": {
                                                 transform: "translateY(-8px)",
-                                                boxShadow: "0 12px 32px rgba(0,0,0,0.18)"
+                                                boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
                                             },
                                         }}
                                     >
@@ -114,9 +118,10 @@ export default function KitchenLayoutSelector() {
                                                 variant="h5"
                                                 sx={{
                                                     fontWeight: 600,
-                                                    color: "#3a2f3c",
+                                                    color: theme.palette.text.primary,
                                                     mb: 2,
-                                                    fontSize: { xs: "1.2rem", md: "1.4rem" }
+                                                    fontSize: { xs: "1.2rem", md: "1.4rem" },
+                                                    fontFamily: theme.typography.fontFamily
                                                 }}
                                             >
                                                 {layout.title}
@@ -124,10 +129,11 @@ export default function KitchenLayoutSelector() {
                                             <Typography
                                                 variant="body1"
                                                 sx={{
-                                                    color: "text.secondary",
+                                                    color: theme.palette.text.secondary,
                                                     mb: 3,
                                                     lineHeight: 1.6,
-                                                    fontSize: { xs: "0.95rem", md: "1rem" }
+                                                    fontSize: { xs: "0.95rem", md: "1rem" },
+                                                    fontFamily: theme.typography.fontFamily
                                                 }}
                                             >
                                                 {layout.description}
@@ -137,15 +143,17 @@ export default function KitchenLayoutSelector() {
                                                 fullWidth
                                                 onClick={() => handleStartNow(layout.layout)}
                                                 sx={{
-                                                    backgroundColor: "#E84E57",
-                                                    color: "#fff",
-                                                    textTransform: "uppercase",
-                                                    fontWeight: "bold",
-                                                    borderRadius: "50px",
+                                                    backgroundColor: theme.palette.primary.main,
+                                                    color: theme.palette.primary.contrastText,
+                                                    textTransform: "none",
+                                                    fontWeight: 600,
+                                                    borderRadius: 10,
                                                     py: 1.5,
                                                     fontSize: "1rem",
+                                                    fontFamily: theme.typography.fontFamily,
                                                     "&:hover": {
-                                                        backgroundColor: "#d13f47",
+                                                        backgroundColor: theme.palette.primary.dark,
+                                                        transform: "translateY(-2px)",
                                                     },
                                                 }}
                                             >
@@ -166,13 +174,15 @@ export default function KitchenLayoutSelector() {
                             top: "50%",
                             left: "-30px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                             width: 50,
                             height: 50,
+                            color: theme.palette.primary.main,
                             "&:hover": {
-                                backgroundColor: "#f5f5f5",
-                                transform: "translateY(-50%) scale(1.1)"
+                                backgroundColor: theme.palette.action.hover,
+                                transform: "translateY(-50%) scale(1.1)",
+                                color: theme.palette.primary.dark
                             },
                         }}
                     >
@@ -186,13 +196,15 @@ export default function KitchenLayoutSelector() {
                             top: "50%",
                             right: "-30px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                             width: 50,
                             height: 50,
+                            color: theme.palette.primary.main,
                             "&:hover": {
-                                backgroundColor: "#f5f5f5",
-                                transform: "translateY(-50%) scale(1.1)"
+                                backgroundColor: theme.palette.action.hover,
+                                transform: "translateY(-50%) scale(1.1)",
+                                color: theme.palette.primary.dark
                             },
                         }}
                     >

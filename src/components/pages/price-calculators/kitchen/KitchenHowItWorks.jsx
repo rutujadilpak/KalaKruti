@@ -1,15 +1,16 @@
 import React from "react";
-import { Box, Container, Typography, Link } from "@mui/material";
+import { Box, Container, Typography, Link, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function KitchenHowItWorks() {
+    const theme = useTheme();
     const navigate = useNavigate();
 
     return (
         <Box
             sx={{
                 py: { xs: 6, md: 10 },
-                backgroundColor: "#fff",
+                backgroundColor: theme.palette.background.paper,
                 textAlign: "center",
             }}
         >
@@ -20,8 +21,9 @@ export default function KitchenHowItWorks() {
                     sx={{
                         fontWeight: 700,
                         mb: 4,
-                        color: "#3a2f3c",
+                        color: theme.palette.text.primary,
                         fontSize: { xs: "2rem", md: "2.5rem" },
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     Here's how the modular kitchen price estimator works
@@ -31,12 +33,13 @@ export default function KitchenHowItWorks() {
                 <Typography
                     variant="body1"
                     sx={{
-                        color: "text.secondary",
+                        color: theme.palette.text.secondary,
                         mb: 6,
                         lineHeight: 1.8,
                         fontSize: { xs: "1rem", md: "1.2rem" },
                         maxWidth: 800,
                         mx: "auto",
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     Our modular kitchen price estimator considers the shape and area of your kitchen, materials,
@@ -54,17 +57,23 @@ export default function KitchenHowItWorks() {
                 >
                     <Typography
                         variant="h5"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 2 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 2,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Kitchen Shape & Layout
                     </Typography>
                     <Typography
                         variant="body1"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 4,
                             lineHeight: 1.8,
                             fontSize: "1.1rem",
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         The shape of your kitchen (L-shaped, U-shaped, or Straight) helps us understand the
@@ -74,17 +83,23 @@ export default function KitchenHowItWorks() {
 
                     <Typography
                         variant="h5"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 2 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 2,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Measurements & Area
                     </Typography>
                     <Typography
                         variant="body1"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 4,
                             lineHeight: 1.8,
                             fontSize: "1.1rem",
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         Based on the size of your kitchen, our calculator will determine the cost per sq ft.
@@ -94,17 +109,23 @@ export default function KitchenHowItWorks() {
 
                     <Typography
                         variant="h5"
-                        sx={{ fontWeight: 600, color: "#3a2f3c", mb: 2 }}
+                        sx={{
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 2,
+                            fontFamily: theme.typography.fontFamily
+                        }}
                     >
                         Package Selection
                     </Typography>
                     <Typography
                         variant="body1"
                         sx={{
-                            color: "text.secondary",
+                            color: theme.palette.text.secondary,
                             mb: 6,
                             lineHeight: 1.8,
                             fontSize: "1.1rem",
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         Choose from our range of packages that include different materials, finishes, and
@@ -117,16 +138,20 @@ export default function KitchenHowItWorks() {
                 <Link
                     component="button"
                     underline="none"
-                    onClick={() => navigate("/price-calculators/kitchen")}
+                    onClick={() => navigate("/price-calculators/kitchen/calculator/layout")}
                     sx={{
-                        color: "#E84E57",
+                        color: theme.palette.primary.main,
                         fontWeight: 600,
                         fontSize: "1.2rem",
                         display: "inline-flex",
                         alignItems: "center",
                         gap: 1,
                         transition: "color 0.2s ease",
-                        "&:hover": { color: "#d13f47" },
+                        fontFamily: theme.typography.fontFamily,
+                        "&:hover": {
+                            color: theme.palette.primary.dark,
+                            textDecoration: "underline"
+                        },
                     }}
                 >
                     Calculate Now →

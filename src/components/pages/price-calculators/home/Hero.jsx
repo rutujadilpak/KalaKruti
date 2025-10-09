@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography, Button, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+    const theme = useTheme();
     const navigate = useNavigate();
 
     const image =
@@ -29,14 +30,22 @@ export default function Hero() {
                     variant="h2"
                     component="h1"
                     gutterBottom
-                    sx={{ fontWeight: "bold", color: "#ffffff" }}
+                    sx={{
+                        fontWeight: "bold",
+                        color: theme.palette.text.light,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     We Create Dream Spaces
                 </Typography>
                 <Typography
                     variant="h5"
                     gutterBottom
-                    sx={{ mb: 4, color: "#f5f5f5" }}
+                    sx={{
+                        mb: 4,
+                        color: theme.palette.text.light,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     Transform your space with our expert interior design services
                 </Typography>
@@ -45,7 +54,16 @@ export default function Hero() {
                     variant="contained"
                     size="large"
                     onClick={() => navigate("/price-calculators/home/calculator/bhk")}
-                    sx={{ px: 4, py: 2 }}
+                    sx={{
+                        px: 4,
+                        py: 2,
+                        backgroundColor: theme.palette.primary.main,
+                        color: theme.palette.primary.contrastText,
+                        '&:hover': {
+                            backgroundColor: theme.palette.primary.dark,
+                            transform: 'translateY(-2px)'
+                        }
+                    }}
                 >
                     Get Started
                 </Button>

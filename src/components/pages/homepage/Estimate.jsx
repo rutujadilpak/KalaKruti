@@ -1,14 +1,36 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, Button, Container, useTheme } from "@mui/material";
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    Button,
+    Container,
+    Avatar,
+    useTheme,
+} from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import HomeIcon from "@mui/icons-material/Home";
-import KitchenIcon from "@mui/icons-material/Kitchen";
-import DoorSlidingIcon from "@mui/icons-material/DoorSliding";
 
+// ✅ Image icons (you can replace these with your brand ones later)
 const estimateOptions = [
-    { id: "fullhome", title: "Full Home Interior", description: "Know the estimate price for your full home interiors", icon: <HomeIcon /> },
-    { id: "kitchen", title: "Kitchen", description: "Get an approximate costing for your kitchen interior.", icon: <KitchenIcon /> },
-    { id: "wardrobe", title: "Wardrobe", description: "Our estimate for your dream wardrobe", icon: <DoorSlidingIcon /> },
+    {
+        id: "fullhome",
+        title: "Full Home Interior",
+        description: "Know the estimate price for your full home interiors",
+        icon: "https://cdn-icons-png.flaticon.com/128/263/263115.png", // 🏠 Home icon
+    },
+    {
+        id: "kitchen",
+        title: "Kitchen",
+        description: "Get an approximate costing for your kitchen interior.",
+        icon: "https://cdn-icons-png.flaticon.com/128/2851/2851928.png", // 🍳 Kitchen icon
+    },
+    {
+        id: "wardrobe",
+        title: "Wardrobe",
+        description: "Our estimate for your dream wardrobe",
+        icon: "https://cdn-icons-png.flaticon.com/128/2337/2337984.png", // 🚪 Wardrobe icon
+    },
 ];
 
 export default function Estimate() {
@@ -17,7 +39,7 @@ export default function Estimate() {
     return (
         <Box sx={{ py: 8, backgroundColor: theme.palette.background.paper }}>
             <Container maxWidth="lg">
-                {/* Fixed heading */}
+                {/* Heading */}
                 <Box sx={{ textAlign: "center", mb: 2 }}>
                     <Typography variant="h3" fontWeight={700} color="text.primary">
                         Calculate the estimate
@@ -29,85 +51,140 @@ export default function Estimate() {
                     variant="h6"
                     textAlign="center"
                     color="text.secondary"
-                    mb={6}
+                    mb={8}
                     fontWeight={400}
                 >
                     Calculate the approximate cost of doing up your home interiors
                 </Typography>
 
-                {/* Estimate Cards */}
+                {/* Estimate Steps Row */}
                 <Box
                     sx={{
-                        display: "grid",
-                        gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
-                        gap: 3,
+                        display: "flex",
+                        flexDirection: { xs: "column", md: "row" },
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: { xs: 6, md: 4 },
+                        position: "relative",
                     }}
                 >
-                    {estimateOptions.map((option) => (
-                        <Card key={option.id} sx={{
-                            boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-                            borderRadius: 3,
-                            transition: "all 0.3s ease",
-                            "&:hover": { transform: "translateY(-8px)", boxShadow: "0 8px 24px rgba(0,0,0,0.12)" }
-                        }}>
-                            <CardContent sx={{ p: 4, display: "flex", flexDirection: "column", height: "100%" }}>
-                                {/* Icon */}
-                                <Box sx={{
-                                    width: 64,
-                                    height: 64,
-                                    borderRadius: "50%",
-                                    background: theme.palette.primary.light,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    mb: 3,
+                    {estimateOptions.map((option, index) => (
+                        <Box
+                            key={option.id}
+                            sx={{
+                                flex: 1,
+                                maxWidth: 340,
+                                textAlign: "center",
+                                position: "relative",
+                            }}
+                        >
+                            {/* Icon with connector line */}
+                            <Box
+                                sx={{
                                     position: "relative",
-                                    "& svg": { fontSize: 32, color: theme.palette.primary.main },
-                                }}>
-                                    {option.icon}
-                                    <Box sx={{
+                                    mb: 3,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    "&::after": {
+                                        content:
+                                            index < estimateOptions.length - 1
+                                                ? '""'
+                                                : "none",
                                         position: "absolute",
-                                        top: -4,
-                                        right: -4,
-                                        width: 24,
-                                        height: 24,
-                                        borderRadius: "50%",
-                                        background: theme.palette.primary.main,
-                                        border: "3px solid white",
-                                    }} />
-                                </Box>
+                                        top: "50%",
+                                        right: "-50%",
+                                        width: "100%",
+                                        height: "2px",
+                                        backgroundColor: theme.palette.text.secondary,
+                                        transform: "translateY(-50%)",
+                                        zIndex: 0,
+                                        display: { xs: "none", md: "block" },
+                                    },
+                                }}
+                            >
+                                <Avatar
+                                    src={option.icon}
+                                    alt={option.title}
+                                    sx={{
+                                        width: 90,
+                                        height: 90,
+                                        backgroundColor: theme.palette.background.default,
+                                        border: `1px solid ${theme.palette.text.secondary}`,
+                                        boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                                        p: 2,
+                                        zIndex: 1,
+                                    }}
+                                />
+                            </Box>
 
-                                {/* Title */}
-                                <Typography variant="h5" fontWeight={700} mb={2} sx={{ minHeight: "64px" }} color="text.primary">
-                                    {option.title}
-                                </Typography>
-
-                                {/* Description */}
-                                <Typography variant="body1" color="text.secondary" mb={4} sx={{ flexGrow: 1, minHeight: "48px", lineHeight: 1.6 }}>
-                                    {option.description}
-                                </Typography>
-
-                                {/* Button */}
-                                <Button variant="contained" endIcon={<ChevronRightIcon />} sx={{
-                                    backgroundColor: theme.palette.primary.main,
-                                    color: theme.palette.primary.contrastText,
-                                    py: 1.5,
-                                    px: 4,
-                                    borderRadius: 50,
-                                    textTransform: "uppercase",
-                                    fontWeight: 600,
-                                    fontSize: "0.95rem",
-                                    letterSpacing: "0.5px",
-                                    boxShadow: `0 4px 12px ${theme.palette.primary.main}30`,
+                            {/* Card Content */}
+                            <Card
+                                sx={{
+                                    boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                                    borderRadius: 3,
+                                    transition: "all 0.3s ease",
                                     "&:hover": {
-                                        backgroundColor: theme.palette.primary.dark,
-                                        boxShadow: `0 6px 16px ${theme.palette.primary.main}40`
-                                    }
-                                }}>
-                                    Calculate
-                                </Button>
-                            </CardContent>
-                        </Card>
+                                        transform: "translateY(-8px)",
+                                        boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                                    },
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        p: 4,
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        height: "100%",
+                                    }}
+                                >
+                                    {/* Title */}
+                                    <Typography
+                                        variant="h5"
+                                        fontWeight={700}
+                                        mb={2}
+                                        color="text.primary"
+                                    >
+                                        {option.title}
+                                    </Typography>
+
+                                    {/* Description */}
+                                    <Typography
+                                        variant="body1"
+                                        color="text.secondary"
+                                        mb={4}
+                                        sx={{ lineHeight: 1.6 }}
+                                    >
+                                        {option.description}
+                                    </Typography>
+
+                                    {/* Button */}
+                                    <Button
+                                        variant="contained"
+                                        endIcon={<ChevronRightIcon />}
+                                        sx={{
+                                            backgroundColor: theme.palette.primary.main,
+                                            color: theme.palette.primary.contrastText,
+                                            py: 1.5,
+                                            px: 4,
+                                            borderRadius: 50,
+                                            textTransform: "uppercase",
+                                            fontWeight: 600,
+                                            fontSize: "0.95rem",
+                                            letterSpacing: "0.5px",
+                                            boxShadow: `0 4px 12px ${theme.palette.primary.main}30`,
+                                            "&:hover": {
+                                                backgroundColor: theme.palette.primary.dark,
+                                                boxShadow: `0 6px 16px ${theme.palette.primary.main}40`,
+                                            },
+                                        }}
+                                    >
+                                        Calculate
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Box>
                     ))}
                 </Box>
             </Container>

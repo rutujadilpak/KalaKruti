@@ -5,9 +5,10 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-    useTheme
+    useTheme,
+    Container
 } from '@mui/material';
-import { ExpandMore, QuestionAnswer } from '@mui/icons-material';
+import { ExpandMore } from '@mui/icons-material';
 import { faqData } from './index';
 
 export default function CategoryFAQ({ category }) {
@@ -25,52 +26,63 @@ export default function CategoryFAQ({ category }) {
     }
 
     return (
-        <Box sx={{ mt: 6 }}>
-            <Typography variant="h4" component="h2" gutterBottom sx={{ mb: 3 }}>
-                Frequently Asked Questions
-            </Typography>
+        <Container maxWidth="xl" sx={{ py: 6 }}>
+            <Box>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    gutterBottom
+                    sx={{ mb: 3, fontWeight: 600, textAlign: "center" }}
+                >
+                    Frequently Asked Questions
+                </Typography>
 
-            <Box sx={{ maxWidth: 800 }}>
-                {allFAQs.map((faq) => (
-                    <Accordion
-                        key={faq.id}
-                        sx={{
-                            mb: 2,
-                            '&:before': {
-                                display: 'none',
-                            },
-                            boxShadow: theme.shadows[1],
-                            '&:hover': {
-                                boxShadow: theme.shadows[3],
-                            },
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={<ExpandMore />}
+                <Box sx={{ maxWidth: 1700, mx: "auto" }}>
+                    {allFAQs.map((faq) => (
+                        <Accordion
+                            key={faq.id}
                             sx={{
-                                backgroundColor: theme.palette.background.paper,
+                                mb: 2,
+                                '&:before': {
+                                    display: 'none',
+                                },
+                                boxShadow: theme.shadows[1],
                                 '&:hover': {
-                                    backgroundColor: theme.palette.action.hover,
+                                    boxShadow: theme.shadows[3],
                                 },
                             }}
                         >
-                            <Typography variant="h6" sx={{ fontWeight: 500 }}>
-                                {faq.question}
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails
-                            sx={{
-                                backgroundColor: theme.palette.background.default,
-                                borderTop: `1px solid ${theme.palette.divider}`,
-                            }}
-                        >
-                            <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                                {faq.answer}
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                ))}
+                            <AccordionSummary
+                                expandIcon={<ExpandMore />}
+                                sx={{
+                                    backgroundColor: theme.palette.background.paper,
+                                    '&:hover': {
+                                        backgroundColor: theme.palette.action.hover,
+                                    },
+                                }}
+                            >
+                                <Typography variant="h6" sx={{ fontWeight: 500 }}>
+                                    {faq.question}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails
+                                sx={{
+                                    backgroundColor: theme.palette.background.default,
+                                    borderTop: `1px solid ${theme.palette.divider}`,
+                                }}
+                            >
+                                <Typography
+                                    variant="body1"
+                                    color="text.secondary"
+                                    sx={{ lineHeight: 1.7 }}
+                                >
+                                    {faq.answer}
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    ))}
+                </Box>
             </Box>
-        </Box>
+        </Container>
     );
 }

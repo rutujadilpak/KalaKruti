@@ -48,14 +48,22 @@ export default function WardrobeEstimatorFAQs() {
     ];
 
     return (
-        <Box sx={{ mt: 8, px: { xs: 2, md: 20 } }}>
+        <Box sx={{
+            mt: 8,
+            px: { xs: 2, md: 20 },
+            backgroundColor: theme.palette.background.paper
+        }}>
             {/* Title Section */}
             <Box sx={{ textAlign: 'left', mb: 4 }}>
                 <Typography
                     variant="h3"
                     component="h2"
                     gutterBottom
-                    sx={{ fontWeight: 700 }}
+                    sx={{
+                        fontWeight: 700,
+                        color: theme.palette.text.primary,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     FAQs
                 </Typography>
@@ -63,9 +71,15 @@ export default function WardrobeEstimatorFAQs() {
                 <Chip
                     icon={<QuestionAnswer />}
                     label="Wardrobe Calculator FAQs"
-                    color="primary"
+                    sx={{
+                        mb: 3,
+                        color: theme.palette.primary.main,
+                        borderColor: theme.palette.primary.main,
+                        '&:hover': {
+                            backgroundColor: theme.palette.primary.main + '10'
+                        }
+                    }}
                     variant="outlined"
-                    sx={{ mb: 3 }}
                 />
             </Box>
 
@@ -77,14 +91,16 @@ export default function WardrobeEstimatorFAQs() {
                         sx={{
                             mb: 2,
                             '&:before': { display: 'none' },
-                            boxShadow: theme.shadows[2],
+                            boxShadow: "0 6px 20px rgba(0,0,0,0.05)",
+                            borderRadius: 14,
+                            backgroundColor: theme.palette.background.paper,
                             '&:hover': {
-                                boxShadow: theme.shadows[4],
+                                boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
                             },
                         }}
                     >
                         <AccordionSummary
-                            expandIcon={<ExpandMore />}
+                            expandIcon={<ExpandMore sx={{ color: theme.palette.primary.main }} />}
                             sx={{
                                 backgroundColor: theme.palette.background.paper,
                                 '&:hover': {
@@ -92,7 +108,14 @@ export default function WardrobeEstimatorFAQs() {
                                 },
                             }}
                         >
-                            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    fontWeight: 600,
+                                    color: theme.palette.text.primary,
+                                    fontFamily: theme.typography.fontFamily
+                                }}
+                            >
                                 {faq.question}
                             </Typography>
                         </AccordionSummary>
@@ -104,8 +127,11 @@ export default function WardrobeEstimatorFAQs() {
                         >
                             <Typography
                                 variant="body1"
-                                color="text.secondary"
-                                sx={{ lineHeight: 1.7 }}
+                                sx={{
+                                    lineHeight: 1.7,
+                                    color: theme.palette.text.secondary,
+                                    fontFamily: theme.typography.fontFamily
+                                }}
                             >
                                 {faq.answer}
                             </Typography>
@@ -116,25 +142,42 @@ export default function WardrobeEstimatorFAQs() {
 
             {/* Contact CTA */}
             <Box sx={{ textAlign: 'center', py: 6, mt: 4 }}>
-                <Typography variant="h5" gutterBottom>
+                <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                        color: theme.palette.text.primary,
+                        fontFamily: theme.typography.fontFamily
+                    }}
+                >
                     Still have questions?
                 </Typography>
                 <Typography
                     variant="body1"
-                    color="text.secondary"
-                    sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}
+                    sx={{
+                        mb: 3,
+                        maxWidth: 600,
+                        mx: 'auto',
+                        color: theme.palette.text.secondary,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     Our wardrobe design experts are here to help you with any specific
                     questions about your modular wardrobe project.
                 </Typography>
                 <Chip
                     label="Contact Us"
-                    color="primary"
-                    variant="outlined"
                     sx={{
                         cursor: 'pointer',
-                        fontWeight: 500,
+                        fontWeight: 600,
+                        color: theme.palette.primary.main,
+                        borderColor: theme.palette.primary.main,
+                        '&:hover': {
+                            backgroundColor: theme.palette.primary.main,
+                            color: theme.palette.primary.contrastText
+                        }
                     }}
+                    variant="outlined"
                     onClick={() => (window.location.href = '/contact')}
                 />
             </Box>

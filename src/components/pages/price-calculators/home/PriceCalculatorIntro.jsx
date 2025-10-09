@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography, Button, Breadcrumbs, Link } from "@mui/material";
+import { Box, Container, Typography, Button, Breadcrumbs, Link, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function PriceCalculatorIntro({
@@ -13,15 +13,20 @@ export default function PriceCalculatorIntro({
     buttonText = "Get Started",
     onButtonClick,
 }) {
+    const theme = useTheme();
     const navigate = useNavigate();
 
     const handleClick = () => {
         if (onButtonClick) onButtonClick();
-        else navigate("/price-calculators/home/start");
+        else navigate("/price-calculators/home/calculator/bhk");
     };
 
     return (
-        <Box sx={{ py: { xs: 6, md: 10 }, textAlign: "center", backgroundColor: "#fff" }}>
+        <Box sx={{
+            py: { xs: 6, md: 10 },
+            textAlign: "center",
+            backgroundColor: theme.palette.background.paper
+        }}>
             <Container maxWidth="md">
                 {/* Breadcrumb */}
                 <Breadcrumbs
@@ -37,7 +42,7 @@ export default function PriceCalculatorIntro({
                         item.path ? (
                             <Link
                                 key={index}
-                                color={index === breadcrumb.length - 1 ? "text.primary" : "error.main"}
+                                color={index === breadcrumb.length - 1 ? "text.primary" : theme.palette.primary.main}
                                 underline={index === breadcrumb.length - 1 ? "none" : "hover"}
                                 href={item.path}
                                 sx={{
@@ -65,8 +70,9 @@ export default function PriceCalculatorIntro({
                     sx={{
                         fontWeight: 700,
                         mb: 2,
-                        color: "#3a2f3c",
+                        color: theme.palette.text.primary,
                         fontSize: { xs: "1.8rem", md: "2.4rem" },
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     {title}
@@ -76,11 +82,12 @@ export default function PriceCalculatorIntro({
                 <Typography
                     variant="body1"
                     sx={{
-                        color: "text.secondary",
+                        color: theme.palette.text.secondary,
                         mb: 4,
                         fontSize: { xs: "1rem", md: "1.1rem" },
                         maxWidth: 700,
                         mx: "auto",
+                        fontFamily: theme.typography.fontFamily
                     }}
                 >
                     {description}
@@ -92,15 +99,17 @@ export default function PriceCalculatorIntro({
                     size="large"
                     onClick={handleClick}
                     sx={{
-                        backgroundColor: "#E84E57",
-                        color: "#fff",
-                        textTransform: "uppercase",
-                        fontWeight: "bold",
-                        borderRadius: "50px",
+                        backgroundColor: theme.palette.primary.main,
+                        color: theme.palette.primary.contrastText,
+                        textTransform: "none",
+                        fontWeight: 600,
+                        borderRadius: 10,
                         px: 4,
                         py: 1.5,
+                        fontFamily: theme.typography.fontFamily,
                         "&:hover": {
-                            backgroundColor: "#d13f47",
+                            backgroundColor: theme.palette.primary.dark,
+                            transform: "translateY(-2px)",
                         },
                     }}
                 >

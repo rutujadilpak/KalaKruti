@@ -1,26 +1,39 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, useTheme } from "@mui/material";
+import { Box, Typography, Card, CardContent, Avatar, useTheme } from "@mui/material";
 import { keyframes } from "@emotion/react";
-import PeopleIcon from "@mui/icons-material/People";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import PaymentsIcon from "@mui/icons-material/Payments";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import PublicIcon from "@mui/icons-material/Public";
-import InventoryIcon from "@mui/icons-material/Inventory";
 
-// Slower animation for scrolling left → right
+// Animation for smooth left → right scrolling
 const scroll = keyframes`
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 `;
 
+// ✅ Authentic version for a Pune-based startup
 const items = [
-    { text: "60+ cities", icon: <LocationCityIcon /> },
-    { text: "3 countries", icon: <PublicIcon /> },
-    { text: "20 lakh+ catalogue products", icon: <InventoryIcon /> },
-    { text: "3,500+ designers", icon: <PeopleIcon /> },
-    { text: "Flat 10-year warranty¹", icon: <VerifiedUserIcon /> },
-    { text: "Easy EMIs", icon: <PaymentsIcon /> },
+    {
+        text: "Based in Pune",
+        icon: "https://cdn-icons-png.flaticon.com/512/535/535239.png", // 🏙️ City icon
+    },
+    {
+        text: "Trusted by 50+ homeowners",
+        icon: "https://cdn-icons-png.flaticon.com/128/1769/1769041.png", // 👩‍🎨 User icon
+    },
+    {
+        text: "End-to-end interior solutions",
+        icon: "https://cdn-icons-png.flaticon.com/128/340/340313.png", // 🛋️ Interior icon
+    },
+    {
+        text: "Experienced design team",
+        icon: "https://cdn-icons-png.flaticon.com/128/6012/6012670.png", // 👩‍💻 Team icon
+    },
+    {
+        text: "Premium quality materials",
+        icon: "https://i.pinimg.com/736x/38/b0/fa/38b0fa9f2d5156973f3167e50aa515e7.jpg", // 🪵 Material icon
+    },
+    {
+        text: "On-time project delivery",
+        icon: "https://cdn-icons-png.flaticon.com/128/13670/13670554.png", // ⏱️ Clock/EMI icon
+    },
 ];
 
 export default function WhyChooseUs() {
@@ -28,8 +41,14 @@ export default function WhyChooseUs() {
 
     return (
         <Box sx={{ py: 6, background: theme.palette.background.default, overflow: "hidden" }}>
-            {/* Static Heading */}
-            <Typography variant="h4" fontWeight={700} mb={6} textAlign="center" color="text.primary">
+            {/* Heading */}
+            <Typography
+                variant="h4"
+                fontWeight={700}
+                mb={6}
+                textAlign="center"
+                color="text.primary"
+            >
                 Why choose us
             </Typography>
 
@@ -67,7 +86,7 @@ export default function WhyChooseUs() {
                         },
                     }}
                 >
-                    {/* Duplicate items for seamless loop */}
+                    {/* Duplicate items for infinite scroll */}
                     {[...items, ...items].map((item, i) => (
                         <Card
                             key={i}
@@ -93,39 +112,19 @@ export default function WhyChooseUs() {
                                     height: "100%",
                                 }}
                             >
-                                {/* Icon Circle */}
-                                <Box
+                                {/* Icon in Avatar */}
+                                <Avatar
+                                    src={item.icon}
+                                    alt={item.text}
                                     sx={{
                                         width: 72,
                                         height: 72,
-                                        borderRadius: "50%",
-                                        background: theme.palette.primary.light,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        flexShrink: 0,
-                                        position: "relative",
-                                        "& svg": {
-                                            fontSize: 36,
-                                            color: theme.palette.primary.main,
-                                        },
+                                        backgroundColor: theme.palette.background.default,
+                                        border: `1px solid ${theme.palette.text.secondary}`,
+                                        boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                                        p: 2,
                                     }}
-                                >
-                                    {item.icon}
-                                    {/* Primary color notification badge */}
-                                    <Box
-                                        sx={{
-                                            position: "absolute",
-                                            top: -2,
-                                            right: -2,
-                                            width: 24,
-                                            height: 24,
-                                            borderRadius: "50%",
-                                            background: theme.palette.primary.main,
-                                            border: "2px solid white",
-                                        }}
-                                    />
-                                </Box>
+                                />
 
                                 {/* Text */}
                                 <Typography variant="h6" fontWeight={600} color="text.primary">

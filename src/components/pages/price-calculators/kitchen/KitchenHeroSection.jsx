@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography, Button, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function KitchenHeroSection() {
+    const theme = useTheme();
     const navigate = useNavigate();
 
     const image =
@@ -29,14 +30,22 @@ export default function KitchenHeroSection() {
                     variant="h2"
                     component="h1"
                     gutterBottom
-                    sx={{ fontWeight: "bold", color: "#ffffff" }}
+                    sx={{
+                        fontWeight: "bold",
+                        color: theme.palette.text.light,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     Design Your Dream Kitchen
                 </Typography>
                 <Typography
                     variant="h5"
                     gutterBottom
-                    sx={{ mb: 4, color: "#f5f5f5" }}
+                    sx={{
+                        mb: 4,
+                        color: theme.palette.text.light,
+                        fontFamily: theme.typography.fontFamily
+                    }}
                 >
                     Get an instant quote for your modular kitchen with our smart calculator
                 </Typography>
@@ -44,10 +53,19 @@ export default function KitchenHeroSection() {
                 <Button
                     variant="contained"
                     size="large"
-                    onClick={() => navigate("/contact")}
-                    sx={{ px: 4, py: 2 }}
+                    onClick={() => navigate("/price-calculators/kitchen/calculator/layout")}
+                    sx={{
+                        px: 4,
+                        py: 2,
+                        backgroundColor: theme.palette.primary.main,
+                        color: theme.palette.primary.contrastText,
+                        '&:hover': {
+                            backgroundColor: theme.palette.primary.dark,
+                            transform: 'translateY(-2px)'
+                        }
+                    }}
                 >
-                    Book Consultation
+                    Get Started
                 </Button>
             </Container>
         </Box>

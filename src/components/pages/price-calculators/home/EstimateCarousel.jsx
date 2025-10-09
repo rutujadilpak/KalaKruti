@@ -1,13 +1,28 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Box, Container, Typography, Button, Card, CardMedia, CardContent, IconButton } from "@mui/material";
+import {
+    Box,
+    Container,
+    Typography,
+    Button,
+    Card,
+    CardMedia,
+    CardContent,
+    IconButton,
+    useTheme,
+} from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 
 export default function EstimateCarousel() {
+    const theme = useTheme();
     const navigate = useNavigate();
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", skipSnaps: false });
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        loop: true,
+        align: "start",
+        skipSnaps: false,
+    });
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const items = [
@@ -53,54 +68,62 @@ export default function EstimateCarousel() {
     }, [emblaApi, onSelect]);
 
     return (
-        <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#fff" }}>
+        <Box sx={{ py: { xs: 6, md: 10 }, background: theme.palette.background.default }}>
             <Container maxWidth="lg">
-                {/* Heading */}
+                {/* Heading Section */}
                 <Box
                     sx={{
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
                         flexWrap: "wrap",
-                        mb: 4,
+                        mb: 6,
                         gap: 2,
                     }}
                 >
                     <Box>
                         <Typography
                             variant="h4"
+                            fontWeight={700}
+                            color="text.primary"
                             sx={{
-                                fontWeight: 700,
-                                color: "#3a2f3c",
                                 mb: 1,
                                 fontSize: { xs: "1.8rem", md: "2.2rem" },
+                                fontFamily: theme.typography.fontFamily,
                             }}
                         >
                             Estimates for any home
                         </Typography>
                         <Typography
                             variant="subtitle1"
+                            color="text.secondary"
                             sx={{
-                                color: "text.secondary",
                                 fontSize: "1.1rem",
+                                fontFamily: theme.typography.fontFamily,
                             }}
                         >
-                            Choose your preferred style and sit back while our estimator does its magic
+                            Choose your preferred home type and get instant price estimates
                         </Typography>
                     </Box>
 
                     <Button
                         variant="contained"
-                        onClick={() => navigate("/price-calculators")}
+                        onClick={() => navigate("/price-calculators/home/calculator/bhk")}
                         sx={{
-                            backgroundColor: "#E84E57",
-                            color: "#fff",
-                            textTransform: "uppercase",
-                            fontWeight: "bold",
-                            borderRadius: "50px",
+                            backgroundColor: theme.palette.primary.main,
+                            color: theme.palette.primary.contrastText,
+                            textTransform: "none",
+                            fontWeight: 600,
+                            borderRadius: 3, // ✅ rectangular look, not circular
                             px: 4,
                             py: 1.5,
-                            "&:hover": { backgroundColor: "#d13f47" },
+                            fontFamily: theme.typography.fontFamily,
+                            boxShadow: `0 4px 12px ${theme.palette.primary.main}30`,
+                            "&:hover": {
+                                backgroundColor: theme.palette.primary.dark,
+                                transform: "translateY(-2px)",
+                                boxShadow: `0 6px 16px ${theme.palette.primary.main}40`,
+                            },
                         }}
                     >
                         Get Started
@@ -110,29 +133,57 @@ export default function EstimateCarousel() {
                 {/* Carousel */}
                 <Box sx={{ position: "relative" }}>
                     <div className="embla" ref={emblaRef}>
-                        <div className="embla__container" style={{ display: "flex", gap: "16px" }}>
+                        <div
+                            className="embla__container"
+                            style={{
+                                display: "flex",
+                                gap: "24px",
+                            }}
+                        >
                             {items.map((item, index) => (
-                                <div className="embla__slide" key={index} style={{ flex: "0 0 33.333%" }}>
+                                <div
+                                    className="embla__slide"
+                                    key={index}
+                                    style={{ flex: "0 0 33.333%" }}
+                                >
                                     <Card
                                         sx={{
-                                            borderRadius: 2,
+                                            borderRadius: 4, // ✅ subtle rounded corners only
                                             boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                                             overflow: "hidden",
                                             height: "100%",
-                                            "&:hover": { transform: "translateY(-4px)", transition: "0.3s ease" },
+                                            backgroundColor: theme.palette.background.paper,
+                                            transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                            "&:hover": {
+                                                transform: "translateY(-6px)",
+                                                boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                                            },
                                         }}
                                     >
                                         <CardMedia
                                             component="img"
                                             image={item.image}
                                             alt={item.title}
-                                            sx={{ height: 220, objectFit: "cover" }}
+                                            sx={{
+                                                height: 240,
+                                                objectFit: "cover",
+                                                width: "100%",
+                                            }}
                                         />
-                                        <CardContent>
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: "#3a2f3c" }}>
+                                        <CardContent sx={{ p: 3 }}>
+                                            <Typography
+                                                variant="h6"
+                                                fontWeight={600}
+                                                color="text.primary"
+                                                sx={{ mb: 1 }}
+                                            >
                                                 {item.title}
                                             </Typography>
-                                            <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.5 }}>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.secondary"
+                                                sx={{ lineHeight: 1.6 }}
+                                            >
                                                 {item.description}
                                             </Typography>
                                         </CardContent>
@@ -148,11 +199,15 @@ export default function EstimateCarousel() {
                         sx={{
                             position: "absolute",
                             top: "50%",
-                            left: "-20px",
+                            left: "-28px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
+                            color: theme.palette.primary.main,
+                            "&:hover": {
+                                backgroundColor: theme.palette.action.hover,
+                                color: theme.palette.primary.dark,
+                            },
                         }}
                     >
                         <ChevronLeftIcon />
@@ -163,11 +218,15 @@ export default function EstimateCarousel() {
                         sx={{
                             position: "absolute",
                             top: "50%",
-                            right: "-20px",
+                            right: "-28px",
                             transform: "translateY(-50%)",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.paper,
                             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
+                            color: theme.palette.primary.main,
+                            "&:hover": {
+                                backgroundColor: theme.palette.action.hover,
+                                color: theme.palette.primary.dark,
+                            },
                         }}
                     >
                         <ChevronRightIcon />

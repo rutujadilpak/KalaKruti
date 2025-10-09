@@ -12,11 +12,14 @@ import {
     Grid,
     useTheme,
     Divider,
+    Breadcrumbs,
+    Link,
 } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import { deliveredProjects } from "../../../data/projects/deliveredProjects";
 import { upcomingProjects as upcomingData } from "../../../data/projects/upcomingProjects";
 import { featuredProjects as featuredData } from "../../../data/projects/featuredProjects";
+import FeaturedProjectsCarousel from "../../common/FeaturedProjectsCarousel";
 
 export default function ProjectsPage() {
     const navigate = useNavigate();
@@ -25,62 +28,49 @@ export default function ProjectsPage() {
     const handleCardClick = (type) => navigate(`/projects/${type}`);
     const handleFeaturedProjectClick = (projectId) =>
         navigate(`/projects/featured/${projectId}`);
+    const handleViewAllFeatured = () => navigate("/projects/featured");
 
     return (
         <Box>
-            {/* 🏡 Hero Section */}
-            <Box
-                sx={{
-                    height: "65vh",
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    position: "relative",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    textAlign: "center",
-                    mb: 10,
-                }}
-            >
-                <Box
-                    sx={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundColor: "rgba(0,0,0,0.55)",
-                    }}
-                />
-                <Box sx={{ position: "relative", zIndex: 2, maxWidth: 900 }}>
+            <Container maxWidth="lg">
+                {/* 🧭 Breadcrumbs and Page Intro */}
+                <Box sx={{ mb: 8, mt: 6 }}>
+                    <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
+                        <Link
+                            underline="hover"
+                            color="inherit"
+                            onClick={() => navigate("/")}
+                            sx={{ cursor: "pointer" }}
+                        >
+                            Home
+                        </Link>
+                        <Typography color="text.primary">KalaKruti Studio Portfolio</Typography>
+                    </Breadcrumbs>
+
                     <Typography
-                        variant="h2"
+                        variant="h3"
                         sx={{
                             fontWeight: 700,
-                            mb: 2,
-                            letterSpacing: 1,
-                            textShadow: "0 2px 6px rgba(0,0,0,0.5)",
+                            color: theme.palette.text.primary,
+                            mb: 1,
                         }}
                     >
-                        KalaKruti Interior Design Portfolio
+                        KalaKruti Studio Interior Design Portfolio
                     </Typography>
+
                     <Typography
                         variant="h6"
-                        sx={{
-                            opacity: 0.9,
-                            lineHeight: 1.6,
-                            textShadow: "0 2px 4px rgba(0,0,0,0.4)",
-                        }}
+                        color="text.secondary"
+                        sx={{ maxWidth: 850, lineHeight: 1.7 }}
                     >
-                        Explore the perfect blend of creativity, functionality, and innovation
-                        in every space we design.
+                        Proposed and completed residential projects by Livspace, featuring
+                        innovative designs, latest trends, and personalized aesthetics to match
+                        your lifestyle.
                     </Typography>
                 </Box>
-            </Box>
 
-            <Container maxWidth="xl">
                 {/* 🧱 Project Categories Section */}
-                <Grid container spacing={6} sx={{ mb: 12 }}>
+                <Grid container spacing={6} sx={{ mb: 12, justifyContent: "center" }}>
                     {[
                         {
                             title: "Delivered Projects",
@@ -184,104 +174,50 @@ export default function ProjectsPage() {
 
                 {/* ✨ Featured Projects */}
                 <Box sx={{ textAlign: "center", mb: 6 }}>
-                    <Typography
-                        variant="h3"
-                        sx={{ fontWeight: 700, mb: 2, color: theme.palette.text.primary }}
-                    >
-                        Featured Projects
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        color="text.secondary"
-                        sx={{ maxWidth: 700, mx: "auto" }}
-                    >
-                        A glimpse of our best creations — blending design precision and aesthetic brilliance.
-                    </Typography>
-                </Box>
-
-                <Grid container spacing={4}>
-                    {featuredData.map((project) => (
-                        <Grid item xs={12} sm={6} md={4} key={project.id}>
-                            <Card
-                                onClick={() => handleFeaturedProjectClick(project.id)}
+                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
+                        <Box sx={{ flex: 1 }} />
+                        <Box sx={{ textAlign: "center", flex: 2 }}>
+                            <Typography
+                                variant="h3"
+                                sx={{ fontWeight: 700, mb: 2, color: theme.palette.text.primary }}
+                            >
+                                Featured Projects
+                            </Typography>
+                            <Typography
+                                variant="h6"
+                                color="text.secondary"
+                                sx={{ maxWidth: 700, mx: "auto" }}
+                            >
+                                A glimpse of our best creations — blending design precision and aesthetic brilliance.
+                            </Typography>
+                        </Box>
+                        <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+                            <Button
+                                variant="outlined"
+                                endIcon={<ArrowForward />}
+                                onClick={handleViewAllFeatured}
                                 sx={{
-                                    cursor: "pointer",
-                                    borderRadius: "16px",
-                                    overflow: "hidden",
-                                    boxShadow: theme.shadows[4],
-                                    transition: "all 0.35s ease",
-                                    "&:hover": {
-                                        transform: "translateY(-5px)",
-                                        boxShadow: theme.shadows[10],
-                                    },
+                                    fontWeight: 600,
+                                    px: 3,
+                                    py: 1.5,
+                                    borderRadius: "25px",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px",
                                 }}
                             >
-                                <Box sx={{ position: "relative" }}>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={project.image}
-                                        alt={project.title}
-                                        sx={{ objectFit: "cover" }}
-                                    />
-                                    <Chip
-                                        label={`${project.images.length} Images`}
-                                        size="small"
-                                        sx={{
-                                            position: "absolute",
-                                            bottom: 12,
-                                            right: 12,
-                                            backgroundColor: "rgba(0,0,0,0.7)",
-                                            color: "white",
-                                            fontWeight: 600,
-                                        }}
-                                    />
-                                </Box>
-                                <CardContent sx={{ p: 3 }}>
-                                    <Typography
-                                        variant="h6"
-                                        sx={{
-                                            fontWeight: 700,
-                                            mb: 1,
-                                            display: "-webkit-box",
-                                            WebkitLineClamp: 2,
-                                            WebkitBoxOrient: "vertical",
-                                            overflow: "hidden",
-                                        }}
-                                    >
-                                        {project.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                                        {project.location}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {project.scope} • {project.bhk}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.secondary"
-                                        sx={{ mb: 2 }}
-                                    >
-                                        {project.pricing}
-                                    </Typography>
-                                    <Button
-                                        variant="outlined"
-                                        fullWidth
-                                        sx={{
-                                            fontWeight: 600,
-                                            py: 1.2,
-                                            borderRadius: "20px",
-                                            textTransform: "uppercase",
-                                            letterSpacing: "0.5px",
-                                        }}
-                                    >
-                                        Get This Design
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                                View All
+                            </Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                {/* Featured Projects Carousel */}
+                <Box sx={{ mb: 8 }}>
+                    <FeaturedProjectsCarousel
+                        projects={featuredData}
+                        onViewAll={handleViewAllFeatured}
+                    />
+                </Box>
             </Container>
         </Box>
     );

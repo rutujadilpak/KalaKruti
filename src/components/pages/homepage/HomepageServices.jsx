@@ -10,22 +10,22 @@ export default function HomeServices() {
         {
             title: 'Modular Interiors',
             description: 'Functional kitchen, wardrobe and storage',
-            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kdWxhciUyMGtpdGNoZW58ZW58MHx8MHx8fDA%3D',
         },
         {
             title: 'Full Home Interiors',
             description: 'Turnkey interior solutions for your home',
-            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGhvbWV8ZW58MHx8MHx8fDA%3D',
         },
         {
             title: 'Luxury Interiors',
             description: 'Tailored interiors that redefine elegance',
-            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+            image: 'https://plus.unsplash.com/premium_photo-1661902934269-17eaf4b04f9f?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         },
         {
             title: 'Renovations',
             description: 'Expert solutions to upgrade your home',
-            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1618832515490-e181c4794a45?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         },
     ];
 

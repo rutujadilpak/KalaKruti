@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../layout/Layout";
+import ScrollToTop from "../common/ScrollToTop";
 import HomePage from "../pages/homepage/HomePage";
 import ProjectsList from "../pages/projects/ProjectsList";
 import DesignList from "../pages/designs/DesignList";
@@ -45,6 +46,7 @@ import ProjectGallery from "../pages/projects/ProjectGallery";
 export default function AppRoutes() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />

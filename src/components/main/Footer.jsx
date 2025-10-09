@@ -26,68 +26,12 @@ export default function Footer() {
     return (
         <Box component="footer" sx={{ mt: 'auto' }}>
             {/* "Your dream home is just a click away" Section */}
-            <Box
-                sx={{
-                    backgroundColor: theme.palette.background.default,
-                    py: { xs: 10, md: 12 },
-                    position: 'relative',
-                    overflow: 'hidden',
-                }}
-            >
-                <Container maxWidth="xl">
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                            position: 'relative',
-                            zIndex: 2,
-                        }}
-                    >
-                        <Typography
-                            variant="h2"
-                            sx={{
-                                color: theme.palette.text.primary,
-                                fontWeight: 700,
-                                fontSize: { xs: '2.5rem', md: '4rem' },
-                                mb: 4,
-                                maxWidth: '800px',
-                                lineHeight: 1.2,
-                            }}
-                        >
-                            Your dream home is just a click away
-                        </Typography>
 
-                        <Button
-                            variant="contained"
-                            size="large"
-                            sx={{
-                                backgroundColor: theme.palette.primary.main,
-                                color: theme.palette.primary.contrastText,
-                                px: 6,
-                                py: 2,
-                                fontSize: '1.3rem',
-                                fontWeight: 600,
-                                borderRadius: 3,
-                                minWidth: '200px',
-                                '&:hover': {
-                                    backgroundColor: theme.palette.primary.dark,
-                                    transform: 'translateY(-2px)',
-                                },
-                                transition: 'all 0.3s ease',
-                            }}
-                        >
-                            GET STARTED
-                        </Button>
-                    </Box>
-                </Container>
-            </Box>
 
             {/* Main Footer */}
             <Box
                 sx={{
-                    backgroundColor: theme.palette.secondary.dark,
+                    backgroundColor: theme.palette.primary.dark,
                     color: theme.palette.secondary.contrastText,
                     py: { xs: 8, md: 10 },
                 }}

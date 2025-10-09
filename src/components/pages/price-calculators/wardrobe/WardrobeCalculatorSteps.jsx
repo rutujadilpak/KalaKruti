@@ -32,7 +32,7 @@ export default function WardrobeCalculatorSteps() {
     const progress = ((currentStepIndex + 1) / steps.length) * 100;
 
     return (
-        <Box sx={{ minHeight: '100vh', backgroundColor: '#f8f7f8' }}>
+        <Box sx={{ minHeight: '100vh', backgroundColor: theme.palette.background.default }}>
             <Container maxWidth="lg">
                 {/* Progress Header */}
                 <Box sx={{
@@ -46,7 +46,8 @@ export default function WardrobeCalculatorSteps() {
                         variant="h5"
                         sx={{
                             fontWeight: 'bold',
-                            color: theme.palette.text.primary
+                            color: theme.palette.text.primary,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         KALAKRUTI
@@ -77,8 +78,8 @@ export default function WardrobeCalculatorSteps() {
                                         borderRadius: '50%',
                                         backgroundColor: index <= currentStepIndex
                                             ? theme.palette.primary.main
-                                            : theme.palette.grey[300],
-                                        color: index <= currentStepIndex ? 'white' : theme.palette.text.secondary,
+                                            : theme.palette.neutral.lightGray,
+                                        color: index <= currentStepIndex ? theme.palette.primary.contrastText : theme.palette.text.secondary,
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -97,7 +98,8 @@ export default function WardrobeCalculatorSteps() {
                                             ? theme.palette.primary.main
                                             : theme.palette.text.secondary,
                                         fontSize: '11px',
-                                        whiteSpace: 'nowrap'
+                                        whiteSpace: 'nowrap',
+                                        fontFamily: theme.typography.fontFamily
                                     }}
                                 >
                                     {step.label}
@@ -110,7 +112,8 @@ export default function WardrobeCalculatorSteps() {
                         variant="body2"
                         sx={{
                             fontWeight: 'bold',
-                            color: theme.palette.text.secondary
+                            color: theme.palette.text.secondary,
+                            fontFamily: theme.typography.fontFamily
                         }}
                     >
                         {currentStepIndex + 1}/7
@@ -124,7 +127,7 @@ export default function WardrobeCalculatorSteps() {
                     sx={{
                         height: 4,
                         borderRadius: 2,
-                        backgroundColor: theme.palette.grey[200],
+                        backgroundColor: theme.palette.neutral.lightGray,
                         '& .MuiLinearProgress-bar': {
                             backgroundColor: theme.palette.primary.main
                         }

@@ -164,7 +164,7 @@ export default function Header() {
                 zIndex: 1300,
             }}
         >
-            <Container maxWidth="xl">
+            <Container maxWidth="false">
                 <Toolbar
                     sx={{
                         justifyContent: "space-between",
@@ -208,7 +208,7 @@ export default function Header() {
                         >
                             <Typography
                                 sx={{
-                                    color: theme.palette.secondary.main,
+                                    color: theme.palette.primary.dark,
                                     fontWeight: "bold",
                                     fontSize: "2.2rem",
                                     letterSpacing: "0.1em",
@@ -218,7 +218,7 @@ export default function Header() {
                             </Typography>
                             <Typography
                                 sx={{
-                                    color: theme.palette.secondary.main,
+                                    color: theme.palette.primary.dark,
                                     fontSize: "1rem",
                                     letterSpacing: "0.2em",
                                 }}
