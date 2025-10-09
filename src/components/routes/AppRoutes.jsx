@@ -23,6 +23,10 @@ import BookOnlineConsultation from "../pages/second-nav-pages/offerings/BookOnli
 import LearnMore from "../pages/second-nav-pages/offerings/Learn-more";
 import QuoteForm from "../pages/enquiries/QuoteForm";
 
+// Price Calculator Components
+import HomeInteriorCalculator from "../pages/price-calculators/home/HomeInteriorCalculator";
+import KitchenPriceCalculator from "../pages/price-calculators/kitchen/KitchenPriceCalculator";
+
 // New Project Components
 import ProjectsPage from "../pages/projects/ProjectsPage";
 import DeliveredProjectsList from "../pages/projects/DeliveredProjectsList";
@@ -66,6 +70,8 @@ export default function AppRoutes() {
                     <Route path="designs/full-home-interiors" element={<FullHomeInteriorsPage />} />
                     <Route path="designs/modular-interiors" element={<ModularInteriorsPage />} />
                     <Route path="price-calculators" element={<OfferingPage />} />
+                    <Route path="price-calculators/home" element={<HomeInteriorCalculator />} />
+                    <Route path="price-calculators/kitchen" element={<KitchenPriceCalculator />} />
                     <Route path="modular-journey" element={<OfferingPage />} />
                     <Route path="kitchen/know-your-kitchen" element={<OfferingPage />} />
                     <Route path="kitchen/price-calculator" element={<OfferingPage />} />
