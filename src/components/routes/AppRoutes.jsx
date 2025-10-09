@@ -21,6 +21,14 @@ import LuxuryInteriorPage from "../pages/second-nav-pages/offerings/LuxuryInteri
 import BookOnlineConsultation from "../pages/second-nav-pages/offerings/BookOnlineConsultation";
 import LearnMore from "../pages/second-nav-pages/offerings/Learn-more";
 import QuoteForm from "../pages/enquiries/QuoteForm";
+// Kitchen Components
+import KitchenCabinets from "../pages/kitchen-components/KitchenCabinets";
+import KitchenHandles from "../pages/kitchen-components/KitchenHandles";
+import KitchenFinishes from "../pages/kitchen-components/KitchenFinishes";
+// Wardrobe Components
+import WardrobeCabinets from "../pages/wardrobe-components/WardrobeCabinets";
+import WardrobeHandles from "../pages/wardrobe-components/WardrobeHandles";
+import WardrobeFinishes from "../pages/wardrobe-components/WardrobeFinishes";
 
 
 export default function AppRoutes() {
@@ -49,9 +57,15 @@ export default function AppRoutes() {
                     <Route path="kitchen/know-your-kitchen" element={<OfferingPage />} />
                     <Route path="kitchen/price-calculator" element={<OfferingPage />} />
                     <Route path="kitchen/components" element={<OfferingPage />} />
+                    <Route path="kitchen/components/cabinets" element={<KitchenCabinets />} />
+                    <Route path="kitchen/components/handles" element={<KitchenHandles />} />
+                    <Route path="kitchen/components/finishes" element={<KitchenFinishes />} />
                     <Route path="wardrobe/know-your-wardrobe" element={<OfferingPage />} />
                     <Route path="wardrobe/price-calculator" element={<OfferingPage />} />
                     <Route path="wardrobe/components" element={<OfferingPage />} />
+                    <Route path="wardrobe/components/cabinets" element={<WardrobeCabinets />} />
+                    <Route path="wardrobe/components/handles" element={<WardrobeHandles />} />
+                    <Route path="wardrobe/components/finishes" element={<WardrobeFinishes />} />
                     <Route path="designs/luxury-interiors" element={<LuxuryInteriorPage />} />
                     <Route path="offerings/book-online-consultation" element={<BookOnlineConsultation />} />
                     <Route path="offerings/learn-more" element={<LearnMore />} />
