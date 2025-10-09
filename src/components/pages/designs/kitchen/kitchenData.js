@@ -1,3 +1,26 @@
+// Kitchen Designs Data
+export const kitchenDesigns = [
+    {
+        id: '1',
+        name: 'Modern Modular Kitchen with Island',
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500',
+        description: 'A contemporary modular kitchen featuring a central island and breakfast counter',
+        style: 'Modern',
+        price: '₹4,50,000',
+        area: '120 sq ft'
+    },
+    {
+        id: '2',
+        name: 'Compact U-Shaped Kitchen',
+        image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500',
+        description: 'An efficient U-shaped kitchen design that maximizes storage and functionality',
+        style: 'Contemporary',
+        price: '₹3,20,000',
+        area: '80 sq ft'
+    }
+];
+
+// Kitchen Design Details Data
 export const kitchenDesignDetails = {
     "1": {
         id: "1",
@@ -103,4 +126,15 @@ export const kitchenDesignDetails = {
             "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800",
         ],
     },
+};
+
+// Kitchen Category Configuration
+export const kitchenConfig = {
+    categoryKey: 'kitchen',
+    displayName: 'Kitchen',
+    description: 'Explore our curated collection of modular kitchen design concepts',
+    icon: 'kitchen',
+    color: '#FF6B6B',
+    featured: true,
+    totalDesigns: 2
 };

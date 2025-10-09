@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import HomePage from "../pages/homepage/HomePage";
 import ProjectsList from "../pages/projects/ProjectsList";
 import DesignList from "../pages/designs/DesignList";
+import AllDesigns from "../pages/designs/AllDesigns";
 import DesignDetail from "../pages/designs/DesignDetail";
 import DesignCategories from "../pages/designs/DesignCategories";
 import DesignCategory from "../pages/designs/DesignCatergory";
@@ -51,7 +52,7 @@ export default function AppRoutes() {
                     <Route path="projects/featured/:id/gallery" element={<ProjectGallery />} />
                     <Route path="projects/old" element={<ProjectsList />} />
                     <Route path="projects/old/:id" element={<ProjectDetail />} />
-                    <Route path="designs" element={<DesignList />} />
+                    <Route path="designs" element={<AllDesigns />} />
                     <Route path="designs/categories" element={<DesignCategories />} />
                     <Route path="designs/:category" element={<DesignCategory />} />
                     <Route path="designs/:category/:id" element={<DesignDetail />} />
