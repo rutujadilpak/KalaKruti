@@ -22,6 +22,16 @@ import BookOnlineConsultation from "../pages/second-nav-pages/offerings/BookOnli
 import LearnMore from "../pages/second-nav-pages/offerings/Learn-more";
 import QuoteForm from "../pages/enquiries/QuoteForm";
 
+// New Project Components
+import ProjectsPage from "../pages/projects/ProjectsPage";
+import DeliveredProjectsList from "../pages/projects/DeliveredProjectsList";
+import UpcomingProjectsList from "../pages/projects/UpcomingProjectsList";
+import FeaturedProjectsList from "../pages/projects/FeaturedProjectsList";
+import DeliveredProjectDetail from "../pages/projects/DeliveredProjectDetail";
+import UpcomingProjectDetail from "../pages/projects/UpcomingProjectDetail";
+import FeaturedProjectDetail from "../pages/projects/FeaturedProjectDetail";
+import ProjectGallery from "../pages/projects/ProjectGallery";
+
 
 export default function AppRoutes() {
     return (
@@ -29,8 +39,18 @@ export default function AppRoutes() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
-                    <Route path="projects" element={<ProjectsList />} />
-                    <Route path="projects/:id" element={<ProjectDetail />} />
+                    <Route path="projects" element={<ProjectsPage />} />
+                    <Route path="projects/delivered" element={<DeliveredProjectsList />} />
+                    <Route path="projects/delivered/:id" element={<DeliveredProjectDetail />} />
+                    <Route path="projects/delivered/:id/gallery" element={<ProjectGallery />} />
+                    <Route path="projects/upcoming" element={<UpcomingProjectsList />} />
+                    <Route path="projects/upcoming/:id" element={<UpcomingProjectDetail />} />
+                    <Route path="projects/upcoming/:id/gallery" element={<ProjectGallery />} />
+                    <Route path="projects/featured" element={<FeaturedProjectsList />} />
+                    <Route path="projects/featured/:id" element={<FeaturedProjectDetail />} />
+                    <Route path="projects/featured/:id/gallery" element={<ProjectGallery />} />
+                    <Route path="projects/old" element={<ProjectsList />} />
+                    <Route path="projects/old/:id" element={<ProjectDetail />} />
                     <Route path="designs" element={<DesignList />} />
                     <Route path="designs/categories" element={<DesignCategories />} />
                     <Route path="designs/:category" element={<DesignCategory />} />

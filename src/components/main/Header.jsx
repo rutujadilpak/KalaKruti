@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
     AppBar,
     Toolbar,
@@ -12,51 +12,31 @@ import {
     Container,
     List,
     ListItem,
-    ListItemText
+    ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
 import logo from "../../assets/LogoKalaKruti.png";
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
-} from "../ui/navigation-menu";
+// ✅ Ant Design imports
+import { Dropdown, Button, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [designsMenuOpen, setDesignsMenuOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const location = useLocation();
+    const navigate = useNavigate();
 
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
-
-    const handleMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-        setDesignsMenuOpen(true);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-        setDesignsMenuOpen(false);
-    };
 
     const navigationItems = [
         { label: "Home", path: "/" },
         { label: "Projects", path: "/projects" },
-        { label: "Magazine", path: "/magazine" },
         {
             label: "Designs",
             path: "/designs",
             dropdown: [
-                // Column 1
                 { label: "Modular Kitchen Designs", path: "/designs/kitchen" },
                 { label: "Wardrobe Designs", path: "/designs/wardrobe" },
                 { label: "Bathroom Designs", path: "/designs/bathroom" },
@@ -67,7 +47,6 @@ export default function Header() {
                 { label: "False Ceiling Designs", path: "/designs/false-ceiling" },
                 { label: "Kids Bedroom Designs", path: "/designs/kids-bedroom" },
                 { label: "Balcony Designs", path: "/designs/balcony" },
-                // Column 2
                 { label: "Dining Room Designs", path: "/designs/dining-room" },
                 { label: "Foyer Designs", path: "/designs/foyer" },
                 { label: "Homes by Livspace", path: "/designs/homes-livspace" },
@@ -78,7 +57,6 @@ export default function Header() {
                 { label: "Wall Decor Designs", path: "/designs/wall-decor" },
                 { label: "Wall Paint Designs", path: "/designs/wall-paint" },
                 { label: "Home Wallpaper Designs", path: "/designs/wallpaper" },
-                // Column 3
                 { label: "Tile Designs", path: "/designs/tile" },
                 { label: "Study Room Designs", path: "/designs/study-room" },
                 { label: "Kitchen Sinks", path: "/designs/kitchen-sinks" },
@@ -92,11 +70,10 @@ export default function Header() {
         { label: "FAQ", path: "/faq" },
         { label: "Contact", path: "/contact" },
         { label: "About Us", path: "/aboutus" },
-
     ];
+
     const drawer = (
         <Box sx={{ width: 250 }}>
-            {/* LOGO + TEXT inside Drawer */}
             <Box
                 component={Link}
                 to="/"
@@ -106,9 +83,7 @@ export default function Header() {
                     textDecoration: "none",
                     p: 2,
                     transition: "transform 0.2s ease",
-                    "&:hover": {
-                        transform: "scale(1.02)",
-                    },
+                    "&:hover": { transform: "scale(1.02)" },
                 }}
                 onClick={handleDrawerToggle}
             >
@@ -120,33 +95,19 @@ export default function Header() {
                         height: 80,
                         width: 80,
                         objectFit: "contain",
-                        backgroundColor: "transparent",
                         filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.1))",
                         transition: "transform 0.2s ease",
-                        "&:hover": {
-                            transform: "scale(1.05)",
-                        },
+                        "&:hover": { transform: "scale(1.05)" },
                     }}
                 />
 
-                {/* Text next to logo */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        ml: 2,
-                    }}
-                >
+                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                     <Typography
                         sx={{
                             color: theme.palette.secondary.main,
-                            fontWeight: 'bold',
-                            fontSize: '1.8rem',
-                            letterSpacing: '0.1em',
-                            fontFamily: 'sans-serif',
-                            lineHeight: 1,
-                            transition: 'color 0.3s ease',
+                            fontWeight: "bold",
+                            fontSize: "1.8rem",
+                            letterSpacing: "0.1em",
                         }}
                     >
                         KALAKRUTI
@@ -154,11 +115,9 @@ export default function Header() {
                     <Typography
                         sx={{
                             color: theme.palette.secondary.main,
-                            fontSize: '0.9rem',
-                            letterSpacing: '0.2em',
-                            fontFamily: 'sans-serif',
+                            fontSize: "0.9rem",
+                            letterSpacing: "0.2em",
                             lineHeight: 1,
-                            mt: 0.2,
                         }}
                     >
                         STUDIO
@@ -169,64 +128,24 @@ export default function Header() {
             <List>
                 {navigationItems.map((item) => (
                     <Box key={item.label}>
-                        {item.dropdown ? (
-                            <>
-                                <ListItem
-                                    button
-                                    onClick={() =>
-                                        setAnchorEl(anchorEl === item.label ? null : item.label)
-                                    }
-                                    sx={{
-                                        color: location.pathname.startsWith(item.path)
-                                            ? theme.palette.primary.main
-                                            : "inherit",
-                                        "&:hover": {
-                                            backgroundColor: theme.palette.action.hover,
-                                        },
-                                    }}
-                                >
-                                    <ListItemText primary={item.label} />
-                                </ListItem>
-                                {anchorEl === item.label &&
-                                    item.dropdown.map((subItem) => (
-                                        <ListItem
-                                            key={subItem.label}
-                                            component={Link}
-                                            to={subItem.path}
-                                            onClick={handleDrawerToggle}
-                                            sx={{
-                                                pl: 4,
-                                                color:
-                                                    location.pathname === subItem.path
-                                                        ? theme.palette.primary.main
-                                                        : "inherit",
-                                                "&:hover": {
-                                                    backgroundColor: theme.palette.action.hover,
-                                                },
-                                            }}
-                                        >
-                                            <ListItemText primary={subItem.label} />
-                                        </ListItem>
-                                    ))}
-                            </>
-                        ) : (
-                            <ListItem
-                                component={Link}
-                                to={item.path}
-                                onClick={handleDrawerToggle}
-                                sx={{
-                                    color:
-                                        location.pathname === item.path
-                                            ? theme.palette.primary.main
-                                            : "inherit",
-                                    "&:hover": {
-                                        backgroundColor: theme.palette.action.hover,
-                                    },
-                                }}
-                            >
-                                <ListItemText primary={item.label} />
-                            </ListItem>
-                        )}
+                        <ListItem
+                            component={Link}
+                            to={item.path}
+                            onClick={handleDrawerToggle}
+                            sx={{
+                                color:
+                                    location.pathname === item.path ||
+                                        (item.dropdown &&
+                                            location.pathname.startsWith(item.path))
+                                        ? theme.palette.primary.main
+                                        : "inherit",
+                                "&:hover": {
+                                    backgroundColor: theme.palette.action.hover,
+                                },
+                            }}
+                        >
+                            <ListItemText primary={item.label} />
+                        </ListItem>
                     </Box>
                 ))}
             </List>
@@ -242,12 +161,18 @@ export default function Header() {
                 color: theme.palette.text.primary,
                 borderBottom: `1px solid ${theme.palette.divider}`,
                 boxShadow: theme.shadows[2],
-                zIndex: 1300, // Higher z-index to ensure it stays on top
+                zIndex: 1300,
             }}
         >
             <Container maxWidth="xl">
-                <Toolbar sx={{ justifyContent: "space-between", minHeight: "100px !important", py: 1 }}>
-                    {/* LOGO + TEXT in main Toolbar */}
+                <Toolbar
+                    sx={{
+                        justifyContent: "space-between",
+                        minHeight: "100px !important",
+                        py: 1,
+                    }}
+                >
+                    {/* Logo Section */}
                     <Box
                         component={Link}
                         to="/"
@@ -255,12 +180,7 @@ export default function Header() {
                             display: "flex",
                             alignItems: "center",
                             textDecoration: "none",
-                            transition: "transform 0.2s ease",
-                            ml: { xs: -1, md: 0 },   // shift left on mobile
-                            mr: { xs: 2, md: 0 },    // <-- add space between logo+text and hamburger on mobile
-                            "&:hover": {
-                                transform: "scale(1.02)",
-                            },
+                            "&:hover": { transform: "scale(1.02)" },
                         }}
                     >
                         <Box
@@ -268,38 +188,30 @@ export default function Header() {
                             src={logo}
                             alt="Kalakruti Logo"
                             sx={{
-                                height: { xs: 70, md: 100 },   // smaller logo on mobile
+                                height: { xs: 70, md: 100 },
                                 width: { xs: 70, md: 100 },
                                 objectFit: "contain",
-                                backgroundColor: "transparent",
                                 filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.1))",
                                 transition: "transform 0.2s ease",
-
-                                "&:hover": {
-                                    transform: "scale(1.05)",
-                                },
+                                "&:hover": { transform: "scale(1.05)" },
                             }}
                         />
 
-                        {/* Text next to logo */}
                         <Box
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
-                                alignItems: "center",  // keeps both texts centered relative to each other
-                                textAlign: "center",   // ensures "STUDIO" stays exactly under "KALAKRUTI"
-                                ml: 0,                 // little gap from logo
+                                alignItems: "center",
+                                textAlign: "center",
+                                ml: 0,
                             }}
                         >
                             <Typography
                                 sx={{
                                     color: theme.palette.secondary.main,
-                                    fontWeight: 'bold',
-                                    fontSize: '2.2rem',
-                                    letterSpacing: '0.1em',
-                                    fontFamily: 'sans-serif',
-                                    lineHeight: 1,
-                                    transition: 'color 0.3s ease',
+                                    fontWeight: "bold",
+                                    fontSize: "2.2rem",
+                                    letterSpacing: "0.1em",
                                 }}
                             >
                                 KALAKRUTI
@@ -307,19 +219,16 @@ export default function Header() {
                             <Typography
                                 sx={{
                                     color: theme.palette.secondary.main,
-                                    fontSize: '1rem',
-                                    letterSpacing: '0.2em',
-                                    fontFamily: 'sans-serif',
-                                    lineHeight: 1,
-                                    mt: 0.2,
+                                    fontSize: "1rem",
+                                    letterSpacing: "0.2em",
                                 }}
                             >
                                 STUDIO
                             </Typography>
                         </Box>
-
                     </Box>
 
+                    {/* Navigation */}
                     {isMobile ? (
                         <IconButton
                             color="inherit"
@@ -335,66 +244,106 @@ export default function Header() {
                             <MenuIcon />
                         </IconButton>
                     ) : (
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                {navigationItems.map((item) =>
-                                    item.dropdown ? (
-                                        <NavigationMenuItem key={item.label}>
-                                            <NavigationMenuTrigger onMouseEnter={handleMenuOpen}>
-                                                {item.label}
-                                            </NavigationMenuTrigger>
-                                            <NavigationMenuContent
-                                                anchorEl={anchorEl}
-                                                open={designsMenuOpen}
-                                                onClose={handleMenuClose}
+                        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                            {navigationItems.map((item) =>
+                                item.dropdown ? (
+                                    <Dropdown
+                                        key={item.label}
+                                        trigger={["hover"]}
+                                        getPopupContainer={() => document.body}
+                                        overlayStyle={{ zIndex: 9999 }} // ✅ CRITICAL FIX: Much higher z-index
+                                        dropdownRender={() => (
+                                            <Box
+                                                sx={{
+                                                    display: "grid",
+                                                    gridTemplateColumns: "repeat(3, 1fr)",
+                                                    gap: 1,
+                                                    p: 2,
+                                                    backgroundColor: "#fff",
+                                                    borderRadius: 2,
+                                                    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                                                    minWidth: 600,
+                                                }}
                                             >
-                                                <Box
-                                                    sx={{
-                                                        display: "grid",
-                                                        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // auto create columns
-                                                        gap: 2,
-                                                        p: 2,
-                                                        maxWidth: "1000px", // adjust width of dropdown box
-                                                    }}
-                                                >
-                                                    {item.dropdown.map((subItem) => (
-                                                        <NavigationMenuLink
-                                                            key={subItem.label}
-                                                            to={subItem.path}
-                                                            asChild
-                                                            onClick={handleMenuClose}
-                                                            style={{
-                                                                padding: "6px 12px",
-                                                                borderRadius: "4px",
-                                                                textDecoration: "none",
-                                                                color: "inherit",
-                                                                fontSize: "0.95rem",
-                                                            }}
-                                                        >
-                                                            {subItem.label}
-                                                        </NavigationMenuLink>
-                                                    ))}
-                                                </Box>
-                                            </NavigationMenuContent>
-
-                                        </NavigationMenuItem>
-                                    ) : (
-                                        <NavigationMenuItem key={item.label}>
-                                            <NavigationMenuLink
-                                                to={item.path}
-                                                sx={navigationMenuTriggerStyle(theme)}
-                                            >
+                                                {item.dropdown.map((sub, index) => (
+                                                    <Box
+                                                        key={index}
+                                                        component={Link}
+                                                        to={sub.path}
+                                                        sx={{
+                                                            textDecoration: "none",
+                                                            color: theme.palette.text.primary,
+                                                            fontSize: "0.9rem",
+                                                            fontWeight: 400,
+                                                            py: 0.8,
+                                                            px: 1.5,
+                                                            borderRadius: 1,
+                                                            transition: "all 0.2s ease",
+                                                            "&:hover": {
+                                                                color: theme.palette.primary.main,
+                                                                backgroundColor:
+                                                                    theme.palette.action.hover,
+                                                            },
+                                                        }}
+                                                    >
+                                                        {sub.label}
+                                                    </Box>
+                                                ))}
+                                            </Box>
+                                        )}
+                                    >
+                                        <Button
+                                            type="text"
+                                            onClick={() => navigate(item.path)}
+                                            style={{
+                                                fontWeight: location.pathname.startsWith(item.path)
+                                                    ? "bold"
+                                                    : "500",
+                                                color: location.pathname.startsWith(item.path)
+                                                    ? theme.palette.primary.main
+                                                    : theme.palette.text.primary,
+                                                fontSize: "1rem",
+                                                padding: "8px 16px",
+                                                borderRadius: 4,
+                                            }}
+                                        >
+                                            <Space>
                                                 {item.label}
-                                            </NavigationMenuLink>
-                                        </NavigationMenuItem>
-                                    )
-                                )}
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                                                <DownOutlined style={{ fontSize: "12px", marginLeft: 4 }} />
+                                            </Space>
+                                        </Button>
+                                    </Dropdown>
+                                ) : (
+                                    <Box
+                                        key={item.label}
+                                        component={Link}
+                                        to={item.path}
+                                        sx={{
+                                            textDecoration: "none",
+                                            color:
+                                                location.pathname === item.path
+                                                    ? theme.palette.primary.main
+                                                    : theme.palette.text.primary,
+                                            fontWeight:
+                                                location.pathname === item.path ? "bold" : "500",
+                                            fontSize: "1rem",
+                                            padding: "8px 16px",
+                                            borderRadius: 1,
+                                            "&:hover": {
+                                                backgroundColor: theme.palette.action.hover,
+                                            },
+                                        }}
+                                    >
+                                        {item.label}
+                                    </Box>
+                                )
+                            )}
+                        </Box>
                     )}
                 </Toolbar>
             </Container>
 
+            {/* Mobile Drawer */}
             <Drawer
                 variant="temporary"
                 anchor="right"
