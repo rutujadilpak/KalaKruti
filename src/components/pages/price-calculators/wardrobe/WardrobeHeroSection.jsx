@@ -44,10 +44,10 @@ export default function WardrobeHeroSection() {
                 <Button
                     variant="contained"
                     size="large"
-                    onClick={() => navigate("/contact")}
+                    onClick={() => navigate("/price-calculators/wardrobe/calculator/length")}
                     sx={{ px: 4, py: 2 }}
                 >
-                    Book Consultation
+                    Get Started
                 </Button>
             </Container>
         </Box>

@@ -95,7 +95,7 @@ export default function WardrobeCarousel() {
 
                     <Button
                         variant="contained"
-                        onClick={() => navigate("/price-calculators/wardrobe")}
+                        onClick={() => navigate("/price-calculators/wardrobe/calculator/length")}
                         sx={{
                             backgroundColor: "#E84E57",
                             color: "#fff",

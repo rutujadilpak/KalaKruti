@@ -25,8 +25,10 @@ import QuoteForm from "../pages/enquiries/QuoteForm";
 
 // Price Calculator Components
 import HomeInteriorCalculator from "../pages/price-calculators/home/HomeInteriorCalculator";
+import HomeInteriorCalculatorSteps from "../pages/price-calculators/home/HomeInteriorCalculatorSteps";
 import KitchenPriceCalculator from "../pages/price-calculators/kitchen/KitchenPriceCalculator";
 import WardrobePriceCalculator from "../pages/price-calculators/wardrobe/WardrobePriceCalculator";
+import WardrobeCalculatorSteps from "../pages/price-calculators/wardrobe/WardrobeCalculatorSteps";
 
 // New Project Components
 import ProjectsPage from "../pages/projects/ProjectsPage";
@@ -72,8 +74,10 @@ export default function AppRoutes() {
                     <Route path="designs/modular-interiors" element={<ModularInteriorsPage />} />
                     <Route path="price-calculators" element={<OfferingPage />} />
                     <Route path="price-calculators/home" element={<HomeInteriorCalculator />} />
+                    <Route path="price-calculators/home/calculator/*" element={<HomeInteriorCalculatorSteps />} />
                     <Route path="price-calculators/kitchen" element={<KitchenPriceCalculator />} />
                     <Route path="price-calculators/wardrobe" element={<WardrobePriceCalculator />} />
+                    <Route path="price-calculators/wardrobe/calculator/*" element={<WardrobeCalculatorSteps />} />
                     <Route path="modular-journey" element={<OfferingPage />} />
                     <Route path="kitchen/know-your-kitchen" element={<OfferingPage />} />
                     <Route path="kitchen/price-calculator" element={<OfferingPage />} />
