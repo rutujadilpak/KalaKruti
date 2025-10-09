@@ -23,7 +23,7 @@ import { useNavigate } from 'react-router-dom';
 const HeroSection = styled(Box)(({ theme }) => ({
     position: 'relative',
     width: '100%',
-    height: '70vh',
+    height: '50vh',
     minHeight: '250px',
     backgroundImage: `url('https://www.shutterstock.com/image-photo/this-modern-kitchen-showcases-vibrant-260nw-2676112627.jpg')`,
     backgroundSize: 'cover',

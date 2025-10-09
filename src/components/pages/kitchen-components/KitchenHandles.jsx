@@ -11,192 +11,277 @@ import {
     Chip,
     Breadcrumbs,
     Link,
-    useTheme
+    useTheme,
+    styled
 } from '@mui/material';
-import { ArrowBack, Home, Build } from '@mui/icons-material';
+import { ArrowBack, Home, Kitchen } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+
+// Styled components for hero section
+const HeroSection = styled(Box)(({ theme }) => ({
+    position: 'relative',
+    width: '100%',
+    height: '50vh',
+    minHeight: '250px',
+    backgroundImage: `url('https://www.decorpot.com/images/1788613151everything-you-need-to-know-about-modular-kitchen-handle-designs.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 1,
+    },
+}));
 
 export default function KitchenHandles() {
     const navigate = useNavigate();
     const theme = useTheme();
 
-    const handleTypes = [
+    const handlesData = [
         {
             id: 1,
-            title: "Modern Bar Handles",
-            description: "Sleek and contemporary handles that add a minimalist touch to your kitchen.",
-            image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            materials: ["Stainless Steel", "Brushed Nickel", "Matte Black"],
-            price: "Starting from ₹200"
+            title: "Modern Chrome Handles",
+            description: "Sleek chrome handles with contemporary design for modern kitchen aesthetics.",
+            image: "https://i.pinimg.com/474x/8a/6c/5d/8a6c5d84192697c29d98a1d457164ad3.jpg",
+            tags: ["Modern", "Chrome"],
         },
         {
             id: 2,
-            title: "Classic Knob Handles",
-            description: "Traditional round knobs that provide timeless elegance and easy grip.",
-            image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            materials: ["Brass", "Chrome", "Ceramic"],
-            price: "Starting from ₹150"
+            title: "Classic Brass Knobs",
+            description: "Traditional brass knobs that add warmth and elegance to your kitchen cabinets.",
+            image: "https://www.doorandcabinethardware.com.au/wp-content/uploads/2016/10/Bar-Cabinet-Handles.jpg",
+            tags: ["Classic", "Brass"],
         },
         {
             id: 3,
-            title: "Cup Pull Handles",
-            description: "Ergonomic cup-shaped pulls that offer comfortable grip and vintage charm.",
-            image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            materials: ["Copper", "Antique Brass", "Oil Rubbed Bronze"],
-            price: "Starting from ₹300"
+            title: "Minimalist Black Handles",
+            description: "Clean black handles with minimalist design for contemporary kitchen spaces.",
+            image: "https://i.pinimg.com/474x/8a/6c/5d/8a6c5d84192697c29d98a1d457164ad3.jpg",
+            tags: ["Minimalist", "Black"],
         },
         {
             id: 4,
-            title: "Finger Pull Handles",
-            description: "Seamless integrated pulls that create a clean, handle-free appearance.",
-            image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            materials: ["Aluminum", "Stainless Steel", "Powder Coated"],
-            price: "Starting from ₹400"
+            title: "Vintage Copper Pulls",
+            description: "Antique-style copper pulls that bring character and charm to your kitchen.",
+            image: "https://img-new.cgtrader.com/items/4252515/3ff973f505/large/handles-for-kitchen-cabinets-or-furniture-doors-drawer-3d-model-3d-model-3ff973f505.webp",
+            tags: ["Vintage", "Copper"],
+        },
+        {
+            id: 5,
+            title: "Stainless Steel Bars",
+            description: "Durable stainless steel bar handles perfect for high-traffic kitchen areas.",
+            image: "https://www.modelplusmodel.com/images/detailed/3/mpm_p01_02.jpg",
+            tags: ["Stainless Steel", "Durable"],
+        },
+        {
+            id: 6,
+            title: "Wooden Knobs",
+            description: "Natural wooden knobs that add organic warmth to your kitchen design.",
+            image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2630147-original/short-base-unit.jpg",
+            tags: ["Wooden", "Natural"],
         }
     ];
 
-    return (
-        <Box sx={{ pt: 2, pb: 4 }}>
-            <Container maxWidth="lg">
-                {/* Breadcrumbs */}
-                <Breadcrumbs sx={{ mb: 3 }}>
-                    <Link
-                        component="button"
-                        variant="body2"
-                        onClick={() => navigate('/')}
-                        sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
-                    >
-                        <Home fontSize="small" />
-                        Home
-                    </Link>
-                    <Link
-                        component="button"
-                        variant="body2"
-                        onClick={() => navigate('/offerings')}
-                    >
-                        Offerings
-                    </Link>
-                    <Link
-                        component="button"
-                        variant="body2"
-                        onClick={() => navigate('/kitchen/components')}
-                    >
-                        Kitchen Components
-                    </Link>
-                    <Typography color="text.primary">Handles</Typography>
-                </Breadcrumbs>
+    const sectionDescription = 'Explore our carefully curated collection of kitchen handles and knobs that combine functionality with style. From modern chrome to classic brass, find the perfect finishing touch for your kitchen cabinets.';
 
-                {/* Header */}
-                <Box sx={{ mb: 4 }}>
-                    <Button
-                        startIcon={<ArrowBack />}
-                        onClick={() => navigate('/kitchen/components')}
-                        sx={{ mb: 2 }}
+    return (
+        <Box>
+            {/* Hero Section */}
+            <HeroSection>
+                {/* Main Content */}
+                <Box
+                    sx={{
+                        position: 'relative',
+                        zIndex: 2,
+                        textAlign: 'center',
+                        color: 'white',
+                        maxWidth: '800px',
+                        px: { xs: 3, md: 4 },
+                    }}
+                >
+                    <Typography
+                        variant="h1"
+                        component="h1"
+                        sx={{
+                            fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' },
+                            fontWeight: 'bold',
+                            lineHeight: 1.2,
+                            mb: 3,
+                            color: 'white',
+                            textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+                        }}
                     >
-                        Back to Kitchen Components
-                    </Button>
-                    <Typography variant="h3" component="h1" sx={{ mb: 2, fontWeight: 'bold' }}>
                         Kitchen Handles
                     </Typography>
-                    <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
-                        Choose from our premium collection of handles to complete your kitchen's look
+
+                    <Typography
+                        variant="h5"
+                        component="h2"
+                        sx={{
+                            fontSize: { xs: '1.1rem', md: '1.3rem' },
+                            fontWeight: 400,
+                            lineHeight: 1.4,
+                            mb: 4,
+                            color: 'white',
+                            textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
+                            maxWidth: '600px',
+                            mx: 'auto',
+                        }}
+                    >
+                        Explore a wide range of tastefully designed handles and knobs.
                     </Typography>
                 </Box>
+            </HeroSection>
 
-                {/* Handle Types Grid */}
-                <Grid container spacing={4}>
-                    {handleTypes.map((handle) => (
-                        <Grid item xs={12} md={6} key={handle.id}>
+            {/* Main Content */}
+            <Box sx={{ pt: 2, pb: 4 }}>
+                <Container maxWidth="lg">
+                    {/* Breadcrumbs */}
+                    <Breadcrumbs sx={{ mb: 3 }}>
+                        <Link
+                            component="button"
+                            variant="body2"
+                            onClick={() => navigate('/')}
+                            sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+                        >
+                            <Home fontSize="small" />
+                            Home
+                        </Link>
+                        <Link
+                            component="button"
+                            variant="body2"
+                            onClick={() => navigate('/offerings')}
+                        >
+                            Offerings
+                        </Link>
+                        <Link
+                            component="button"
+                            variant="body2"
+                            onClick={() => navigate('/kitchen/components')}
+                        >
+                            Kitchen Components
+                        </Link>
+                        <Typography color="text.primary">Handles</Typography>
+                    </Breadcrumbs>
+
+                    {/* Section Title */}
+                    <Typography variant="h4" component="h2" sx={{ mb: 2, fontWeight: 'bold', color: theme.palette.text.primary }}>
+                        Kitchen Handles & Knobs
+                    </Typography>
+
+                    {/* Section Description */}
+                    <Typography variant="body1" sx={{ mb: 4, color: theme.palette.text.secondary, lineHeight: 1.6, maxWidth: '800px' }}>
+                        {sectionDescription}
+                    </Typography>
+
+                    {/* Handles Grid */}
+                    <Box sx={{ 
+                        display: 'flex', 
+                        flexWrap: 'wrap', 
+                        gap: 3,
+                        justifyContent: { xs: 'center', md: 'flex-start' }
+                    }}>
+                        {handlesData.map((handle) => (
                             <Card
+                                key={handle.id}
                                 sx={{
-                                    height: '100%',
+                                    width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
+                                    maxWidth: '350px',
                                     display: 'flex',
                                     flexDirection: 'column',
+                                    backgroundColor: 'white',
+                                    borderRadius: 2,
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                                     '&:hover': {
-                                        transform: 'translateY(-8px)',
-                                        boxShadow: '0 12px 40px rgba(0,0,0,0.15)'
+                                        transform: 'translateY(-4px)',
+                                        boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
                                     }
                                 }}
                             >
-                                <CardMedia
-                                    component="img"
-                                    height="250"
-                                    image={handle.image}
-                                    alt={handle.title}
-                                    sx={{ objectFit: 'cover' }}
-                                />
-                                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                                    <Typography variant="h5" component="h2" sx={{ mb: 1, fontWeight: 'bold' }}>
+                                <Box sx={{ 
+                                    height: '200px', 
+                                    overflow: 'hidden',
+                                    borderRadius: '8px 8px 0 0'
+                                }}>
+                                    <CardMedia
+                                        component="img"
+                                        height="100%"
+                                        image={handle.image}
+                                        alt={handle.title}
+                                        sx={{ 
+                                            objectFit: 'cover',
+                                            width: '100%',
+                                            height: '100%'
+                                        }}
+                                    />
+                                </Box>
+                                <CardContent sx={{ p: 2.5, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <Typography 
+                                        variant="h6" 
+                                        component="h3" 
+                                        sx={{ 
+                                            mb: 1.5, 
+                                            fontWeight: 'bold',
+                                            fontSize: '1.1rem',
+                                            color: theme.palette.text.primary,
+                                            lineHeight: 1.3
+                                        }}
+                                    >
                                         {handle.title}
                                     </Typography>
-                                    <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
+                                    
+                                    <Typography 
+                                        variant="body2" 
+                                        sx={{ 
+                                            mb: 2, 
+                                            color: theme.palette.text.secondary,
+                                            lineHeight: 1.4,
+                                            flexGrow: 1
+                                        }}
+                                    >
                                         {handle.description}
                                     </Typography>
                                     
                                     <Box sx={{ mb: 2 }}>
-                                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'bold' }}>
-                                            Available Materials:
-                                        </Typography>
-                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                                            {handle.materials.map((material, index) => (
+                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                            {handle.tags.map((tag, index) => (
                                                 <Chip
                                                     key={index}
-                                                    label={material}
+                                                    label={tag}
                                                     size="small"
                                                     variant="outlined"
-                                                    sx={{ fontSize: '0.75rem' }}
+                                                    sx={{ 
+                                                        fontSize: '0.7rem',
+                                                        height: '24px',
+                                                        backgroundColor: '#f5f5f5',
+                                                        borderColor: '#e0e0e0',
+                                                        color: theme.palette.text.secondary,
+                                                        '& .MuiChip-label': {
+                                                            px: 1
+                                                        }
+                                                    }}
                                                 />
                                             ))}
                                         </Box>
                                     </Box>
-
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 'auto' }}>
-                                        <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold' }}>
-                                            {handle.price}
-                                        </Typography>
-                                        <Button
-                                            variant="contained"
-                                            size="small"
-                                            sx={{ textTransform: 'none' }}
-                                        >
-                                            Get Quote
-                                        </Button>
-                                    </Box>
                                 </CardContent>
                             </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                        ))}
+                    </Box>
 
-                {/* CTA Section */}
-                <Box
-                    sx={{
-                        mt: 6,
-                        p: 4,
-                        backgroundColor: theme.palette.background.paper,
-                        borderRadius: 2,
-                        textAlign: 'center',
-                        border: `1px solid ${theme.palette.divider}`
-                    }}
-                >
-                    <Build sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
-                    <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>
-                        Need Help Choosing the Right Handles?
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                        Our design experts can help you select the perfect handles that complement your kitchen style.
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        onClick={() => navigate('/enquiries/quote-form')}
-                        sx={{ textTransform: 'none', px: 4 }}
-                    >
-                        Consult Our Experts
-                    </Button>
-                </Box>
-            </Container>
+             
+                </Container>
+            </Box>
         </Box>
     );
 }
