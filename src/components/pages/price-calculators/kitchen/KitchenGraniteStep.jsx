@@ -1,153 +1,189 @@
-import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, Button, FormControl, FormControlLabel, Radio, RadioGroup, useTheme } from '@mui/material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    Button,
+    Radio,
+    useTheme,
+} from "@mui/material";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function KitchenGraniteStep() {
     const theme = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
-    const [graniteOption, setGraniteOption] = useState('');
-
-    const handleGraniteChange = (event) => {
-        setGraniteOption(event.target.value);
-    };
+    const [graniteOption, setGraniteOption] = useState("");
 
     const handleNext = () => {
         if (graniteOption) {
             const searchParams = new URLSearchParams(location.search);
             const queryParams = new URLSearchParams({
-                layout: searchParams.get('layout'),
-                length: searchParams.get('length'),
-                width: searchParams.get('width'),
-                height: searchParams.get('height'),
-                cabinetLength: searchParams.get('cabinetLength'),
-                cabinetHeight: searchParams.get('cabinetHeight'),
-                package: searchParams.get('package'),
-                material: searchParams.get('material'),
-                granite: graniteOption
+                layout: searchParams.get("layout"),
+                length: searchParams.get("length"),
+                width: searchParams.get("width"),
+                height: searchParams.get("height"),
+                cabinetLength: searchParams.get("cabinetLength"),
+                cabinetHeight: searchParams.get("cabinetHeight"),
+                package: searchParams.get("package"),
+                material: searchParams.get("material"),
+                granite: graniteOption,
             });
-            navigate(`/price-calculators/kitchen/calculator/loft?${queryParams.toString()}`);
+            navigate(
+                `/price-calculators/kitchen/calculator/loft?${queryParams.toString()}`
+            );
         }
     };
 
     const handleBack = () => {
         const searchParams = new URLSearchParams(location.search);
         const queryParams = new URLSearchParams({
-            layout: searchParams.get('layout'),
-            length: searchParams.get('length'),
-            width: searchParams.get('width'),
-            height: searchParams.get('height'),
-            cabinetLength: searchParams.get('cabinetLength'),
-            cabinetHeight: searchParams.get('cabinetHeight'),
-            package: searchParams.get('package'),
-            material: searchParams.get('material')
+            layout: searchParams.get("layout"),
+            length: searchParams.get("length"),
+            width: searchParams.get("width"),
+            height: searchParams.get("height"),
+            cabinetLength: searchParams.get("cabinetLength"),
+            cabinetHeight: searchParams.get("cabinetHeight"),
+            package: searchParams.get("package"),
+            material: searchParams.get("material"),
         });
-        navigate(`/price-calculators/kitchen/calculator/materials?${queryParams.toString()}`);
+        navigate(
+            `/price-calculators/kitchen/calculator/materials?${queryParams.toString()}`
+        );
     };
 
     return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 700, mx: "auto", p: 3 }}>
+            {/* Title */}
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
-                    textAlign: 'center',
-                    mb: 4,
-                    fontWeight: 'bold',
-                    color: theme.palette.text.primary
+                    textAlign: "center",
+                    mb: 1.5,
+                    fontWeight: 600,
+                    color: theme.palette.text.primary,
                 }}
             >
-                Let's add a granite countertop (with laminated ply, without backsplash)?
+                Add a Granite Countertop?
             </Typography>
 
-            <FormControl component="fieldset" sx={{ width: '100%', mb: 4 }}>
-                <RadioGroup
-                    value={graniteOption}
-                    onChange={handleGraniteChange}
-                    sx={{ gap: 3 }}
-                >
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4 }}>
-                        <Card
-                            sx={{
-                                border: graniteOption === 'yes' ? `2px solid ${theme.palette.primary.main}` : '1px solid',
-                                borderColor: graniteOption === 'yes' ? theme.palette.primary.main : theme.palette.grey[300],
-                                transition: 'all 0.3s ease',
-                                cursor: 'pointer',
-                                minWidth: 200,
-                                '&:hover': {
-                                    borderColor: theme.palette.primary.main,
-                                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
-                                }
-                            }}
-                            onClick={() => setGraniteOption('yes')}
-                        >
-                            <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                                <FormControlLabel
-                                    value="yes"
-                                    control={<Radio sx={{ color: theme.palette.primary.main }} />}
-                                    label=""
-                                    sx={{ position: 'absolute', top: 8, right: 8, m: 0 }}
-                                />
-                                <Typography variant="h5" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
-                                    Yes
-                                </Typography>
-                                <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mt: 1 }}>
-                                    Add granite countertop
-                                </Typography>
-                            </CardContent>
-                        </Card>
+            <Typography
+                variant="body2"
+                sx={{
+                    textAlign: "center",
+                    mb: 4,
+                    color: theme.palette.text.secondary,
+                    maxWidth: 600,
+                    mx: "auto",
+                }}
+            >
+                Includes laminated ply, without backsplash. Choose whether you'd like to
+                include a granite countertop in your kitchen design.
+            </Typography>
 
+            {/* Options */}
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: 3,
+                    flexWrap: "wrap",
+                }}
+            >
+                {[
+                    { id: "yes", title: "Yes", desc: "Add granite countertop" },
+                    { id: "no", title: "No", desc: "Skip granite countertop" },
+                ].map((opt) => {
+                    const isSelected = graniteOption === opt.id;
+                    return (
                         <Card
+                            key={opt.id}
+                            onClick={() => setGraniteOption(opt.id)}
                             sx={{
-                                border: graniteOption === 'no' ? `2px solid ${theme.palette.primary.main}` : '1px solid',
-                                borderColor: graniteOption === 'no' ? theme.palette.primary.main : theme.palette.grey[300],
-                                transition: 'all 0.3s ease',
-                                cursor: 'pointer',
-                                minWidth: 200,
-                                '&:hover': {
-                                    borderColor: theme.palette.primary.main,
-                                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
-                                }
+                                position: "relative",
+                                borderRadius: 2,
+                                border: "2px solid",
+                                borderColor: isSelected
+                                    ? theme.palette.primary.main
+                                    : theme.palette.grey[300],
+                                backgroundColor: isSelected
+                                    ? theme.palette.primary.light + "10"
+                                    : theme.palette.background.paper,
+                                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+                                cursor: "pointer",
+                                transition: "none",
+                                width: 160,
+                                height: 140,
+                                textAlign: "center",
                             }}
-                            onClick={() => setGraniteOption('no')}
                         >
-                            <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                                <FormControlLabel
-                                    value="no"
-                                    control={<Radio sx={{ color: theme.palette.primary.main }} />}
-                                    label=""
-                                    sx={{ position: 'absolute', top: 8, right: 8, m: 0 }}
-                                />
-                                <Typography variant="h5" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
-                                    No
+                            <CardContent
+                                sx={{
+                                    p: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    height: "100%",
+                                }}
+                            >
+                                <Box sx={{ minWidth: 36, mb: 1 }}>
+                                    <Radio
+                                        checked={isSelected}
+                                        onChange={() => setGraniteOption(opt.id)}
+                                        value={opt.id}
+                                        sx={{ color: theme.palette.primary.main }}
+                                    />
+                                </Box>
+
+                                <Typography
+                                    variant="subtitle1"
+                                    sx={{
+                                        fontWeight: 600,
+                                        color: theme.palette.text.primary,
+                                    }}
+                                >
+                                    {opt.title}
                                 </Typography>
-                                <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mt: 1 }}>
-                                    Skip granite countertop
+
+                                <Typography
+                                    variant="caption"
+                                    sx={{
+                                        color: theme.palette.text.secondary,
+                                        mt: 0.5,
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {opt.desc}
                                 </Typography>
                             </CardContent>
                         </Card>
-                    </Box>
-                </RadioGroup>
-            </FormControl>
+                    );
+                })}
+            </Box>
 
             {/* Navigation Buttons */}
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                mt: 4,
-                pt: 3,
-                borderTop: '1px solid',
-                borderColor: 'divider'
-            }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mt: 4,
+                    pt: 2,
+                    borderTop: "1px solid",
+                    borderColor: "divider",
+                }}
+            >
                 <Button
                     variant="text"
                     onClick={handleBack}
                     sx={{
                         color: theme.palette.primary.main,
-                        textTransform: 'none',
-                        fontWeight: 600
+                        textTransform: "none",
+                        fontWeight: 600,
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -156,15 +192,11 @@ export default function KitchenGraniteStep() {
                     disabled={!graniteOption}
                     sx={{
                         px: 4,
-                        textTransform: 'none',
+                        textTransform: "none",
                         fontWeight: 600,
-                        backgroundColor: '#E84E57',
-                        '&:hover': {
-                            backgroundColor: '#d13f47',
-                        }
                     }}
                 >
-                    NEXT
+                    Next
                 </Button>
             </Box>
         </Box>

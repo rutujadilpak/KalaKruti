@@ -19,6 +19,7 @@ import {
     Phone,
     Email
 } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Footer() {
     const theme = useTheme();
@@ -36,10 +37,15 @@ export default function Footer() {
                     py: { xs: 8, md: 10 },
                 }}
             >
-                <Container maxWidth="xl">
+                <Container
+                    maxWidth="xl"
+                    sx={{
+                        px: { xs: 3, sm: 6, md: 10, lg: 15 }, // 👈 adds balanced horizontal padding
+                    }}
+                >
                     <Grid container spacing={6}>
                         {/* Logo and Social Media */}
-                        <Grid item xs={12} md={3}>
+                        <Grid item xs={12} md={2.4}>
                             <Box sx={{ mb: 5 }}>
                                 <Typography
                                     variant="h4"
@@ -77,6 +83,10 @@ export default function Footer() {
                                     <Facebook />
                                 </IconButton>
                                 <IconButton
+                                    component="a"
+                                    href="https://www.instagram.com/_kalakruti_studio_/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     size="large"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
@@ -85,16 +95,6 @@ export default function Footer() {
                                     }}
                                 >
                                     <Instagram />
-                                </IconButton>
-                                <IconButton
-                                    size="large"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        fontSize: '1.5rem',
-                                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' }
-                                    }}
-                                >
-                                    <Twitter />
                                 </IconButton>
                                 <IconButton
                                     size="large"
@@ -116,13 +116,11 @@ export default function Footer() {
                                 >
                                     <YouTube />
                                 </IconButton>
-
                             </Box>
-
                         </Grid>
 
                         {/* OFFERINGS */}
-                        <Grid item xs={12} sm={6} md={2}>
+                        <Grid item xs={12} sm={6} md={1.6}>
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -137,7 +135,8 @@ export default function Footer() {
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                                 <Link
-                                    href="#"
+                                    component={RouterLink}
+                                    to="/offerings"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -149,24 +148,11 @@ export default function Footer() {
                                 >
                                     Interiors
                                 </Link>
-                                <Link
-                                    href="#"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        textDecoration: 'none',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        opacity: 0.8,
-                                        py: 0.5,
-                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                    }}
-                                >
-                                    Furnishings
-                                </Link>
                             </Box>
                         </Grid>
 
                         {/* GET INSPIRED */}
-                        <Grid item xs={12} sm={6} md={2}>
+                        <Grid item xs={12} sm={6} md={1.6}>
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -181,7 +167,8 @@ export default function Footer() {
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                                 <Link
-                                    href="/designs"
+                                    component={RouterLink}
+                                    to="/designs"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -192,20 +179,6 @@ export default function Footer() {
                                     }}
                                 >
                                     Design Ideas
-                                </Link>
-
-                                <Link
-                                    href="#"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        textDecoration: 'none',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        opacity: 0.8,
-                                        py: 0.5,
-                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                    }}
-                                >
-                                    KalaKruti TV
                                 </Link>
                             </Box>
                         </Grid>
@@ -225,9 +198,9 @@ export default function Footer() {
                                 COMPANY
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-
                                 <Link
-                                    href="/how-it-works"
+                                    component={RouterLink}
+                                    to="/how-it-works"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -239,9 +212,9 @@ export default function Footer() {
                                 >
                                     How it works
                                 </Link>
-
                                 <Link
-                                    href="#"
+                                    component={RouterLink}
+                                    to="/faq"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -251,10 +224,11 @@ export default function Footer() {
                                         '&:hover': { opacity: 1, textDecoration: 'underline' }
                                     }}
                                 >
-                                    Policies
+                                    FAQ
                                 </Link>
                                 <Link
-                                    href="#"
+                                    component={RouterLink}
+                                    to="/contact"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -264,10 +238,11 @@ export default function Footer() {
                                         '&:hover': { opacity: 1, textDecoration: 'underline' }
                                     }}
                                 >
-                                    Terms and conditions
+                                    Contact Us
                                 </Link>
                                 <Link
-                                    href="#"
+                                    component={RouterLink}
+                                    to="/aboutus"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -280,7 +255,8 @@ export default function Footer() {
                                     About us
                                 </Link>
                                 <Link
-                                    href="#"
+                                    component={RouterLink}
+                                    to="/projects"
                                     sx={{
                                         color: theme.palette.secondary.contrastText,
                                         textDecoration: 'none',
@@ -290,13 +266,59 @@ export default function Footer() {
                                         '&:hover': { opacity: 1, textDecoration: 'underline' }
                                     }}
                                 >
-                                    Store Locator
+                                    Our Projects
+                                </Link>
+                            </Box>
+                        </Grid>
+
+                        {/* TOOLS & CALCULATORS */}
+                        <Grid item xs={12} sm={6} md={1.6}>
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    color: theme.palette.secondary.contrastText,
+                                    fontSize: { xs: '1.1rem', md: '1.2rem' },
+                                    fontWeight: 600,
+                                    mb: 3,
+                                    letterSpacing: '0.05em',
+                                }}
+                            >
+                                TOOLS
+                            </Typography>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Link
+                                    component={RouterLink}
+                                    to="/price-calculators"
+                                    sx={{
+                                        color: theme.palette.secondary.contrastText,
+                                        textDecoration: 'none',
+                                        fontSize: { xs: '1rem', md: '1.1rem' },
+                                        opacity: 0.8,
+                                        py: 0.5,
+                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
+                                    }}
+                                >
+                                    Price Calculator
+                                </Link>
+                                <Link
+                                    component={RouterLink}
+                                    to="/enquiries/quote-form"
+                                    sx={{
+                                        color: theme.palette.secondary.contrastText,
+                                        textDecoration: 'none',
+                                        fontSize: { xs: '1rem', md: '1.1rem' },
+                                        opacity: 0.8,
+                                        py: 0.5,
+                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
+                                    }}
+                                >
+                                    Get Quote
                                 </Link>
                             </Box>
                         </Grid>
 
                         {/* CONTACT US */}
-                        <Grid item xs={12} sm={6} md={3}>
+                        <Grid item xs={12} sm={6} md={2.4}>
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -342,6 +364,22 @@ export default function Footer() {
                                         care@kalakruti.com
                                     </Link>
                                 </Box>
+                                <Box sx={{ mt: 2 }}>
+                                    <Link
+                                        component={RouterLink}
+                                        to="/contact"
+                                        sx={{
+                                            color: theme.palette.secondary.contrastText,
+                                            textDecoration: 'none',
+                                            fontSize: { xs: '1rem', md: '1.1rem' },
+                                            opacity: 0.8,
+                                            py: 0.5,
+                                            '&:hover': { opacity: 1, textDecoration: 'underline' }
+                                        }}
+                                    >
+                                        Contact Form
+                                    </Link>
+                                </Box>
                             </Box>
                         </Grid>
                     </Grid>
@@ -372,4 +410,3 @@ export default function Footer() {
         </Box>
     );
 }
-

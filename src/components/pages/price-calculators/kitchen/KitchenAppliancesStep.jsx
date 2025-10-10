@@ -66,7 +66,9 @@ export default function KitchenAppliancesStep() {
             package: searchParams.get("package"),
             appliances: selectedAppliances.join(","),
         });
-        navigate(`/price-calculators/kitchen/calculator/estimate?${queryParams.toString()}`);
+        navigate(
+            `/price-calculators/kitchen/calculator/estimate?${queryParams.toString()}`
+        );
     };
 
     const handleBack = () => {
@@ -75,102 +77,130 @@ export default function KitchenAppliancesStep() {
             layout: searchParams.get("layout"),
             package: searchParams.get("package"),
         });
-        navigate(`/price-calculators/kitchen/calculator/services?${queryParams.toString()}`);
+        navigate(
+            `/price-calculators/kitchen/calculator/services?${queryParams.toString()}`
+        );
     };
 
     return (
         <Box sx={{ maxWidth: 1000, mx: "auto", p: 3 }}>
             {/* Header */}
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
                     textAlign: "center",
-                    mb: 4,
-                    fontWeight: "bold",
+                    mb: 1.5,
+                    fontWeight: 600,
                     color: theme.palette.text.primary,
                 }}
             >
-                Here come the appliances — your pick?
+                Choose Your Kitchen Appliances
+            </Typography>
+
+            <Typography
+                variant="body2"
+                sx={{
+                    textAlign: "center",
+                    mb: 4,
+                    color: theme.palette.text.secondary,
+                    maxWidth: 600,
+                    mx: "auto",
+                }}
+            >
+                Select the appliances you’d like to include with your modular kitchen
+                design.
             </Typography>
 
             {/* Appliance Grid */}
-            <Grid container spacing={3} justifyContent="center">
-                {appliances.map((appliance) => (
-                    <Grid item xs={12} sm={6} md={3} key={appliance.id}>
-                        <Card
-                            sx={{
-                                height: 250, // ✅ Consistent height
-                                width: 250, // ✅ Consistent width
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                border: selectedAppliances.includes(appliance.id)
-                                    ? `2px solid ${theme.palette.primary.main}`
-                                    : "1px solid #ddd",
-                                borderRadius: 2,
-                                cursor: "pointer",
-                                transition: "all 0.3s ease",
-                                "&:hover": {
-                                    transform: "translateY(-4px)",
-                                    boxShadow: theme.shadows[6],
-                                    borderColor: theme.palette.primary.main,
-                                },
-                            }}
-                            onClick={() => handleApplianceChange(appliance.id)}
-                        >
-                            <CardContent
+            <Grid
+                container
+                spacing={2.5}
+                justifyContent="center"
+                alignItems="stretch"
+            >
+                {appliances.map((appliance) => {
+                    const isSelected = selectedAppliances.includes(appliance.id);
+                    return (
+                        <Grid item xs={6} sm={4} md={3} key={appliance.id}>
+                            <Card
+                                onClick={() => handleApplianceChange(appliance.id)}
                                 sx={{
-                                    p: 0,
-                                    width: "100%",
-                                    textAlign: "center",
+                                    height: 200,
+                                    width: 200,
+                                    border: "2px solid",
+                                    borderColor: isSelected
+                                        ? theme.palette.primary.main
+                                        : theme.palette.grey[300],
+                                    backgroundColor: isSelected
+                                        ? theme.palette.primary.light + "10"
+                                        : theme.palette.background.paper,
+                                    borderRadius: 2,
+                                    transition: "none",
+                                    cursor: "pointer",
+                                    boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
                                 }}
                             >
-                                <Box
-                                    sx={{
-                                        height: 150,
-                                        backgroundImage: `url(${appliance.image})`,
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
-                                        borderTopLeftRadius: 8,
-                                        borderTopRightRadius: 8,
-                                    }}
-                                />
-                                <Box sx={{ textAlign: "center", p: 2 }}>
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                checked={selectedAppliances.includes(appliance.id)}
-                                                onChange={(e) => {
-                                                    e.stopPropagation(); // ✅ Prevent double toggling
-                                                    handleApplianceChange(appliance.id);
-                                                }}
-                                                sx={{
-                                                    color: theme.palette.primary.main,
-                                                    "&.Mui-checked": {
-                                                        color: theme.palette.primary.main,
-                                                    },
-                                                }}
-                                            />
-                                        }
-                                        label={
-                                            <Typography
-                                                variant="h6"
-                                                sx={{
-                                                    fontWeight: 600,
-                                                    color: theme.palette.text.primary,
-                                                }}
-                                            >
-                                                {appliance.name}
-                                            </Typography>
-                                        }
-                                        sx={{ justifyContent: "center" }}
+                                <CardContent sx={{ p: 0 }}>
+                                    {/* Image */}
+                                    <Box
+                                        sx={{
+                                            height: 120,
+                                            backgroundImage: `url(${appliance.image})`,
+                                            backgroundSize: "cover",
+                                            backgroundPosition: "center",
+                                            borderTopLeftRadius: 8,
+                                            borderTopRightRadius: 8,
+                                        }}
                                     />
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
+
+                                    {/* Label */}
+                                    <Box
+                                        sx={{
+                                            textAlign: "center",
+                                            p: 1.5,
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox
+                                                    checked={isSelected}
+                                                    onChange={(e) => {
+                                                        e.stopPropagation();
+                                                        handleApplianceChange(appliance.id);
+                                                    }}
+                                                    sx={{
+                                                        color: theme.palette.primary.main,
+                                                        "&.Mui-checked": {
+                                                            color: theme.palette.primary.main,
+                                                        },
+                                                    }}
+                                                />
+                                            }
+                                            label={
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    sx={{
+                                                        fontWeight: 600,
+                                                        color: theme.palette.text.primary,
+                                                    }}
+                                                >
+                                                    {appliance.name}
+                                                </Typography>
+                                            }
+                                            sx={{
+                                                justifyContent: "center",
+                                                m: 0,
+                                            }}
+                                        />
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    );
+                })}
             </Grid>
 
             {/* Navigation */}
@@ -179,7 +209,7 @@ export default function KitchenAppliancesStep() {
                     display: "flex",
                     justifyContent: "space-between",
                     mt: 4,
-                    pt: 3,
+                    pt: 2,
                     borderTop: "1px solid",
                     borderColor: "divider",
                 }}
@@ -193,7 +223,7 @@ export default function KitchenAppliancesStep() {
                         fontWeight: 600,
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -204,16 +234,9 @@ export default function KitchenAppliancesStep() {
                         px: 4,
                         textTransform: "none",
                         fontWeight: 600,
-                        backgroundColor: theme.palette.primary.main,
-                        "&:hover": {
-                            backgroundColor: theme.palette.primary.dark,
-                        },
-                        "&:disabled": {
-                            backgroundColor: theme.palette.action.disabled,
-                        },
                     }}
                 >
-                    GET ESTIMATE
+                    Get Estimate
                 </Button>
             </Box>
         </Box>

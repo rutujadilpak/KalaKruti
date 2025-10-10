@@ -51,7 +51,7 @@ export default function FAQ() {
                     {faqConfig.description}
                 </Typography>
 
-                {/* Category Chip */}
+                {/* Category Chip 
                 {currentCategory && (
                     <Chip
                         icon={<QuestionAnswer />}
@@ -60,7 +60,7 @@ export default function FAQ() {
                         variant="outlined"
                         sx={{ mb: 3 }}
                     />
-                )}
+                )}*/}
             </Box>
 
             {/* Category Tabs */}

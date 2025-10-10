@@ -572,7 +572,7 @@ export default function Headertwo() {
                                                                 <Collapse in={expandedSections[`kitchen-${index}`]} timeout="auto" unmountOnExit>
                                                                     <List component="div" disablePadding sx={{ pl: 2 }}>
                                                                         {item.suboptions.map((suboption, subIndex) => (
-                                                                            <ListItem key={subIndex} sx={{ p: 0, mb: 0.5 }}>
+                                                                            <Box key={subIndex} sx={{ p: 0, mb: 0.5 }}>
                                                                                 <ListItemButton
                                                                                     component={Link}
                                                                                     to={suboption.path}
@@ -595,7 +595,7 @@ export default function Headertwo() {
                                                                                         }}
                                                                                     />
                                                                                 </ListItemButton>
-                                                                            </ListItem>
+                                                                            </Box>
                                                                         ))}
                                                                     </List>
                                                                 </Collapse>
@@ -646,7 +646,7 @@ export default function Headertwo() {
                                                                 <Collapse in={expandedSections[`wardrobe-${index}`]} timeout="auto" unmountOnExit>
                                                                     <List component="div" disablePadding sx={{ pl: 2 }}>
                                                                         {item.suboptions.map((suboption, subIndex) => (
-                                                                            <ListItem key={subIndex} sx={{ p: 0, mb: 0.5 }}>
+                                                                            <Box key={subIndex} sx={{ p: 0, mb: 0.5 }}>
                                                                                 <ListItemButton
                                                                                     component={Link}
                                                                                     to={suboption.path}
@@ -669,7 +669,7 @@ export default function Headertwo() {
                                                                                         }}
                                                                                     />
                                                                                 </ListItemButton>
-                                                                            </ListItem>
+                                                                            </Box>
                                                                         ))}
                                                                     </List>
                                                                 </Collapse>

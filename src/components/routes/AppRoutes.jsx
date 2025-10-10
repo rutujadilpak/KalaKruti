@@ -59,6 +59,7 @@ export default function AppRoutes() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
+
                     <Route path="projects" element={<ProjectsPage />} />
                     <Route path="projects/delivered" element={<DeliveredProjectsList />} />
                     <Route path="projects/delivered/:id" element={<DeliveredProjectDetail />} />
@@ -71,20 +72,25 @@ export default function AppRoutes() {
                     <Route path="projects/featured/:id/gallery" element={<ProjectGallery />} />
                     <Route path="projects/old" element={<ProjectsList />} />
                     <Route path="projects/old/:id" element={<ProjectDetail />} />
+
+
                     <Route path="designs" element={<AllDesigns />} />
                     <Route path="designs/categories" element={<DesignCategories />} />
                     <Route path="designs/:category" element={<DesignCategory />} />
                     <Route path="designs/:category/:id" element={<DesignDetail />} />
+
                     <Route path="contact" element={<ContactForm />} />
                     <Route path="faq" element={<FAQ />} />
                     <Route path="aboutus" element={<AboutUsPage />} />
+
                     <Route path="magazine" element={<MagazinePage />} />
+
                     <Route path="how-it-works" element={<HowItWorks />} />
                     <Route path="offerings" element={<OfferingPage />} />
                     <Route path="offerings/modular-interiors" element={<ModularInteriorsPage />} />
                     <Route path="designs/full-home-interiors" element={<FullHomeInteriorsPage />} />
                     <Route path="designs/modular-interiors" element={<ModularInteriorsPage />} />
-                    <Route path="price-calculators" element={<OfferingPage />} />
+                    <Route path="price-calculators" element={<HomeInteriorCalculator />} />
                     <Route path="price-calculators/home" element={<HomeInteriorCalculator />} />
                     <Route path="price-calculators/home/calculator/*" element={<HomeInteriorCalculatorSteps />} />
                     <Route path="price-calculators/kitchen" element={<KitchenPriceCalculator />} />

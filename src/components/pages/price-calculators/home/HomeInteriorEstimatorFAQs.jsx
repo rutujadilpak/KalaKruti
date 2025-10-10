@@ -74,19 +74,7 @@ export default function HomeInteriorEstimatorFAQs() {
                     FAQs
                 </Typography>
 
-                <Chip
-                    icon={<QuestionAnswer />}
-                    label="Home Interior Calculator FAQs"
-                    sx={{
-                        mb: 3,
-                        color: theme.palette.primary.main,
-                        borderColor: theme.palette.primary.main,
-                        '&:hover': {
-                            backgroundColor: theme.palette.primary.main + '10'
-                        }
-                    }}
-                    variant="outlined"
-                />
+
             </Box>
 
             {/* FAQ Accordions */}

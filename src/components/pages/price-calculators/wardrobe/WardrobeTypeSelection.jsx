@@ -1,145 +1,222 @@
-import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, Button, FormControl, FormControlLabel, Radio, RadioGroup, useTheme } from '@mui/material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    Button,
+    FormControl,
+    FormControlLabel,
+    Radio,
+    RadioGroup,
+    useTheme,
+} from "@mui/material";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const wardrobeTypes = [
     {
-        id: 'sliding',
-        title: 'Sliding',
-        description: 'Movable doors that slide horizontally along a metal rail and save floor space. Make a style statement even in a compact space.',
-        image: 'https://images.unsplash.com/photo-1616627562164-e9b1864a6422?w=600',
-        price: '₹₹'
+        id: "sliding",
+        title: "Sliding",
+        description:
+            "Movable doors that slide horizontally along a metal rail and save floor space. Ideal for compact rooms that still want a sleek, modern look.",
+        image:
+            "https://images.unsplash.com/photo-1616627562164-e9b1864a6422?w=600",
     },
     {
-        id: 'swing',
-        title: 'Swing',
-        description: 'Movable doors that swing out to open, giving better visibility and storage space. A cost-effective option that never goes out of style.',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600',
-        price: '₹₹'
-    }
+        id: "swing",
+        title: "Swing",
+        description:
+            "Doors that swing out to open, giving better visibility and storage space. A classic, cost-effective choice that’s easy to maintain.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600",
+    },
 ];
 
 export default function WardrobeTypeSelection() {
     const theme = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
-    const [selectedType, setSelectedType] = useState('');
-
-    const handleTypeChange = (event) => {
-        setSelectedType(event.target.value);
-    };
+    const [selectedType, setSelectedType] = useState("");
 
     const handleNext = () => {
         if (selectedType) {
             const searchParams = new URLSearchParams(location.search);
             const queryParams = new URLSearchParams({
-                height: searchParams.get('height'),
-                type: selectedType
+                height: searchParams.get("height"),
+                type: selectedType,
             });
-            navigate(`/price-calculators/wardrobe/calculator/finish?${queryParams.toString()}`);
+            navigate(
+                `/price-calculators/wardrobe/calculator/finish?${queryParams.toString()}`
+            );
         }
     };
 
     const handleBack = () => {
         const searchParams = new URLSearchParams(location.search);
         const queryParams = new URLSearchParams({
-            height: searchParams.get('height')
+            height: searchParams.get("height"),
         });
-        navigate(`/price-calculators/wardrobe/calculator/length?${queryParams.toString()}`);
+        navigate(
+            `/price-calculators/wardrobe/calculator/length?${queryParams.toString()}`
+        );
     };
 
     return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 900, mx: "auto", p: 3 }}>
+            {/* Header */}
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
-                    textAlign: 'center',
-                    mb: 2,
-                    fontWeight: 'bold',
-                    color: theme.palette.text.primary
+                    textAlign: "center",
+                    mb: 1.5,
+                    fontWeight: 600,
+                    color: theme.palette.text.primary,
                 }}
             >
-                Select the type of wardrobe
+                Select the Type of Wardrobe
             </Typography>
 
-            <FormControl component="fieldset" sx={{ width: '100%' }}>
+            <Typography
+                variant="body2"
+                sx={{
+                    textAlign: "center",
+                    mb: 4,
+                    color: theme.palette.text.secondary,
+                    maxWidth: 600,
+                    mx: "auto",
+                }}
+            >
+                Choose the wardrobe style that suits your room’s layout and storage
+                needs.
+            </Typography>
+
+            {/* Wardrobe Type Options */}
+            <FormControl component="fieldset" sx={{ width: "100%" }}>
                 <RadioGroup
                     value={selectedType}
-                    onChange={handleTypeChange}
-                    sx={{ gap: 3 }}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                    sx={{
+                        display: "grid",
+                        gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
+                        gap: 3,
+                    }}
                 >
-                    {wardrobeTypes.map((type) => (
-                        <Card
-                            key={type.id}
-                            sx={{
-                                border: selectedType === type.id ? `2px solid ${theme.palette.primary.main}` : '1px solid',
-                                borderColor: selectedType === type.id ? theme.palette.primary.main : theme.palette.grey[300],
-                                transition: 'all 0.3s ease',
-                                cursor: 'pointer',
-                                '&:hover': {
-                                    borderColor: theme.palette.primary.main,
-                                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
-                                }
-                            }}
-                            onClick={() => setSelectedType(type.id)}
-                        >
-                            <CardContent sx={{ p: 0 }}>
-                                <FormControlLabel
-                                    value={type.id}
-                                    control={<Radio sx={{ color: theme.palette.primary.main, ml: 2 }} />}
-                                    label=""
-                                    sx={{ position: 'absolute', top: 16, right: 16, m: 0 }}
-                                />
-                                <Box sx={{ p: 3 }}>
-                                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                        <Typography variant="h5" sx={{ fontWeight: 'bold', mr: 1 }}>
-                                            {type.title}
-                                        </Typography>
-                                        <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>
-                                            {type.price}
-                                        </Typography>
-                                    </Box>
-
-                                    <Typography variant="body1" sx={{ mb: 3, color: theme.palette.text.secondary }}>
-                                        {type.description}
-                                    </Typography>
-
-                                    <Box
+                    {wardrobeTypes.map((type) => {
+                        const isSelected = selectedType === type.id;
+                        return (
+                            <Card
+                                key={type.id}
+                                onClick={() => setSelectedType(type.id)}
+                                sx={{
+                                    position: "relative",
+                                    border: "2px solid",
+                                    borderColor: isSelected
+                                        ? theme.palette.primary.main
+                                        : theme.palette.grey[300],
+                                    backgroundColor: isSelected
+                                        ? theme.palette.primary.light + "10"
+                                        : theme.palette.background.paper,
+                                    borderRadius: 2,
+                                    transition: "none",
+                                    cursor: "pointer",
+                                    boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+                                }}
+                            >
+                                <CardContent sx={{ p: 0 }}>
+                                    {/* Radio */}
+                                    <FormControlLabel
+                                        value={type.id}
+                                        control={
+                                            <Radio
+                                                sx={{
+                                                    color: theme.palette.primary.main,
+                                                    "&.Mui-checked": {
+                                                        color: theme.palette.primary.main,
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        label=""
                                         sx={{
-                                            height: 250,
-                                            backgroundImage: `url(${type.image})`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                            borderRadius: 2,
-                                            mb: 3
+                                            position: "absolute",
+                                            top: 12,
+                                            right: 12,
+                                            m: 0,
+                                            zIndex: 1,
                                         }}
                                     />
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    ))}
+
+                                    <Box sx={{ p: 2.5 }}>
+                                        <Box
+                                            sx={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "space-between",
+                                                mb: 1.5,
+                                            }}
+                                        >
+                                            <Typography
+                                                variant="h6"
+                                                sx={{ fontWeight: 600, color: theme.palette.text.primary }}
+                                            >
+                                                {type.title}
+                                            </Typography>
+                                            <Typography
+                                                variant="subtitle1"
+                                                sx={{ color: theme.palette.primary.main }}
+                                            >
+                                                {type.price}
+                                            </Typography>
+                                        </Box>
+
+                                        <Typography
+                                            variant="body2"
+                                            sx={{
+                                                mb: 2,
+                                                color: theme.palette.text.secondary,
+                                                lineHeight: 1.5,
+                                            }}
+                                        >
+                                            {type.description}
+                                        </Typography>
+
+                                        <Box
+                                            sx={{
+                                                height: 180,
+                                                backgroundImage: `url(${type.image})`,
+                                                backgroundSize: "cover",
+                                                backgroundPosition: "center",
+                                                borderRadius: 2,
+                                            }}
+                                        />
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        );
+                    })}
                 </RadioGroup>
             </FormControl>
 
-            {/* Navigation Buttons */}
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                mt: 4,
-                pt: 3,
-                borderTop: '1px solid',
-                borderColor: 'divider'
-            }}>
+            {/* Navigation */}
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mt: 4,
+                    pt: 2,
+                    borderTop: "1px solid",
+                    borderColor: "divider",
+                }}
+            >
                 <Button
                     variant="text"
                     onClick={handleBack}
                     sx={{
                         color: theme.palette.primary.main,
-                        textTransform: 'none',
-                        fontWeight: 600
+                        textTransform: "none",
+                        fontWeight: 600,
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -148,11 +225,11 @@ export default function WardrobeTypeSelection() {
                     disabled={!selectedType}
                     sx={{
                         px: 4,
-                        textTransform: 'none',
-                        fontWeight: 600
+                        textTransform: "none",
+                        fontWeight: 600,
                     }}
                 >
-                    NEXT
+                    Next
                 </Button>
             </Box>
         </Box>

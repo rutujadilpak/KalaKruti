@@ -8,9 +8,12 @@ import {
     Card,
     FormControlLabel,
     Checkbox,
+    useTheme,
 } from '@mui/material';
 
 export default function QuoteForm() {
+    const theme = useTheme();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -43,7 +46,7 @@ export default function QuoteForm() {
                         borderRadius: 3,
                         overflow: 'hidden',
                         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
-                        background: 'linear-gradient(135deg, #B28E52 0%, #D1BC98 100%)'
+                        background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`
                     }}
                 >
                     <Box sx={{ display: 'flex', minHeight: '400px' }}>
@@ -70,7 +73,7 @@ export default function QuoteForm() {
                             >
                                 Designs for Every Budget
                             </Typography>
-                            
+
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -102,7 +105,7 @@ export default function QuoteForm() {
                                                 border: 'none'
                                             },
                                             '&.Mui-focused fieldset': {
-                                                border: '2px solid #B28E52'
+                                                border: `2px solid ${theme.palette.primary.main}`
                                             }
                                         },
                                         '& .MuiInputBase-input': {
@@ -132,7 +135,7 @@ export default function QuoteForm() {
                                                 border: 'none'
                                             },
                                             '&.Mui-focused fieldset': {
-                                                border: '2px solid #B28E52'
+                                                border: `2px solid ${theme.palette.primary.main}`
                                             }
                                         },
                                         '& .MuiInputBase-input': {
@@ -161,7 +164,7 @@ export default function QuoteForm() {
                                             sx={{
                                                 width: 20,
                                                 height: 15,
-                                                backgroundColor: '#B28E52',
+                                                backgroundColor: theme.palette.primary.main,
                                                 borderRadius: '2px',
                                                 mr: 1,
                                                 position: 'relative'
@@ -204,7 +207,7 @@ export default function QuoteForm() {
                                                     border: 'none'
                                                 },
                                                 '&.Mui-focused fieldset': {
-                                                    border: '2px solid #ff6b6b'
+                                                    border: `2px solid ${theme.palette.primary.main}`
                                                 }
                                             },
                                             '& .MuiInputBase-input': {
@@ -258,7 +261,7 @@ export default function QuoteForm() {
                                                 border: 'none'
                                             },
                                             '&.Mui-focused fieldset': {
-                                                border: '2px solid #B28E52'
+                                                border: `2px solid ${theme.palette.primary.main}`
                                             }
                                         },
                                         '& .MuiInputBase-input': {
@@ -274,7 +277,7 @@ export default function QuoteForm() {
                                     variant="contained"
                                     fullWidth
                                     sx={{
-                                        backgroundColor: '#B28E52',
+                                        backgroundColor: theme.palette.primary.main,
                                         color: 'white',
                                         textTransform: 'uppercase',
                                         fontWeight: 'bold',
@@ -283,9 +286,9 @@ export default function QuoteForm() {
                                         borderRadius: 2,
                                         mt: 2,
                                         '&:hover': {
-                                            backgroundColor: '#907341',
+                                            backgroundColor: theme.palette.primary.dark,
                                             transform: 'translateY(-2px)',
-                                            boxShadow: '0 4px 12px rgba(178, 142, 82, 0.4)'
+                                            boxShadow: `0 4px 12px ${theme.palette.primary.main}40`
                                         },
                                         transition: 'all 0.3s ease-in-out'
                                     }}

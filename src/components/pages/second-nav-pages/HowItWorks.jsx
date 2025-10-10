@@ -146,13 +146,13 @@ const CTAButton = styled(Button)(({ theme }) => ({
     "&:hover": {
         backgroundColor: theme.palette.primary.dark,
         transform: "translateY(-2px)",
-        boxShadow: "0 8px 20px rgba(178, 142, 82, 0.3)",
+        boxShadow: "0 8px 20px rgba(80, 91, 95, 0.3)",
     },
     transition: "all 0.3s ease",
 }));
 
 const MeetDesignerSection = styled(Box)(({ theme }) => ({
-    backgroundColor: "#F8F6F0",
+    backgroundColor: theme.palette.background.default,
     padding: theme.spacing(8, 0),
     marginTop: theme.spacing(8),
 }));
@@ -202,7 +202,7 @@ const FormButton = styled(Button)(({ theme }) => ({
         backgroundColor: theme.palette.primary.main,
         color: "white",
         transform: "translateY(-1px)",
-        boxShadow: "0 4px 12px rgba(178, 142, 82, 0.2)",
+        boxShadow: "0 4px 12px rgba(80, 91, 95, 0.2)",
     },
     transition: "all 0.3s ease",
 }));
@@ -592,7 +592,7 @@ export default function HowItWorks() {
             </MeetDesignerSection>
 
             {/* Book Kalakruti Section */}
-            <Box sx={{ backgroundColor: "white", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.paper, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box
                         sx={{
@@ -750,7 +750,7 @@ export default function HowItWorks() {
             </Box>
 
             {/* Place the Order Section */}
-            <Box sx={{ backgroundColor: "#F8F6F0", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.default, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box
                         sx={{
@@ -951,7 +951,7 @@ export default function HowItWorks() {
                                     top: "10px",
                                     width: "8px",
                                     height: "2px",
-                                    backgroundColor: "white",
+                                    backgroundColor: theme.palette.background.paper,
                                     transform: "rotate(45deg)",
                                     transformOrigin: "left center",
                                 },
@@ -962,7 +962,7 @@ export default function HowItWorks() {
                                     top: "10px",
                                     width: "12px",
                                     height: "2px",
-                                    backgroundColor: "white",
+                                    backgroundColor: theme.palette.background.paper,
                                     transform: "rotate(-45deg)",
                                     transformOrigin: "left center",
                                 },
@@ -980,13 +980,13 @@ export default function HowItWorks() {
                             textAlign: "center",
                         }}
                     >
-                       You're half way there. Your orders are raised!
+                        You're half way there. Your orders are raised!
                     </Typography>
                 </Box>
             </Box>
 
             {/* Final Installations Section */}
-            <Box sx={{ backgroundColor: "white", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.paper, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box
                         sx={{
@@ -1186,7 +1186,7 @@ export default function HowItWorks() {
                                     top: "10px",
                                     width: "8px",
                                     height: "2px",
-                                    backgroundColor: "white",
+                                    backgroundColor: theme.palette.background.paper,
                                     transform: "rotate(45deg)",
                                     transformOrigin: "left center",
                                 },
@@ -1197,7 +1197,7 @@ export default function HowItWorks() {
                                     top: "10px",
                                     width: "12px",
                                     height: "2px",
-                                    backgroundColor: "white",
+                                    backgroundColor: theme.palette.background.paper,
                                     transform: "rotate(-45deg)",
                                     transformOrigin: "left center",
                                 },
@@ -1221,7 +1221,7 @@ export default function HowItWorks() {
             </Box>
 
             {/* Move In Section */}
-            <Box sx={{ backgroundColor: "#F8F6F0", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.default, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box
                         sx={{
@@ -1317,7 +1317,7 @@ export default function HowItWorks() {
             </Box>
 
             {/* Understand Your Order Types Section */}
-            <Box sx={{ backgroundColor: "white", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.paper, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box sx={{ textAlign: "center", mb: 6 }}>
                         <Typography
@@ -1360,7 +1360,7 @@ export default function HowItWorks() {
                             sx={{
                                 width: "100%",
                                 borderCollapse: "collapse",
-                                backgroundColor: "white",
+                                backgroundColor: theme.palette.background.paper,
                             }}
                         >
                             {/* Table Header */}
@@ -1665,7 +1665,7 @@ export default function HowItWorks() {
             </Box>
 
             {/* The Team Section */}
-            <Box sx={{ backgroundColor: "#F8F6F0", padding: theme.spacing(8, 0) }}>
+            <Box sx={{ backgroundColor: theme.palette.background.default, padding: theme.spacing(8, 0) }}>
                 <Container maxWidth="lg">
                     <Box sx={{ textAlign: "center", mb: 6 }}>
                         <Typography
@@ -1713,7 +1713,7 @@ export default function HowItWorks() {
                                 flex: "1",
                                 textAlign: "center",
                                 padding: theme.spacing(3),
-                                backgroundColor: "white",
+                                backgroundColor: theme.palette.background.paper,
                                 borderRadius: "12px",
                                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                                 display: "flex",
@@ -1779,7 +1779,7 @@ export default function HowItWorks() {
                                 flex: "1",
                                 textAlign: "center",
                                 padding: theme.spacing(3),
-                                backgroundColor: "white",
+                                backgroundColor: theme.palette.background.paper,
                                 borderRadius: "12px",
                                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                                 display: "flex",
@@ -1845,7 +1845,7 @@ export default function HowItWorks() {
                                 flex: "1",
                                 textAlign: "center",
                                 padding: theme.spacing(3),
-                                backgroundColor: "white",
+                                backgroundColor: theme.palette.background.paper,
                                 borderRadius: "12px",
                                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                                 display: "flex",
@@ -1977,7 +1977,7 @@ export default function HowItWorks() {
                             transform: "scale(1.1)",
                         },
                         transition: "all 0.3s ease",
-                        boxShadow: "0 4px 12px rgba(178, 142, 82, 0.3)",
+                        boxShadow: "0 4px 12px rgba(80, 91, 95, 0.3)",
                     }}
                 >
                     <ChatIcon />

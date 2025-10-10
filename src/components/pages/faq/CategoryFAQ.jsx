@@ -34,7 +34,7 @@ export default function CategoryFAQ({ category }) {
                     gutterBottom
                     sx={{ mb: 3, fontWeight: 600 }}
                 >
-                    Frequently Asked Questions
+                    FAQs
                 </Typography>
 
                 <Box sx={{ maxWidth: 1700, mx: "auto" }}>

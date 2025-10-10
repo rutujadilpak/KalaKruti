@@ -41,7 +41,7 @@ const ImageSection = styled(Box)(({ theme }) => ({
 
 const TextSection = styled(Box)(({ theme }) => ({
     flex: '1',
-    backgroundColor: '#B1B6B8', // Grey background
+    backgroundColor: theme.palette.secondary.main,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -60,7 +60,7 @@ const GoldenDivider = styled(Box)(({ theme }) => ({
     top: 0,
     bottom: 0,
     width: '2px',
-    backgroundColor: '#B1B6B8', // Theme color
+    backgroundColor: theme.palette.secondary.main,
     zIndex: 2,
     [theme.breakpoints.down('md')]: {
         display: 'none'
@@ -79,7 +79,7 @@ const LuxuryText = styled(Typography)(({ theme }) => ({
 }));
 
 const CTAButton = styled(Button)(({ theme }) => ({
-    backgroundColor: '#6B7280', // Grey background
+    backgroundColor: theme.palette.primary.main,
     color: 'white',
     padding: theme.spacing(2, 4),
     borderRadius: '8px',
@@ -87,9 +87,9 @@ const CTAButton = styled(Button)(({ theme }) => ({
     fontWeight: 'bold',
     textTransform: 'none',
     '&:hover': {
-        backgroundColor: '#4B5563', // Darker grey on hover
+        backgroundColor: theme.palette.primary.dark,
         transform: 'translateY(-2px)',
-        boxShadow: '0 4px 12px rgba(107, 114, 128, 0.3)'
+        boxShadow: `0 4px 12px ${theme.palette.primary.main}30`
     },
     transition: 'all 0.3s ease'
 }));
@@ -752,10 +752,10 @@ const ReferralButton = styled(Button)(({ theme }) => ({
 export default function LuxuryInterior() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    
+
     // Carousel state
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    
+
     const carouselImages = [
         {
             id: 1,
@@ -776,15 +776,15 @@ export default function LuxuryInterior() {
             right: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
         }
     ];
-    
+
     const handlePrevious = () => {
-        setCurrentImageIndex((prevIndex) => 
+        setCurrentImageIndex((prevIndex) =>
             prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
         );
     };
-    
+
     const handleNext = () => {
-        setCurrentImageIndex((prevIndex) => 
+        setCurrentImageIndex((prevIndex) =>
             prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
         );
     };
@@ -797,7 +797,7 @@ export default function LuxuryInterior() {
                 <ImageSection>
                     {/* Optional overlay for better text contrast if needed */}
                     <ImageOverlay />
-                    
+
                     {/* Floating 3D Elements */}
                     {/* <FloatingElements>
                         <FloatingCard elevation={8}>
@@ -843,7 +843,7 @@ export default function LuxuryInterior() {
                         majesty of<br />
                         bespoke homes
                     </LuxuryText>
-                    
+
                     <CTAButton
                         component={Link}
                         to="/contact"
@@ -873,7 +873,7 @@ export default function LuxuryInterior() {
                                     opulence and a symphony of<br />
                                     thoughtful designs
                                 </LuxuryHeadline>
-                                
+
                                 <LuxuryDescription
                                     variant="body1"
                                     sx={{
@@ -885,7 +885,7 @@ export default function LuxuryInterior() {
                                     One that resonates with your being. At KalaKruti, we craft enchanting homes that
                                     redefine luxury and comfort for you.
                                 </LuxuryDescription>
-                                
+
                                 <ContactButton
                                     component={Link}
                                     to="/contact"
@@ -912,7 +912,7 @@ export default function LuxuryInterior() {
                     >
                         How we bring luxurious homes to life
                     </SectionTitle>
-                    
+
                     <QuadrantContainer>
                         <QuadrantGrid>
                             {/* Top-Left Quadrant */}
@@ -958,7 +958,7 @@ export default function LuxuryInterior() {
                             {/* Golden Dividers */}
                             <QuadrantDivider className="horizontal" />
                             <QuadrantDivider className="vertical" />
-                            
+
                             {/* Golden Dots */}
                             <GoldenDot className="center" />
                             <GoldenDot className="horizontal-left" />
@@ -966,7 +966,7 @@ export default function LuxuryInterior() {
                             <GoldenDot className="vertical-top" />
                             <GoldenDot className="vertical-bottom" />
                         </QuadrantGrid>
-                        
+
                         {/* Call-to-Action Button */}
                         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                             <ConsultationButton
@@ -993,7 +993,7 @@ export default function LuxuryInterior() {
                     >
                         Homes by KalaKruti
                     </CarouselTitle>
-                    
+
                     <CarouselSubtitle
                         variant="h6"
                         sx={{
@@ -1003,7 +1003,7 @@ export default function LuxuryInterior() {
                     >
                         Bespoke homes, envisioned and created by our craftsmen.
                     </CarouselSubtitle>
-                    
+
                     <CarouselContainer>
                         <CarouselWrapper>
                             {/* Left Side Image */}
@@ -1012,21 +1012,21 @@ export default function LuxuryInterior() {
                                     backgroundImage: `url(${carouselImages[currentImageIndex].left})`
                                 }}
                             />
-                            
+
                             {/* Central Image */}
                             <CentralImage
                                 sx={{
                                     backgroundImage: `url(${carouselImages[currentImageIndex].central})`
                                 }}
                             />
-                            
+
                             {/* Right Side Image */}
                             <SideImage
                                 sx={{
                                     backgroundImage: `url(${carouselImages[currentImageIndex].right})`
                                 }}
                             />
-                            
+
                             {/* Navigation Arrows */}
                             <NavigationArrow
                                 className="left"
@@ -1035,7 +1035,7 @@ export default function LuxuryInterior() {
                             >
                                 <ChevronLeftIcon />
                             </NavigationArrow>
-                            
+
                             <NavigationArrow
                                 className="right"
                                 onClick={handleNext}
@@ -1060,7 +1060,7 @@ export default function LuxuryInterior() {
                     >
                         What makes KalaKruti unique
                     </UniqueTitle>
-                    
+
                     <FeaturesContainer>
                         {/* Feature 1: Tailor-made full home interiors */}
                         <FeatureItem>
@@ -1122,7 +1122,7 @@ export default function LuxuryInterior() {
                             </FeatureText>
                         </FeatureItem>
                     </FeaturesContainer>
-                    
+
                     {/* Call-to-Action Button */}
                     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                         <UniqueButton
@@ -1142,12 +1142,12 @@ export default function LuxuryInterior() {
                     {/* Decorative Borders */}
                     <DecorativeBorder className="left" />
                     <DecorativeBorder className="right" />
-                    
+
                     <ReferralContent>
                         <ReferralText>
                             Refer your friend & earn 3% of their project's value
                         </ReferralText>
-                        
+
                         <ReferralButton
                             component={Link}
                             to="/contact"

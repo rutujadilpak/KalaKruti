@@ -94,11 +94,9 @@ export default function FeaturedProjectDetail() {
             {/* Project Title */}
             <Box sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                    <Star sx={{ color: theme.palette.warning.main, fontSize: 32 }} />
                     <Typography variant="h3" component="h1" sx={{ fontWeight: 700 }}>
                         {project.title}
                     </Typography>
-                    <Star sx={{ color: theme.palette.warning.main, fontSize: 32 }} />
                 </Box>
                 <Typography variant="h6" color="text.secondary">
                     {project.description}
