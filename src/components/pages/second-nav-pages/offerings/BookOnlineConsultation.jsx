@@ -173,11 +173,11 @@ const SliderNavigation = styled(IconButton)(({ theme }) => ({
 }));
 
 const SliderNavigationLeft = styled(SliderNavigation)(({ theme }) => ({
-    left: '-20px',
+    left: '10px',
 }));
 
 const SliderNavigationRight = styled(SliderNavigation)(({ theme }) => ({
-    right: '-20px',
+    right: '10px',
 }));
 
 const ComparisonTable = styled(Box)(({ theme }) => ({
@@ -433,11 +433,11 @@ const GalleryNavigation = styled(IconButton)(({ theme }) => ({
 }));
 
 const GalleryNavigationLeft = styled(GalleryNavigation)(({ theme }) => ({
-    left: '-20px',
+    left: '10px',
 }));
 
 const GalleryNavigationRight = styled(GalleryNavigation)(({ theme }) => ({
-    right: '-20px',
+    right: '10px',
 }));
 
 // Gallery data
@@ -614,19 +614,51 @@ export default function BookOnlineConsultation() {
   });
 
   const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % sliderData.length);
+    setCurrentSlide((prev) => {
+      const nextSlide = prev + 1;
+      if (nextSlide >= sliderData.length) {
+        // When reaching the end, instantly reset to 0 without transition
+        setTimeout(() => {
+          setCurrentSlide(0);
+        }, 0);
+        return sliderData.length; // Show duplicate first card
+      }
+      return nextSlide;
+    });
   };
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sliderData.length) % sliderData.length);
+    setCurrentSlide((prev) => {
+      if (prev === 0) {
+        // When at first slide, go to duplicate last card
+        return sliderData.length - 1;
+      }
+      return prev - 1;
+    });
   };
 
   const handleNextGallerySlide = () => {
-    setCurrentGallerySlide((prev) => (prev + 1) % galleryData.length);
+    setCurrentGallerySlide((prev) => {
+      const nextSlide = prev + 1;
+      if (nextSlide >= galleryData.length) {
+        // When reaching the end, instantly reset to 0 without transition
+        setTimeout(() => {
+          setCurrentGallerySlide(0);
+        }, 0);
+        return galleryData.length; // Show duplicate first card
+      }
+      return nextSlide;
+    });
   };
 
   const handlePrevGallerySlide = () => {
-    setCurrentGallerySlide((prev) => (prev - 1 + galleryData.length) % galleryData.length);
+    setCurrentGallerySlide((prev) => {
+      if (prev === 0) {
+        // When at first slide, go to duplicate last card
+        return galleryData.length - 1;
+      }
+      return prev - 1;
+    });
   };
 
   const handleOpenQuoteDialog = () => {
@@ -805,9 +837,55 @@ export default function BookOnlineConsultation() {
         <SliderContainer>
           <SliderTrack
             sx={{
-              transform: `translateX(-${currentSlide * 370}px)`,
+              transform: `translateX(-${(currentSlide + 2) * 370}px)`,
+              transition: currentSlide === sliderData.length ? 'none' : 'transform 0.3s ease-in-out',
             }}
           >
+            {/* Multiple duplicate cards at the beginning to fill viewport */}
+            <SliderCard>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url(${sliderData[sliderData.length - 1].image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                <PriceBadge>
+                  Starting at {sliderData[sliderData.length - 1].price}
+                </PriceBadge>
+                
+                <RoomTypeOverlay>
+                  {sliderData[sliderData.length - 1].roomType}
+                </RoomTypeOverlay>
+              </Box>
+            </SliderCard>
+            
+            <SliderCard>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url(${sliderData[sliderData.length - 2].image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                <PriceBadge>
+                  Starting at {sliderData[sliderData.length - 2].price}
+                </PriceBadge>
+                
+                <RoomTypeOverlay>
+                  {sliderData[sliderData.length - 2].roomType}
+                </RoomTypeOverlay>
+              </Box>
+            </SliderCard>
+            
             {sliderData.map((item) => (
               <SliderCard key={item.id}>
                 <Box
@@ -831,6 +909,51 @@ export default function BookOnlineConsultation() {
                 </Box>
               </SliderCard>
             ))}
+            
+            {/* Multiple duplicate cards at the end to fill viewport */}
+            <SliderCard>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url(${sliderData[0].image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                <PriceBadge>
+                  Starting at {sliderData[0].price}
+                </PriceBadge>
+                
+                <RoomTypeOverlay>
+                  {sliderData[0].roomType}
+                </RoomTypeOverlay>
+              </Box>
+            </SliderCard>
+            
+            <SliderCard>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url(${sliderData[1].image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                <PriceBadge>
+                  Starting at {sliderData[1].price}
+                </PriceBadge>
+                
+                <RoomTypeOverlay>
+                  {sliderData[1].roomType}
+                </RoomTypeOverlay>
+              </Box>
+            </SliderCard>
           </SliderTrack>
           
           <SliderNavigationLeft onClick={handlePrevSlide}>
@@ -1480,9 +1603,39 @@ export default function BookOnlineConsultation() {
           <GalleryContainer>
             <GalleryTrack
               sx={{
-                transform: `translateX(-${currentGallerySlide * 370}px)`,
+                transform: `translateX(-${(currentGallerySlide + 2) * 370}px)`,
+                transition: currentGallerySlide === galleryData.length ? 'none' : 'transform 0.3s ease-in-out',
               }}
             >
+              {/* Multiple duplicate cards at the beginning to fill viewport */}
+              <GalleryCard>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${galleryData[galleryData.length - 1].image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </GalleryCard>
+              
+              <GalleryCard>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${galleryData[galleryData.length - 2].image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </GalleryCard>
+              
               {galleryData.map((item) => (
                 <GalleryCard key={item.id}>
                   <Box
@@ -1498,6 +1651,35 @@ export default function BookOnlineConsultation() {
                   />
                 </GalleryCard>
               ))}
+              
+              {/* Multiple duplicate cards at the end to fill viewport */}
+              <GalleryCard>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${galleryData[0].image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </GalleryCard>
+              
+              <GalleryCard>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${galleryData[1].image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </GalleryCard>
             </GalleryTrack>
             
             <GalleryNavigationLeft onClick={handlePrevGallerySlide}>

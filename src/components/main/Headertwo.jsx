@@ -15,6 +15,7 @@ import {
     Card,
     CardContent,
     CardMedia,
+    Collapse,
     ListItemButton
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -35,9 +36,17 @@ export default function Headertwo() {
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [offeringsOpen, setOfferingsOpen] = useState(false);
+    const [expandedSections, setExpandedSections] = useState({});
 
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
     const handleOfferingsToggle = () => setOfferingsOpen(!offeringsOpen);
+
+    const handleSectionToggle = (section) => {
+        setExpandedSections(prev => ({
+            ...prev,
+            [section]: !prev[section]
+        }));
+    };
 
     const offeringsData = {
         exploreOfferings: [
@@ -63,12 +72,30 @@ export default function Headertwo() {
         kitchen: [
             { label: "Know Your Kitchen", path: "/kitchen/know-your-kitchen" },
             { label: "Kitchen Price Calculator", path: "/kitchen/price-calculator" },
-            { label: "Kitchen Components", path: "/kitchen/components", hasSubmenu: true }
+            { 
+                label: "Kitchen Components", 
+                path: "/kitchen/components", 
+                hasSubmenu: true,
+                suboptions: [
+                    { label: "Cabinets", path: "/kitchen/components/cabinets" },
+                    { label: "Handles", path: "/kitchen/components/handles" },
+                    { label: "Finishes", path: "/kitchen/components/finishes" }
+                ]
+            }
         ],
         wardrobe: [
             { label: "Know Your Wardrobe", path: "/wardrobe/know-your-wardrobe" },
             { label: "Wardrobe Price Calculator", path: "/wardrobe/price-calculator" },
-            { label: "Wardrobe Components", path: "/wardrobe/components", hasSubmenu: true }
+            { 
+                label: "Wardrobe Components", 
+                path: "/wardrobe/components", 
+                hasSubmenu: true,
+                suboptions: [
+                    { label: "Cabinets", path: "/wardrobe/components/cabinets" },
+                    { label: "Handles", path: "/wardrobe/components/handles" },
+                    { label: "Finishes", path: "/wardrobe/components/finishes" }
+                ]
+            }
         ]
     };
 
@@ -341,15 +368,68 @@ export default function Headertwo() {
                                             <List sx={{ p: 0 }}>
                                                 {offeringsData.kitchen.map((item, index) => (
                                                     <ListItem key={index} sx={{ p: 0, mb: 1 }}>
-                                                        <ListItemButton component={Link} to={item.path} sx={{ borderRadius: 1 }}>
-                                                            <ListItemText
-                                                                primary={item.label}
-                                                                sx={{ '& .MuiListItemText-primary': { fontSize: '0.9rem' } }}
-                                                            />
-                                                            {item.hasSubmenu && (
-                                                                <ExpandMoreIcon fontSize="small" color="action" />
+                                                        <Box sx={{ width: '100%' }}>
+                                                            <ListItemButton
+                                                                component={item.hasSubmenu ? 'div' : Link}
+                                                                to={item.hasSubmenu ? undefined : item.path}
+                                                                onClick={item.hasSubmenu ? () => handleSectionToggle(`kitchen-${index}`) : undefined}
+                                                                sx={{
+                                                                    borderRadius: 1,
+                                                                    '&:hover': {
+                                                                        backgroundColor: theme.palette.action.hover
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <ListItemText
+                                                                    primary={item.label}
+                                                                    sx={{
+                                                                        '& .MuiListItemText-primary': {
+                                                                            fontSize: '0.9rem',
+                                                                            color: 'text.primary'
+                                                                        }
+                                                                    }}
+                                                                />
+                                                                {item.hasSubmenu && (
+                                                                    expandedSections[`kitchen-${index}`] ? 
+                                                                    <ExpandLessIcon fontSize="small" color="action" /> : 
+                                                                    <ExpandMoreIcon fontSize="small" color="action" />
+                                                                )}
+                                                            </ListItemButton>
+                                                            
+                                                            {/* Suboptions */}
+                                                            {item.hasSubmenu && item.suboptions && (
+                                                                <Collapse in={expandedSections[`kitchen-${index}`]} timeout="auto" unmountOnExit>
+                                                                    <List component="div" disablePadding sx={{ pl: 2 }}>
+                                                                        {item.suboptions.map((suboption, subIndex) => (
+                                                                            <ListItem key={subIndex} sx={{ p: 0, mb: 0.5 }}>
+                                                                                <ListItemButton
+                                                                                    component={Link}
+                                                                                    to={suboption.path}
+                                                                                    sx={{
+                                                                                        borderRadius: 1,
+                                                                                        py: 0.5,
+                                                                                        '&:hover': {
+                                                                                            backgroundColor: theme.palette.action.hover
+                                                                                        }
+                                                                                    }}
+                                                                                >
+                                                                                    <ListItemText
+                                                                                        primary={suboption.label}
+                                                                                        sx={{
+                                                                                            '& .MuiListItemText-primary': {
+                                                                                                fontSize: '0.8rem',
+                                                                                                color: 'text.secondary',
+                                                                                                pl: 1
+                                                                                            }
+                                                                                        }}
+                                                                                    />
+                                                                                </ListItemButton>
+                                                                            </ListItem>
+                                                                        ))}
+                                                                    </List>
+                                                                </Collapse>
                                                             )}
-                                                        </ListItemButton>
+                                                        </Box>
                                                     </ListItem>
                                                 ))}
                                             </List>
@@ -363,15 +443,68 @@ export default function Headertwo() {
                                             <List sx={{ p: 0 }}>
                                                 {offeringsData.wardrobe.map((item, index) => (
                                                     <ListItem key={index} sx={{ p: 0, mb: 1 }}>
-                                                        <ListItemButton component={Link} to={item.path} sx={{ borderRadius: 1 }}>
-                                                            <ListItemText
-                                                                primary={item.label}
-                                                                sx={{ '& .MuiListItemText-primary': { fontSize: '0.9rem' } }}
-                                                            />
-                                                            {item.hasSubmenu && (
-                                                                <ExpandMoreIcon fontSize="small" color="action" />
+                                                        <Box sx={{ width: '100%' }}>
+                                                            <ListItemButton
+                                                                component={item.hasSubmenu ? 'div' : Link}
+                                                                to={item.hasSubmenu ? undefined : item.path}
+                                                                onClick={item.hasSubmenu ? () => handleSectionToggle(`wardrobe-${index}`) : undefined}
+                                                                sx={{
+                                                                    borderRadius: 1,
+                                                                    '&:hover': {
+                                                                        backgroundColor: theme.palette.action.hover
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <ListItemText
+                                                                    primary={item.label}
+                                                                    sx={{
+                                                                        '& .MuiListItemText-primary': {
+                                                                            fontSize: '0.9rem',
+                                                                            color: 'text.primary'
+                                                                        }
+                                                                    }}
+                                                                />
+                                                                {item.hasSubmenu && (
+                                                                    expandedSections[`wardrobe-${index}`] ? 
+                                                                    <ExpandLessIcon fontSize="small" color="action" /> : 
+                                                                    <ExpandMoreIcon fontSize="small" color="action" />
+                                                                )}
+                                                            </ListItemButton>
+                                                            
+                                                            {/* Suboptions */}
+                                                            {item.hasSubmenu && item.suboptions && (
+                                                                <Collapse in={expandedSections[`wardrobe-${index}`]} timeout="auto" unmountOnExit>
+                                                                    <List component="div" disablePadding sx={{ pl: 2 }}>
+                                                                        {item.suboptions.map((suboption, subIndex) => (
+                                                                            <ListItem key={subIndex} sx={{ p: 0, mb: 0.5 }}>
+                                                                                <ListItemButton
+                                                                                    component={Link}
+                                                                                    to={suboption.path}
+                                                                                    sx={{
+                                                                                        borderRadius: 1,
+                                                                                        py: 0.5,
+                                                                                        '&:hover': {
+                                                                                            backgroundColor: theme.palette.action.hover
+                                                                                        }
+                                                                                    }}
+                                                                                >
+                                                                                    <ListItemText
+                                                                                        primary={suboption.label}
+                                                                                        sx={{
+                                                                                            '& .MuiListItemText-primary': {
+                                                                                                fontSize: '0.8rem',
+                                                                                                color: 'text.secondary',
+                                                                                                pl: 1
+                                                                                            }
+                                                                                        }}
+                                                                                    />
+                                                                                </ListItemButton>
+                                                                            </ListItem>
+                                                                        ))}
+                                                                    </List>
+                                                                </Collapse>
                                                             )}
-                                                        </ListItemButton>
+                                                        </Box>
                                                     </ListItem>
                                                 ))}
                                             </List>
