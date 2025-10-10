@@ -36,7 +36,7 @@ export default function DeliveredProjectsList() {
             {/* 🧭 Page Title */}
             <Box sx={{ textAlign: "left", mb: 6 }}>
                 <Typography
-                    variant="h2"
+                    variant="h3"
                     component="h1"
                     sx={{
                         fontWeight: 700,

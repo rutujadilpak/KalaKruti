@@ -41,7 +41,9 @@ export default function Estimate() {
             <Container maxWidth="lg">
                 {/* Heading */}
                 <Box sx={{ textAlign: "center", mb: 2 }}>
-                    <Typography variant="h3" fontWeight={700} color="text.primary">
+                    <Typography variant="h3" fontWeight={700} color="text.primary" sx={{
+                        fontSize: { xs: '1.8rem', md: '3rem' } // 👈 smaller text for mobile
+                    }}>
                         Calculate the estimate
                     </Typography>
                 </Box>

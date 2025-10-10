@@ -41,9 +41,9 @@ export default function FAQ() {
     const currentFAQs = getFAQsForCategory(currentCategory?.key);
 
     return (
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Container maxWidth="lg" sx={{ py: 4, mb: 0 }}>
             {/* Header */}
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Box sx={{ textAlign: 'left', mb: 4 }}>
                 <Typography variant="h3" component="h1" gutterBottom>
                     {faqConfig.title}
                 </Typography>
@@ -81,7 +81,7 @@ export default function FAQ() {
             )}
 
             {/* FAQ Accordions */}
-            <Box sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
                 {currentFAQs.map((faq) => (
                     <Accordion
                         key={faq.id}

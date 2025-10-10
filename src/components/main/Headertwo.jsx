@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
     Box,
     Button,
-    useTheme,
-    useMediaQuery,
     IconButton,
     Drawer,
     List,
@@ -15,26 +13,35 @@ import {
     Card,
     CardContent,
     CardMedia,
-    ListItemButton
+    ListItemButton,
+    Collapse,
+    Divider
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-
-// ✅ Ant Design imports for Price Calculators dropdown
 import { Dropdown, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
 export default function Headertwo() {
-    const theme = useTheme();
     const location = useLocation();
     const navigate = useNavigate();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [offeringsOpen, setOfferingsOpen] = useState(false);
+    const [mobileOfferingsOpen, setMobileOfferingsOpen] = useState(false);
+    const [mobilePriceCalcOpen, setMobilePriceCalcOpen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 960);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
     const handleOfferingsToggle = () => setOfferingsOpen(!offeringsOpen);
@@ -93,33 +100,205 @@ export default function Headertwo() {
         }
     }, [location.pathname]);
 
+    const handleMobileNavClick = (path) => {
+        navigate(path);
+        setMobileOpen(false);
+        setMobileOfferingsOpen(false);
+        setMobilePriceCalcOpen(false);
+    };
+
     const drawer = (
-        <Box sx={{ width: 250, pt: 2 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, mb: 2 }}>
-                <Typography variant="h6" sx={{ color: theme.palette.text.primary }}>
-                    Navigation
+        <Box sx={{ width: '100%', height: '100%', pt: 2, pb: 10, overflowY: 'auto' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 3, mb: 2 }}>
+                <Typography variant="h6" sx={{ color: '#333', fontWeight: 'bold' }}>
+                    Menu
                 </Typography>
-                <IconButton onClick={handleDrawerToggle}>
+                <IconButton onClick={handleDrawerToggle} sx={{ color: '#333' }}>
                     <CloseIcon />
                 </IconButton>
             </Box>
-            <List>
-                {navItems.map((item) => (
-                    <ListItem
-                        key={item.label}
-                        component={Link}
-                        to={item.path}
-                        onClick={handleDrawerToggle}
+
+            <Divider sx={{ mb: 1 }} />
+
+            <List sx={{ px: 2, pb: 8 }}>
+                {/* How it works */}
+                <ListItem disablePadding>
+                    <ListItemButton
+                        onClick={() => handleMobileNavClick('/how-it-works')}
                         sx={{
-                            color: location.pathname === item.path ? theme.palette.primary.main : 'text.primary',
-                            '&:hover': {
-                                backgroundColor: theme.palette.action.hover,
-                            },
+                            borderRadius: 1,
+                            mb: 0.5,
+                            backgroundColor: location.pathname === '/how-it-works' ? '#f0f0f0' : 'transparent',
+                            '&:hover': { backgroundColor: '#f5f5f5' }
                         }}
                     >
-                        <ListItemText primary={item.label} />
-                    </ListItem>
-                ))}
+                        <ListItemText
+                            primary="How it works"
+                            primaryTypographyProps={{
+                                fontWeight: location.pathname === '/how-it-works' ? 'bold' : '500',
+                                color: location.pathname === '/how-it-works' ? '#1976d2' : '#333'
+                            }}
+                        />
+                    </ListItemButton>
+                </ListItem>
+
+                {/* Offerings with Dropdown */}
+                <ListItem disablePadding>
+                    <ListItemButton
+                        onClick={() => setMobileOfferingsOpen(!mobileOfferingsOpen)}
+                        sx={{
+                            borderRadius: 1,
+                            mb: 0.5,
+                            backgroundColor: location.pathname === '/offerings' ? '#f0f0f0' : 'transparent',
+                            '&:hover': { backgroundColor: '#f5f5f5' }
+                        }}
+                    >
+                        <ListItemText
+                            primary="Offerings"
+                            primaryTypographyProps={{
+                                fontWeight: location.pathname === '/offerings' ? 'bold' : '500',
+                                color: location.pathname === '/offerings' ? '#1976d2' : '#333'
+                            }}
+                        />
+                        {mobileOfferingsOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </ListItemButton>
+                </ListItem>
+
+                <Collapse in={mobileOfferingsOpen} timeout="auto" unmountOnExit>
+                    <Box sx={{ pl: 2, pr: 1 }}>
+                        <Typography variant="caption" sx={{ color: '#666', fontWeight: 'bold', display: 'block', mb: 1, mt: 1 }}>
+                            EXPLORE OFFERINGS
+                        </Typography>
+                        {offeringsData.exploreOfferings.map((offering, index) => (
+                            <Card
+                                key={index}
+                                onClick={() => handleMobileNavClick(offering.path)}
+                                sx={{
+                                    mb: 1.5,
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    height: '70px',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                                    '&:hover': { boxShadow: '0 4px 12px rgba(0,0,0,0.12)' }
+                                }}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: '60px', objectFit: 'cover' }}
+                                    image={offering.image}
+                                    alt={offering.title}
+                                />
+                                <CardContent sx={{ p: 1.5, flex: 1 }}>
+                                    <Typography variant="body2" sx={{ fontWeight: 'bold', fontSize: '0.85rem' }}>
+                                        {offering.title}
+                                    </Typography>
+                                    <Typography variant="caption" sx={{ color: '#666', fontSize: '0.75rem' }}>
+                                        {offering.subtitle}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        ))}
+
+                        <Typography variant="caption" sx={{ color: '#666', fontWeight: 'bold', display: 'block', mb: 1, mt: 2 }}>
+                            KITCHEN
+                        </Typography>
+                        {offeringsData.kitchen.map((item, index) => (
+                            <ListItemButton
+                                key={index}
+                                onClick={() => handleMobileNavClick(item.path)}
+                                sx={{ borderRadius: 1, py: 0.8, pl: 1 }}
+                            >
+                                <ListItemText
+                                    primary={item.label}
+                                    primaryTypographyProps={{ fontSize: '0.85rem' }}
+                                />
+                            </ListItemButton>
+                        ))}
+
+                        <Typography variant="caption" sx={{ color: '#666', fontWeight: 'bold', display: 'block', mb: 1, mt: 2 }}>
+                            WARDROBE
+                        </Typography>
+                        {offeringsData.wardrobe.map((item, index) => (
+                            <ListItemButton
+                                key={index}
+                                onClick={() => handleMobileNavClick(item.path)}
+                                sx={{ borderRadius: 1, py: 0.8, pl: 1 }}
+                            >
+                                <ListItemText
+                                    primary={item.label}
+                                    primaryTypographyProps={{ fontSize: '0.85rem' }}
+                                />
+                            </ListItemButton>
+                        ))}
+                    </Box>
+                </Collapse>
+
+                {/* Price Calculators with Dropdown */}
+                <ListItem disablePadding>
+                    <ListItemButton
+                        onClick={() => setMobilePriceCalcOpen(!mobilePriceCalcOpen)}
+                        sx={{
+                            borderRadius: 1,
+                            mb: 0.5,
+                            backgroundColor: location.pathname.startsWith('/price-calculators') ? '#f0f0f0' : 'transparent',
+                            '&:hover': { backgroundColor: '#f5f5f5' }
+                        }}
+                    >
+                        <ListItemText
+                            primary="Price Calculators"
+                            primaryTypographyProps={{
+                                fontWeight: location.pathname.startsWith('/price-calculators') ? 'bold' : '500',
+                                color: location.pathname.startsWith('/price-calculators') ? '#1976d2' : '#333'
+                            }}
+                        />
+                        {mobilePriceCalcOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </ListItemButton>
+                </ListItem>
+
+                <Collapse in={mobilePriceCalcOpen} timeout="auto" unmountOnExit>
+                    <Box sx={{ pl: 2 }}>
+                        {priceCalculatorsDropdown.map((item, index) => (
+                            <ListItemButton
+                                key={index}
+                                onClick={() => handleMobileNavClick(item.path)}
+                                sx={{
+                                    borderRadius: 1,
+                                    py: 1,
+                                    backgroundColor: location.pathname === item.path ? '#e3f2fd' : 'transparent'
+                                }}
+                            >
+                                <ListItemText
+                                    primary={item.label}
+                                    primaryTypographyProps={{
+                                        fontSize: '0.9rem',
+                                        color: location.pathname === item.path ? '#1976d2' : '#333'
+                                    }}
+                                />
+                            </ListItemButton>
+                        ))}
+                    </Box>
+                </Collapse>
+
+                {/* Modular Journey */}
+                <ListItem disablePadding>
+                    <ListItemButton
+                        onClick={() => handleMobileNavClick('/modular-journey')}
+                        sx={{
+                            borderRadius: 1,
+                            mb: 0.5,
+                            backgroundColor: location.pathname === '/modular-journey' ? '#f0f0f0' : 'transparent',
+                            '&:hover': { backgroundColor: '#f5f5f5' }
+                        }}
+                    >
+                        <ListItemText
+                            primary="Modular Journey"
+                            primaryTypographyProps={{
+                                fontWeight: location.pathname === '/modular-journey' ? 'bold' : '500',
+                                color: location.pathname === '/modular-journey' ? '#1976d2' : '#333'
+                            }}
+                        />
+                    </ListItemButton>
+                </ListItem>
             </List>
         </Box>
     );
@@ -132,8 +311,8 @@ export default function Headertwo() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     backgroundColor: '#fff',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+                    borderRadius: isMobile ? 0 : '8px',
+                    boxShadow: isMobile ? '0 -2px 10px rgba(0,0,0,0.08)' : '0 4px 16px rgba(0,0,0,0.08)',
                     py: 1.5,
                     px: { xs: 2, md: 4 },
                     width: '100%',
@@ -146,15 +325,20 @@ export default function Headertwo() {
                 }}
             >
                 {isMobile ? (
-                    <IconButton
-                        onClick={handleDrawerToggle}
-                        sx={{
-                            color: theme.palette.text.primary,
-                            '&:hover': { backgroundColor: theme.palette.action.hover },
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                        <Typography variant="body2" sx={{ color: '#333', fontWeight: '500' }}>
+                            Navigation
+                        </Typography>
+                        <IconButton
+                            onClick={handleDrawerToggle}
+                            sx={{
+                                color: '#333',
+                                '&:hover': { backgroundColor: '#f5f5f5' },
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Box>
                 ) : (
                     <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1 }}>
                         {navItems.map((item) =>
@@ -184,14 +368,14 @@ export default function Headertwo() {
                                                     to={sub.path}
                                                     sx={{
                                                         textDecoration: "none",
-                                                        color: theme.palette.text.primary,
+                                                        color: '#333',
                                                         fontSize: "0.9rem",
                                                         py: 0.8,
                                                         px: 1.5,
                                                         borderRadius: 1,
                                                         "&:hover": {
-                                                            color: theme.palette.primary.main,
-                                                            backgroundColor: theme.palette.action.hover,
+                                                            color: '#1976d2',
+                                                            backgroundColor: '#f5f5f5',
                                                         },
                                                     }}
                                                 >
@@ -206,9 +390,7 @@ export default function Headertwo() {
                                         onClick={() => navigate(item.path)}
                                         style={{
                                             fontWeight: location.pathname.startsWith(item.path) ? "bold" : "500",
-                                            color: location.pathname.startsWith(item.path)
-                                                ? theme.palette.primary.main
-                                                : theme.palette.text.primary,
+                                            color: location.pathname.startsWith(item.path) ? '#1976d2' : '#333',
                                             fontSize: "1rem",
                                             padding: "8px 16px",
                                             borderRadius: 4,
@@ -225,12 +407,12 @@ export default function Headertwo() {
                                     key={item.label}
                                     onClick={handleOfferingsToggle}
                                     sx={{
-                                        color: location.pathname === item.path ? theme.palette.primary.main : 'text.primary',
+                                        color: location.pathname === item.path ? '#1976d2' : '#333',
                                         fontWeight: location.pathname === item.path ? 'bold' : '500',
                                         mx: 2,
                                         textTransform: 'none',
                                         fontSize: '1rem',
-                                        '&:hover': { backgroundColor: theme.palette.action.hover },
+                                        '&:hover': { backgroundColor: '#f5f5f5' },
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: 0.5
@@ -249,14 +431,12 @@ export default function Headertwo() {
                                     component={Link}
                                     to={item.path}
                                     sx={{
-                                        color: location.pathname === item.path
-                                            ? theme.palette.primary.main
-                                            : 'text.primary',
+                                        color: location.pathname === item.path ? '#1976d2' : '#333',
                                         fontWeight: location.pathname === item.path ? 'bold' : '500',
                                         mx: 2,
                                         textTransform: 'none',
                                         fontSize: '1rem',
-                                        '&:hover': { backgroundColor: theme.palette.action.hover },
+                                        '&:hover': { backgroundColor: '#f5f5f5' },
                                     }}
                                 >
                                     {item.label}
@@ -264,7 +444,7 @@ export default function Headertwo() {
                             )
                         )}
 
-                        {/* Offerings Dropdown */}
+                        {/* Offerings Dropdown - Desktop */}
                         {offeringsOpen && (
                             <Paper
                                 sx={{
@@ -284,9 +464,8 @@ export default function Headertwo() {
                             >
                                 <Box sx={{ p: 4 }}>
                                     <Grid container spacing={4}>
-                                        {/* Explore Offerings */}
                                         <Grid item xs={12} md={6}>
-                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                            <Typography variant="overline" sx={{ color: '#666', fontWeight: 'bold' }}>
                                                 EXPLORE OFFERINGS
                                             </Typography>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mt: 1 }}>
@@ -324,7 +503,7 @@ export default function Headertwo() {
                                                             <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
                                                                 {offering.title}
                                                             </Typography>
-                                                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                                            <Typography variant="body2" sx={{ color: '#666' }}>
                                                                 {offering.subtitle}
                                                             </Typography>
                                                         </CardContent>
@@ -333,9 +512,8 @@ export default function Headertwo() {
                                             </Box>
                                         </Grid>
 
-                                        {/* Kitchen Section */}
                                         <Grid item xs={12} md={3}>
-                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                            <Typography variant="overline" sx={{ color: '#666', fontWeight: 'bold' }}>
                                                 KITCHEN
                                             </Typography>
                                             <List sx={{ p: 0 }}>
@@ -355,9 +533,8 @@ export default function Headertwo() {
                                             </List>
                                         </Grid>
 
-                                        {/* Wardrobe Section */}
                                         <Grid item xs={12} md={3}>
-                                            <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
+                                            <Typography variant="overline" sx={{ color: '#666', fontWeight: 'bold' }}>
                                                 WARDROBE
                                             </Typography>
                                             <List sx={{ p: 0 }}>
@@ -397,11 +574,13 @@ export default function Headertwo() {
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             height: 'auto',
-                            maxHeight: '50vh',
+                            maxHeight: '85vh',
                             borderTopLeftRadius: 16,
                             borderTopRightRadius: 16,
-                            backgroundColor: theme.palette.background.paper,
+                            backgroundColor: '#fff',
                             boxShadow: '0 -8px 32px rgba(0, 0, 0, 0.12)',
+                            overflow: 'auto',
+                            paddingBottom: '80px'
                         },
                     }}
                 >

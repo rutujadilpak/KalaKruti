@@ -31,7 +31,9 @@ export default function HomePageFeatured() {
         <>
             <Box sx={{ backgroundColor: '#f5f5f5', py: 8 }}>
                 <Container maxWidth="xl">
-                    <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
+                    <Typography variant="h3" component="h2" textAlign="center" gutterBottom sx={{
+                        fontSize: { xs: '1.8rem', md: '3rem' } // 👈 smaller text for mobile
+                    }}>
                         Featured Projects
                     </Typography>
                     <Grid container spacing={4} sx={{ mt: 4, justifyContent: 'center' }}>

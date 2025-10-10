@@ -62,10 +62,14 @@ const themeNeutral = createTheme({
         h3: {
             fontWeight: 600,
             color: "#505B5F",
+            fontSize: "3rem",
+            "@media (max-width:600px)": { fontSize: "1.8rem" },
         },
         h4: {
             fontWeight: 500,
             color: "#505B5F",
+            fontSize: "2rem",
+            "@media (max-width:600px)": { fontSize: "1.4rem" },
         },
         h5: {
             fontWeight: 500,

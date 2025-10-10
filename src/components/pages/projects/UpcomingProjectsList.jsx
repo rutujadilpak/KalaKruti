@@ -36,7 +36,7 @@ export default function UpcomingProjectsList() {
             {/* 🧭 Page Title (Left-Aligned) */}
             <Box sx={{ textAlign: "left", mb: 6 }}>
                 <Typography
-                    variant="h2"
+                    variant="h3"
                     component="h1"
                     sx={{
                         fontWeight: 700,
@@ -44,7 +44,7 @@ export default function UpcomingProjectsList() {
                         color: theme.palette.text.primary,
                     }}
                 >
-                    Upcoming Properties
+                    Upcoming Projects
                 </Typography>
                 <Typography
                     variant="h6"

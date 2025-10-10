@@ -31,7 +31,7 @@ export default function ProjectsPage() {
     const handleViewAllFeatured = () => navigate("/projects/featured");
 
     return (
-        <Box>
+        <Box sx={{ overflowX: "hidden" }}>
             <Container maxWidth="lg">
                 {/* 🧭 Breadcrumbs and Page Intro */}
                 <Box sx={{ mb: 8, mt: 6 }}>
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
                             type: "delivered",
                         },
                         {
-                            title: "Upcoming Properties",
+                            title: "Upcoming Projects",
                             subtitle:
                                 "Proposed projects featuring detailed plans and innovative designs.",
                             chip: "UPCOMING",
@@ -173,25 +173,50 @@ export default function ProjectsPage() {
                 <Divider sx={{ mb: 8 }} />
 
                 {/* ✨ Featured Projects */}
-                <Box sx={{ textAlign: "center", mb: 6 }}>
-                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-                        <Box sx={{ flex: 1 }} />
-                        <Box sx={{ textAlign: "center", flex: 2 }}>
+                {/* ✨ Featured Projects */}
+                <Box sx={{ mb: 6 }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            flexWrap: "wrap",
+                            rowGap: 2,
+                        }}
+                    >
+                        {/* Left Text Section */}
+                        <Box sx={{ textAlign: "left", flex: { xs: "1 1 100%", md: "1 1 70%" } }}>
                             <Typography
                                 variant="h3"
-                                sx={{ fontWeight: 700, mb: 2, color: theme.palette.text.primary }}
+                                sx={{
+                                    fontWeight: 700,
+                                    mb: 2,
+                                    color: theme.palette.text.primary,
+                                }}
                             >
                                 Featured Projects
                             </Typography>
+
                             <Typography
                                 variant="h6"
                                 color="text.secondary"
-                                sx={{ maxWidth: 700, mx: "auto" }}
+                                sx={{
+                                    maxWidth: 700,
+                                    lineHeight: 1.7,
+                                }}
                             >
                                 A glimpse of our best creations — blending design precision and aesthetic brilliance.
                             </Typography>
                         </Box>
-                        <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+
+                        {/* Right Button Section */}
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: { xs: "flex-start", md: "flex-end" },
+                                flex: { xs: "1 1 100%", md: "1 1 30%" },
+                            }}
+                        >
                             <Button
                                 variant="outlined"
                                 endIcon={<ArrowForward />}
@@ -210,6 +235,7 @@ export default function ProjectsPage() {
                         </Box>
                     </Box>
                 </Box>
+
 
                 {/* Featured Projects Carousel */}
                 <Box sx={{ mb: 8 }}>

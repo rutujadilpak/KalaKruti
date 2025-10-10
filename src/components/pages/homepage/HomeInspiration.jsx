@@ -50,7 +50,9 @@ export default function HomeInspiration() {
     return (
         <Box sx={{ py: { xs: 4, md: 10 }, backgroundColor: '#f9f9f9' }}>
             <Container maxWidth="xl">
-                <Typography variant="h3" textAlign="center" fontWeight={700} mb={2}>
+                <Typography variant="h3" textAlign="center" fontWeight={700} mb={2} sx={{
+                    fontSize: { xs: '1.8rem', md: '3rem' } // 👈 smaller text for mobile
+                }}>
                     Inspiration for home interior designs
                 </Typography>
                 <Typography variant="h6" textAlign="center" color="text.secondary" mb={6}>

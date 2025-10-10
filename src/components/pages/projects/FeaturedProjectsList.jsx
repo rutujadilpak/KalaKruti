@@ -36,9 +36,8 @@ export default function FeaturedProjectsList() {
             {/* 🧭 Page Title (Left-Aligned) */}
             <Box sx={{ textAlign: "left", mb: 6 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                    <Star sx={{ color: theme.palette.warning.main }} />
                     <Typography
-                        variant="h2"
+                        variant="h3"
                         component="h1"
                         sx={{
                             fontWeight: 700,
@@ -47,7 +46,6 @@ export default function FeaturedProjectsList() {
                     >
                         Featured Projects
                     </Typography>
-                    <Star sx={{ color: theme.palette.warning.main }} />
                 </Box>
 
                 <Typography

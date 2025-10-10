@@ -116,16 +116,7 @@ export default function Footer() {
                                 >
                                     <YouTube />
                                 </IconButton>
-                                <IconButton
-                                    size="large"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        fontSize: '1.5rem',
-                                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' }
-                                    }}
-                                >
-                                    <Pinterest />
-                                </IconButton>
+
                             </Box>
 
                         </Grid>
@@ -202,19 +193,7 @@ export default function Footer() {
                                 >
                                     Design Ideas
                                 </Link>
-                                <Link
-                                    href="#"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        textDecoration: 'none',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        opacity: 0.8,
-                                        py: 0.5,
-                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                    }}
-                                >
-                                    Magazine
-                                </Link>
+
                                 <Link
                                     href="#"
                                     sx={{
@@ -246,19 +225,7 @@ export default function Footer() {
                                 COMPANY
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                <Link
-                                    href="#"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        textDecoration: 'none',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        opacity: 0.8,
-                                        py: 0.5,
-                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                    }}
-                                >
-                                    Refer a friend
-                                </Link>
+
                                 <Link
                                     href="/how-it-works"
                                     sx={{
@@ -272,19 +239,7 @@ export default function Footer() {
                                 >
                                     How it works
                                 </Link>
-                                <Link
-                                    href="#"
-                                    sx={{
-                                        color: theme.palette.secondary.contrastText,
-                                        textDecoration: 'none',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        opacity: 0.8,
-                                        py: 0.5,
-                                        '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                    }}
-                                >
-                                    Careers
-                                </Link>
+
                                 <Link
                                     href="#"
                                     sx={{

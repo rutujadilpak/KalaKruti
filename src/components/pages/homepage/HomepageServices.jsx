@@ -38,7 +38,10 @@ export default function HomeServices() {
                     component="h2"
                     textAlign="center"
                     gutterBottom
-                    sx={{ fontWeight: 700, mb: { xs: 2, md: 4 } }}
+
+                    sx={{
+                        fontWeight: 700, mb: { xs: 2, md: 4 }, fontSize: { xs: '1.8rem', md: '2.5rem' } // 👈 smaller text for mobile
+                    }}
                 >
                     One-stop shop for all things interiors
                 </Typography>
@@ -48,7 +51,7 @@ export default function HomeServices() {
                     variant="h6"
                     textAlign="center"
                     color="text.secondary"
-                    sx={{ mb: { xs: 4, md: 8 }, px: { xs: 2, md: 0 } }}
+                    sx={{ mb: { xs: 4, md: 8 }, px: { xs: 2, md: 0 }, }}
                 >
                     Be it end-to-end interiors, renovation or modular solutions, we have it all for your home or office.
                     With a wide range of furniture & decor, we have your back from start to finish.

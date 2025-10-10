@@ -49,7 +49,7 @@ export default function AllDesigns() {
     return (
         <Container maxWidth="xl" sx={{ py: 4 }}>
             {/* Header Section */}
-            <Box sx={{ mb: 6, textAlign: 'center' }}>
+            <Box sx={{ mb: 6, textAlign: 'left' }}>
                 <Typography
                     variant="h3"
                     component="h1"
@@ -64,7 +64,7 @@ export default function AllDesigns() {
                 <Typography
                     variant="h6"
                     color="text.secondary"
-                    sx={{ maxWidth: '800px', mx: 'auto' }}
+                    sx={{ maxWidth: '800px' }}
                 >
                     Explore our comprehensive collection of interior design categories.
                     From kitchens to living rooms, find inspiration for every space in your home.

@@ -29,10 +29,10 @@ export default function CategoryFAQ({ category }) {
         <Container maxWidth="xl" sx={{ py: 6 }}>
             <Box>
                 <Typography
-                    variant="h4"
+                    variant="h"
                     component="h2"
                     gutterBottom
-                    sx={{ mb: 3, fontWeight: 600, textAlign: "center" }}
+                    sx={{ mb: 3, fontWeight: 600 }}
                 >
                     Frequently Asked Questions
                 </Typography>
