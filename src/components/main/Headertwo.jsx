@@ -14,7 +14,9 @@ import {
     CardContent,
     CardMedia,
     Collapse,
-    ListItemButton
+    ListItemButton,
+    Divider,
+    useTheme
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -27,11 +29,14 @@ import { DownOutlined } from "@ant-design/icons";
 export default function Headertwo() {
     const location = useLocation();
     const navigate = useNavigate();
+    const theme = useTheme();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [offeringsOpen, setOfferingsOpen] = useState(false);
     const [expandedSections, setExpandedSections] = useState({});
+    const [mobileOfferingsOpen, setMobileOfferingsOpen] = useState(false);
+    const [mobilePriceCalcOpen, setMobilePriceCalcOpen] = useState(false);
 
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
     const handleOfferingsToggle = () => setOfferingsOpen(!offeringsOpen);

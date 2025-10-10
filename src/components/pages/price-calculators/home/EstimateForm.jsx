@@ -6,9 +6,7 @@ import {
     CardContent,
     Button,
     TextField,
-    FormControlLabel,
-    Checkbox,
-    useTheme
+    useTheme,
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -22,13 +20,11 @@ export default function EstimateForm() {
         email: '',
         phone: '',
         propertyName: '',
-        whatsappUpdates: false
     });
 
     const [estimatedPrice, setEstimatedPrice] = useState(0);
 
     useEffect(() => {
-        // Calculate estimated price based on selections
         const searchParams = new URLSearchParams(location.search);
         const bhk = searchParams.get('bhk');
         const size = searchParams.get('size');
@@ -39,26 +35,24 @@ export default function EstimateForm() {
         const bathroom = parseInt(searchParams.get('bathroom')) || 0;
         const dining = parseInt(searchParams.get('dining')) || 0;
 
-        // Base pricing per room type
+        // Base pricing
         const roomPrices = {
             livingRoom: 150000,
             kitchen: 200000,
             bedroom: 120000,
             bathroom: 80000,
-            dining: 100000
+            dining: 100000,
         };
 
-        // Package multipliers
         const packageMultipliers = {
             essentials: 1.0,
             premium: 1.3,
-            luxe: 1.8
+            luxe: 1.8,
         };
 
-        // Size multipliers
         const sizeMultipliers = {
             small: 0.8,
-            large: 1.2
+            large: 1.2,
         };
 
         let totalPrice = 0;
@@ -68,11 +62,9 @@ export default function EstimateForm() {
         totalPrice += bathroom * roomPrices.bathroom;
         totalPrice += dining * roomPrices.dining;
 
-        // Apply package multiplier
         const packageMultiplier = packageMultipliers[packageType] || 1.0;
         totalPrice *= packageMultiplier;
 
-        // Apply size multiplier if applicable
         if (size) {
             const sizeMultiplier = sizeMultipliers[size] || 1.0;
             totalPrice *= sizeMultiplier;
@@ -82,27 +74,20 @@ export default function EstimateForm() {
     }, [location.search]);
 
     const handleInputChange = (field) => (event) => {
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        setFormData(prev => ({
+        const value = event.target.value;
+        setFormData((prev) => ({
             ...prev,
-            [field]: value
+            [field]: value,
         }));
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Here you would typically send the data to your backend
-        console.log('Form submitted:', {
-            ...formData,
-            estimatedPrice,
-            selections: Object.fromEntries(new URLSearchParams(location.search))
-        });
+        alert(
+            `Thank you ${formData.name}! Your estimated price is ₹${estimatedPrice.toLocaleString()}. We'll contact you soon!`
+        );
 
-        // For now, just show an alert
-        alert(`Thank you ${formData.name}! Your estimated price is ₹${estimatedPrice.toLocaleString()}. We'll contact you soon!`);
-
-        // Navigate back to home or show success page
         navigate('/price-calculators/home');
     };
 
@@ -115,33 +100,53 @@ export default function EstimateForm() {
             kitchen: searchParams.get('kitchen'),
             bedroom: searchParams.get('bedroom'),
             bathroom: searchParams.get('bathroom'),
-            dining: searchParams.get('dining')
+            dining: searchParams.get('dining'),
         });
         navigate(`/price-calculators/home/calculator/package?${queryParams.toString()}`);
     };
 
     const isFormValid = () => {
-        return formData.name.trim() &&
+        return (
+            formData.name.trim() &&
             formData.email.trim() &&
             formData.phone.trim() &&
-            formData.propertyName.trim();
+            formData.propertyName.trim()
+        );
     };
 
     return (
-        <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 550, mx: 'auto', p: 3 }}>
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
                     textAlign: 'center',
-                    mb: 2,
-                    fontWeight: 'bold',
-                    color: theme.palette.text.primary
+                    mb: 1.5,
+                    fontWeight: 600,
+                    color: theme.palette.text.primary,
                 }}
             >
-                Your estimate is almost ready
+                Your Estimate Is Almost Ready
             </Typography>
 
-            <Card sx={{ mb: 4 }}>
+            <Typography
+                variant="body2"
+                sx={{
+                    textAlign: 'center',
+                    mb: 3,
+                    color: theme.palette.text.secondary,
+                }}
+            >
+                Please fill out the details below to receive your estimate.
+            </Typography>
+
+            <Card
+                sx={{
+                    borderRadius: 2,
+                    border: '1px solid',
+                    borderColor: theme.palette.grey[300],
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                }}
+            >
                 <CardContent sx={{ p: 3 }}>
                     <form onSubmit={handleSubmit}>
                         <TextField
@@ -151,7 +156,7 @@ export default function EstimateForm() {
                             onChange={handleInputChange('name')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -162,30 +167,18 @@ export default function EstimateForm() {
                             onChange={handleInputChange('email')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
                             fullWidth
-                            label="Phone number"
+                            label="Phone Number"
                             type="tel"
                             value={formData.phone}
                             onChange={handleInputChange('phone')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
-                        />
-
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={formData.whatsappUpdates}
-                                    onChange={handleInputChange('whatsappUpdates')}
-                                    sx={{ color: theme.palette.primary.main }}
-                                />
-                            }
-                            label="Send me updates on WhatsApp"
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -195,113 +188,67 @@ export default function EstimateForm() {
                             onChange={handleInputChange('propertyName')}
                             margin="normal"
                             required
-                            sx={{ mb: 3 }}
+                            size="small"
                         />
 
                         {/* Estimated Price Display */}
-                        <Box sx={{
-                            textAlign: 'center',
-                            p: 3,
-                            backgroundColor: theme.palette.primary.light + '20',
-                            borderRadius: 2,
-                            mb: 3
-                        }}>
-                            <Typography variant="h6" sx={{ color: theme.palette.text.secondary, mb: 1 }}>
+                        <Box
+                            sx={{
+                                textAlign: 'center',
+                                p: 2.5,
+                                mt: 3,
+                                backgroundColor: theme.palette.primary.light + '20',
+                                borderRadius: 2,
+                            }}
+                        >
+                            <Typography
+                                variant="subtitle2"
+                                sx={{ color: theme.palette.text.secondary, mb: 0.5 }}
+                            >
                                 Estimated Price
                             </Typography>
-                            <Typography variant="h3" sx={{
-                                fontWeight: 'bold',
-                                color: theme.palette.primary.main
-                            }}>
+                            <Typography
+                                variant="h5"
+                                sx={{
+                                    fontWeight: 700,
+                                    color: theme.palette.primary.main,
+                                }}
+                            >
                                 ₹{estimatedPrice.toLocaleString()}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mt: 1 }}>
-                                *Final price may vary based on specific requirements
+                            <Typography
+                                variant="caption"
+                                sx={{ color: theme.palette.text.secondary, mt: 0.5 }}
+                            >
+                                *Final price may vary based on requirements
                             </Typography>
                         </Box>
-
-                        {/* Legal Text */}
-                        <Typography variant="body2" sx={{
-                            color: theme.palette.text.secondary,
-                            mb: 2,
-                            textAlign: 'center'
-                        }}>
-                            By submitting this form, you agree to the{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                privacy policy
-                            </Typography>
-                            {' '}&{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                terms and conditions
-                            </Typography>
-                        </Typography>
-
-                        <Typography variant="body2" sx={{
-                            color: theme.palette.text.secondary,
-                            textAlign: 'center',
-                            mb: 3
-                        }}>
-                            This site is protected by reCAPTCHA and the Google{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Privacy Policy
-                            </Typography>
-                            {' '}and{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Terms of Service
-                            </Typography>
-                            {' '}apply.
-                        </Typography>
                     </form>
                 </CardContent>
             </Card>
 
             {/* Navigation Buttons */}
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                mt: 4,
-                pt: 3,
-                borderTop: '1px solid',
-                borderColor: 'divider'
-            }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    mt: 3,
+                    pt: 2,
+                    borderTop: '1px solid',
+                    borderColor: 'divider',
+                }}
+            >
                 <Button
                     variant="text"
                     onClick={handleBack}
                     sx={{
                         color: theme.palette.primary.main,
                         textTransform: 'none',
-                        fontWeight: 600
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -309,12 +256,13 @@ export default function EstimateForm() {
                     onClick={handleSubmit}
                     disabled={!isFormValid()}
                     sx={{
-                        px: 4,
+                        px: 3,
                         textTransform: 'none',
-                        fontWeight: 600
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
                     }}
                 >
-                    SUBMIT
+                    Submit
                 </Button>
             </Box>
         </Box>

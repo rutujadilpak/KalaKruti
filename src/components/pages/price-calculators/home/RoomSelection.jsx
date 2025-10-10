@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, Button, IconButton, useTheme } from '@mui/material';
+import React, { useState, useMemo } from 'react';
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    Button,
+    IconButton,
+    useTheme,
+    Divider,
+    Alert,
+} from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -7,233 +17,263 @@ import RemoveIcon from '@mui/icons-material/Remove';
 const roomTypes = [
     { id: 'livingRoom', label: 'Living Room', defaultCount: 1 },
     { id: 'kitchen', label: 'Kitchen', defaultCount: 1 },
-    { id: 'bedroom', label: 'Bedroom', defaultCount: 2 },
-    { id: 'bathroom', label: 'Bathroom', defaultCount: 2 },
-    { id: 'dining', label: 'Dining', defaultCount: 1 }
+    { id: 'bedroom', label: 'Bedroom', defaultCount: 1 },
+    { id: 'bathroom', label: 'Bathroom', defaultCount: 2 }, // Excluded from limit logic
+    { id: 'dining', label: 'Dining', defaultCount: 0 },
 ];
+
+// Define maximum allowed "main rooms" per BHK type
+const bhkRoomLimits = {
+    '1bhk': 3,
+    '2bhk': 5,
+    '3bhk': 7,
+    '4bhk': 9,
+    '5bhk': 12,
+};
 
 export default function RoomSelection() {
     const theme = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
 
+    const searchParams = new URLSearchParams(location.search);
+    const selectedBHK = searchParams.get('bhk');
+
+    const maxRoomsAllowed = bhkRoomLimits[selectedBHK] || 5;
+
     const [roomCounts, setRoomCounts] = useState(() => {
-        const searchParams = new URLSearchParams(location.search);
         const counts = {};
-        roomTypes.forEach(room => {
-            counts[room.id] = parseInt(searchParams.get(room.id)) || room.defaultCount;
+        roomTypes.forEach((room) => {
+            counts[room.id] = room.defaultCount;
         });
         return counts;
     });
 
+    // Calculate total rooms excluding bathrooms
+    const totalMainRooms = useMemo(
+        () =>
+            Object.entries(roomCounts)
+                .filter(([roomId]) => roomId !== 'bathroom')
+                .reduce((sum, [, count]) => sum + count, 0),
+        [roomCounts]
+    );
+
+    const totalRooms = useMemo(
+        () => Object.values(roomCounts).reduce((sum, count) => sum + count, 0),
+        [roomCounts]
+    );
+
     const handleIncrement = (roomId) => {
-        setRoomCounts(prev => ({
-            ...prev,
-            [roomId]: Math.min(prev[roomId] + 1, 10) // Max 10 rooms per type
-        }));
+        // Allow bathroom increments without limit
+        if (roomId === 'bathroom' || totalMainRooms < maxRoomsAllowed) {
+            setRoomCounts((prev) => ({
+                ...prev,
+                [roomId]: Math.min(prev[roomId] + 1, 10),
+            }));
+        }
     };
 
     const handleDecrement = (roomId) => {
-        setRoomCounts(prev => ({
+        setRoomCounts((prev) => ({
             ...prev,
-            [roomId]: Math.max(prev[roomId] - 1, 0) // Min 0 rooms
+            [roomId]: Math.max(prev[roomId] - 1, 0),
         }));
     };
 
     const handleNext = () => {
-        const searchParams = new URLSearchParams(location.search);
-        const queryParams = new URLSearchParams({
-            bhk: searchParams.get('bhk'),
-            size: searchParams.get('size'),
-            ...roomCounts
+        const queryParams = new URLSearchParams(location.search);
+        const finalParams = new URLSearchParams({
+            bhk: queryParams.get('bhk'),
+            size: queryParams.get('size'),
+            ...roomCounts,
         });
-        navigate(`/price-calculators/home/calculator/package?${queryParams.toString()}`);
+        navigate(`/price-calculators/home/calculator/package?${finalParams.toString()}`);
     };
 
     const handleBack = () => {
-        const searchParams = new URLSearchParams(location.search);
-        const queryParams = new URLSearchParams({
-            bhk: searchParams.get('bhk'),
-            size: searchParams.get('size')
-        });
+        const queryParams = new URLSearchParams(location.search);
         navigate(`/price-calculators/home/calculator/bhk?${queryParams.toString()}`);
     };
 
-    const totalRooms = Object.values(roomCounts).reduce((sum, count) => sum + count, 0);
-
     return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 700, mx: 'auto', p: 3 }}>
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
                     textAlign: 'center',
-                    mb: 2,
-                    fontWeight: 'bold',
-                    color: theme.palette.text.primary
+                    mb: 1,
+                    fontWeight: 600,
+                    color: theme.palette.text.primary,
                 }}
             >
-                Select the rooms you'd like us to design
+                Select the Rooms You'd Like Us to Design
             </Typography>
 
             <Typography
-                variant="body1"
+                variant="body2"
                 sx={{
                     textAlign: 'center',
                     mb: 4,
-                    color: theme.palette.text.secondary
+                    color: theme.palette.text.secondary,
                 }}
             >
-                To know more about this,{' '}
-                <Typography
-                    component="span"
-                    sx={{
-                        color: theme.palette.primary.main,
-                        textDecoration: 'underline',
-                        cursor: 'pointer'
-                    }}
-                >
-                    click here
-                </Typography>
+                Add or remove rooms based on your home configuration.
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
-                {roomTypes.map((room) => (
-                    <Card
-                        key={room.id}
-                        sx={{
-                            border: '1px solid',
-                            borderColor: theme.palette.grey[300],
-                            transition: 'all 0.3s ease',
-                            '&:hover': {
-                                borderColor: theme.palette.primary.main,
-                                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                            }
-                        }}
-                    >
-                        <CardContent sx={{ p: 3 }}>
-                            <Box sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center'
-                            }}>
-                                <Typography
-                                    variant="h6"
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 3 }}>
+                {roomTypes.map((room) => {
+                    const isBathroom = room.id === 'bathroom';
+                    const atLimit = totalMainRooms >= maxRoomsAllowed && !isBathroom;
+
+                    return (
+                        <Card
+                            key={room.id}
+                            sx={{
+                                borderRadius: 2,
+                                border: '1px solid',
+                                borderColor: theme.palette.grey[300],
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                                transition: 'none',
+                                '&:hover': { borderColor: theme.palette.primary.main },
+                            }}
+                        >
+                            <CardContent sx={{ p: 2 }}>
+                                <Box
                                     sx={{
-                                        fontWeight: 'bold',
-                                        color: theme.palette.text.primary
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
                                     }}
                                 >
-                                    {room.label}
-                                </Typography>
-
-                                <Box sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 2
-                                }}>
-                                    <IconButton
-                                        onClick={() => handleDecrement(room.id)}
-                                        disabled={roomCounts[room.id] <= 0}
-                                        sx={{
-                                            color: theme.palette.primary.main,
-                                            border: '1px solid',
-                                            borderColor: theme.palette.primary.main,
-                                            '&:hover': {
-                                                backgroundColor: theme.palette.primary.main,
-                                                color: 'white'
-                                            }
-                                        }}
-                                    >
-                                        <RemoveIcon />
-                                    </IconButton>
-
                                     <Typography
-                                        variant="h6"
+                                        variant="subtitle1"
                                         sx={{
-                                            minWidth: 40,
-                                            textAlign: 'center',
-                                            fontWeight: 'bold',
-                                            color: theme.palette.text.primary
+                                            fontWeight: 600,
+                                            color: theme.palette.text.primary,
                                         }}
                                     >
-                                        {roomCounts[room.id]}
+                                        {room.label}
                                     </Typography>
 
-                                    <IconButton
-                                        onClick={() => handleIncrement(room.id)}
-                                        disabled={roomCounts[room.id] >= 10}
-                                        sx={{
-                                            color: theme.palette.primary.main,
-                                            border: '1px solid',
-                                            borderColor: theme.palette.primary.main,
-                                            '&:hover': {
-                                                backgroundColor: theme.palette.primary.main,
-                                                color: 'white'
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                        <IconButton
+                                            onClick={() => handleDecrement(room.id)}
+                                            disabled={roomCounts[room.id] <= 0}
+                                            sx={{
+                                                color: theme.palette.primary.main,
+                                                border: '1px solid',
+                                                borderColor: theme.palette.primary.main,
+                                                width: 32,
+                                                height: 32,
+                                                '&:hover': {
+                                                    backgroundColor: theme.palette.primary.main,
+                                                    color: 'white',
+                                                },
+                                            }}
+                                        >
+                                            <RemoveIcon fontSize="small" />
+                                        </IconButton>
+
+                                        <Typography
+                                            variant="body1"
+                                            sx={{
+                                                minWidth: 28,
+                                                textAlign: 'center',
+                                                fontWeight: 600,
+                                                color: theme.palette.text.primary,
+                                            }}
+                                        >
+                                            {roomCounts[room.id]}
+                                        </Typography>
+
+                                        <IconButton
+                                            onClick={() => handleIncrement(room.id)}
+                                            disabled={
+                                                roomCounts[room.id] >= 10 ||
+                                                atLimit
                                             }
-                                        }}
-                                    >
-                                        <AddIcon />
-                                    </IconButton>
+                                            sx={{
+                                                color: theme.palette.primary.main,
+                                                border: '1px solid',
+                                                borderColor: theme.palette.primary.main,
+                                                width: 32,
+                                                height: 32,
+                                                '&:hover': {
+                                                    backgroundColor: theme.palette.primary.main,
+                                                    color: 'white',
+                                                },
+                                            }}
+                                        >
+                                            <AddIcon fontSize="small" />
+                                        </IconButton>
+                                    </Box>
                                 </Box>
-                            </Box>
-                        </CardContent>
-                    </Card>
-                ))}
+                            </CardContent>
+                        </Card>
+                    );
+                })}
             </Box>
 
-            {/* Total Rooms Summary */}
-            <Card sx={{
-                backgroundColor: theme.palette.primary.light + '20',
-                border: '1px solid',
-                borderColor: theme.palette.primary.main + '30',
-                mb: 4
-            }}>
-                <CardContent sx={{ p: 3, textAlign: 'center' }}>
+            {totalMainRooms >= maxRoomsAllowed && (
+                <Alert
+                    severity="info"
+                    sx={{
+                        mb: 3,
+                        borderRadius: 2,
+                        backgroundColor: theme.palette.primary.light + '10',
+                    }}
+                >
+                    You’ve reached the limit of {maxRoomsAllowed} main rooms for your{' '}
+                    {selectedBHK?.toUpperCase()} plan.
+                    You can still adjust bathrooms freely.
+                </Alert>
+            )}
+
+            <Card
+                sx={{
+                    backgroundColor: theme.palette.primary.light + '15',
+                    border: '1px solid',
+                    borderColor: theme.palette.primary.main + '30',
+                    borderRadius: 2,
+                    mb: 3,
+                }}
+            >
+                <CardContent sx={{ textAlign: 'center', py: 2 }}>
                     <Typography
-                        variant="h6"
+                        variant="subtitle1"
                         sx={{
-                            fontWeight: 'bold',
+                            fontWeight: 600,
                             color: theme.palette.primary.main,
-                            mb: 1
+                            mb: 0.5,
                         }}
                     >
-                        Total Rooms Selected: {totalRooms}
+                        Total Main Rooms: {totalMainRooms}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        sx={{ color: theme.palette.text.secondary }}
-                    >
-                        {Object.entries(roomCounts)
-                            .filter(([_, count]) => count > 0)
-                            .map(([roomId, count]) => {
-                                const room = roomTypes.find(r => r.id === roomId);
-                                return `${count} ${room?.label}${count > 1 ? 's' : ''}`;
-                            })
-                            .join(', ')
-                        }
+                    <Typography variant="caption" sx={{ color: theme.palette.text.secondary }}>
+                        Maximum allowed: {maxRoomsAllowed} (Bathrooms excluded)
                     </Typography>
                 </CardContent>
             </Card>
 
-            {/* Navigation Buttons */}
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                mt: 4,
-                pt: 3,
-                borderTop: '1px solid',
-                borderColor: 'divider'
-            }}>
+            <Divider sx={{ mb: 3 }} />
+
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    pt: 1,
+                }}
+            >
                 <Button
                     variant="text"
                     onClick={handleBack}
                     sx={{
                         color: theme.palette.primary.main,
                         textTransform: 'none',
-                        fontWeight: 600
+                        fontWeight: 600,
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -243,10 +283,10 @@ export default function RoomSelection() {
                     sx={{
                         px: 4,
                         textTransform: 'none',
-                        fontWeight: 600
+                        fontWeight: 600,
                     }}
                 >
-                    NEXT
+                    Next
                 </Button>
             </Box>
         </Box>

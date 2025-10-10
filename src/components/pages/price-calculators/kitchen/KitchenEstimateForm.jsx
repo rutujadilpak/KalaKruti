@@ -7,7 +7,6 @@ import {
     Button,
     TextField,
     useTheme,
-    Divider
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -21,8 +20,9 @@ export default function KitchenEstimateForm() {
         email: '',
         phone: '',
         city: '',
-        message: ''
+        message: '',
     });
+
     const [estimateData, setEstimateData] = useState(null);
 
     useEffect(() => {
@@ -42,8 +42,20 @@ export default function KitchenEstimateForm() {
         const services = searchParams.get('services');
         const appliances = searchParams.get('appliances');
 
-        const basePrice = calculateBasePrice(layout, length, width, cabinetLength, cabinetHeight, packageType);
-        const additionalCosts = calculateAdditionalCosts(granite, loft, services, appliances);
+        const basePrice = calculateBasePrice(
+            layout,
+            length,
+            width,
+            cabinetLength,
+            cabinetHeight,
+            packageType
+        );
+        const additionalCosts = calculateAdditionalCosts(
+            granite,
+            loft,
+            services,
+            appliances
+        );
         const totalPrice = basePrice + additionalCosts;
 
         setEstimateData({
@@ -63,23 +75,30 @@ export default function KitchenEstimateForm() {
             appliances,
             basePrice,
             additionalCosts,
-            totalPrice
+            totalPrice,
         });
     }, [location.search]);
 
-    const calculateBasePrice = (layout, length, width, cabinetLength, cabinetHeight, packageType) => {
+    const calculateBasePrice = (
+        layout,
+        length,
+        width,
+        cabinetLength,
+        cabinetHeight,
+        packageType
+    ) => {
         const packagePrices = {
             essentials: 1200,
             premium: 1800,
             luxe: 2500,
-            'build-your-own': 1500
+            'build-your-own': 1500,
         };
 
         const layoutPrices = {
             'l-shaped': 1.2,
             'u-shaped': 1.5,
-            'straight': 1.0,
-            'galley': 1.1
+            straight: 1.0,
+            galley: 1.1,
         };
 
         const basePricePerSqFt = packagePrices[packageType] || 1200;
@@ -101,9 +120,9 @@ export default function KitchenEstimateForm() {
                 plumbing: 25000,
                 electrical: 20000,
                 platform: 30000,
-                dado: 18000
+                dado: 18000,
             };
-            services.split(',').forEach(s => (additionalCosts += servicePrices[s] || 0));
+            services.split(',').forEach((s) => (additionalCosts += servicePrices[s] || 0));
         }
 
         if (appliances) {
@@ -113,25 +132,28 @@ export default function KitchenEstimateForm() {
                 'faucets-sink': 15000,
                 'built-in-microwave': 18000,
                 'built-in-oven': 25000,
-                refrigerator: 35000
+                refrigerator: 35000,
             };
-            appliances.split(',').forEach(a => (additionalCosts += appliancePrices[a] || 0));
+            appliances.split(',').forEach(
+                (a) => (additionalCosts += appliancePrices[a] || 0)
+            );
         }
 
         return additionalCosts;
     };
 
     const handleInputChange = (field) => (event) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [field]: event.target.value
+            [field]: event.target.value,
         }));
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Estimate Request:', { ...formData, ...estimateData });
-        alert(`Thank you ${formData.name}! Your kitchen estimate is ₹${estimateData.totalPrice.toLocaleString()}. We’ll contact you soon.`);
+        alert(
+            `Thank you ${formData.name}! Your kitchen estimate is ₹${estimateData.totalPrice.toLocaleString()}. We’ll contact you soon.`
+        );
         navigate('/price-calculators/kitchen');
     };
 
@@ -144,7 +166,7 @@ export default function KitchenEstimateForm() {
             height: searchParams.get('height'),
             cabinetLength: searchParams.get('cabinetLength'),
             cabinetHeight: searchParams.get('cabinetHeight'),
-            package: searchParams.get('package')
+            package: searchParams.get('package'),
         });
         navigate(`/price-calculators/kitchen/calculator/package?${queryParams.toString()}`);
     };
@@ -158,20 +180,38 @@ export default function KitchenEstimateForm() {
     if (!estimateData) return <Box>Loading...</Box>;
 
     return (
-        <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
+        <Box sx={{ maxWidth: 550, mx: 'auto', p: 3 }}>
             <Typography
-                variant="h4"
+                variant="h5"
                 sx={{
                     textAlign: 'center',
-                    mb: 2,
-                    fontWeight: 'bold',
-                    color: theme.palette.text.primary
+                    mb: 1.5,
+                    fontWeight: 600,
+                    color: theme.palette.text.primary,
                 }}
             >
-                Your estimate is almost ready
+                Your Estimate Is Almost Ready
             </Typography>
 
-            <Card sx={{ mb: 4 }}>
+            <Typography
+                variant="body2"
+                sx={{
+                    textAlign: 'center',
+                    mb: 3,
+                    color: theme.palette.text.secondary,
+                }}
+            >
+                Please fill in your details to receive your kitchen estimate.
+            </Typography>
+
+            <Card
+                sx={{
+                    borderRadius: 2,
+                    border: '1px solid',
+                    borderColor: theme.palette.grey[300],
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                }}
+            >
                 <CardContent sx={{ p: 3 }}>
                     <form onSubmit={handleSubmit}>
                         <TextField
@@ -181,7 +221,7 @@ export default function KitchenEstimateForm() {
                             onChange={handleInputChange('name')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -192,7 +232,7 @@ export default function KitchenEstimateForm() {
                             onChange={handleInputChange('email')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -203,7 +243,7 @@ export default function KitchenEstimateForm() {
                             onChange={handleInputChange('phone')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -213,7 +253,7 @@ export default function KitchenEstimateForm() {
                             onChange={handleInputChange('city')}
                             margin="normal"
                             required
-                            sx={{ mb: 2 }}
+                            size="small"
                         />
 
                         <TextField
@@ -224,75 +264,41 @@ export default function KitchenEstimateForm() {
                             value={formData.message}
                             onChange={handleInputChange('message')}
                             margin="normal"
-                            sx={{ mb: 3 }}
+                            size="small"
                         />
 
                         {/* Estimated Price Display */}
                         <Box
                             sx={{
                                 textAlign: 'center',
-                                p: 3,
+                                p: 2.5,
+                                mt: 3,
                                 backgroundColor: theme.palette.primary.light + '20',
                                 borderRadius: 2,
-                                mb: 3
                             }}
                         >
                             <Typography
-                                variant="h6"
-                                sx={{ color: theme.palette.text.secondary, mb: 1 }}
+                                variant="subtitle2"
+                                sx={{ color: theme.palette.text.secondary, mb: 0.5 }}
                             >
                                 Estimated Price
                             </Typography>
                             <Typography
-                                variant="h3"
+                                variant="h5"
                                 sx={{
-                                    fontWeight: 'bold',
-                                    color: theme.palette.primary.main
+                                    fontWeight: 700,
+                                    color: theme.palette.primary.main,
                                 }}
                             >
                                 ₹{estimateData.totalPrice.toLocaleString()}
                             </Typography>
                             <Typography
-                                variant="body2"
-                                sx={{ color: theme.palette.text.secondary, mt: 1 }}
+                                variant="caption"
+                                sx={{ color: theme.palette.text.secondary, mt: 0.5 }}
                             >
-                                *Final price may vary based on specific requirements
+                                *Final price may vary based on requirements
                             </Typography>
                         </Box>
-
-                        {/* Legal Text */}
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                color: theme.palette.text.secondary,
-                                mb: 2,
-                                textAlign: 'center'
-                            }}
-                        >
-                            By submitting this form, you agree to the{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                privacy policy
-                            </Typography>
-                            {' '}and{' '}
-                            <Typography
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                    textDecoration: 'underline',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                terms and conditions
-                            </Typography>
-                            .
-                        </Typography>
                     </form>
                 </CardContent>
             </Card>
@@ -302,10 +308,10 @@ export default function KitchenEstimateForm() {
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    mt: 4,
-                    pt: 3,
+                    mt: 3,
+                    pt: 2,
                     borderTop: '1px solid',
-                    borderColor: 'divider'
+                    borderColor: 'divider',
                 }}
             >
                 <Button
@@ -314,10 +320,11 @@ export default function KitchenEstimateForm() {
                     sx={{
                         color: theme.palette.primary.main,
                         textTransform: 'none',
-                        fontWeight: 600
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
                     }}
                 >
-                    BACK
+                    Back
                 </Button>
 
                 <Button
@@ -325,16 +332,13 @@ export default function KitchenEstimateForm() {
                     onClick={handleSubmit}
                     disabled={!isFormValid()}
                     sx={{
-                        px: 4,
+                        px: 3,
                         textTransform: 'none',
                         fontWeight: 600,
-                        backgroundColor: '#E84E57',
-                        '&:hover': {
-                            backgroundColor: '#d13f47'
-                        }
+                        fontSize: '0.9rem',
                     }}
                 >
-                    SUBMIT
+                    Submit
                 </Button>
             </Box>
         </Box>
