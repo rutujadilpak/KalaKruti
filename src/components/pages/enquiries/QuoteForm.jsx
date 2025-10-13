@@ -46,7 +46,7 @@ export default function QuoteForm() {
                         borderRadius: 3,
                         overflow: 'hidden',
                         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
-                        background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`
+                        background: `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.dark} 100%)`
                     }}
                 >
                     <Box sx={{ display: 'flex', minHeight: '400px' }}>

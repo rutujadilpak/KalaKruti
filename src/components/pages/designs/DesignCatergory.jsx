@@ -116,7 +116,10 @@ export default function DesignCategory() {
     const categoryTitle = categoryDisplayNames[category] || category.replace("-", " ").replace(/\b\w/g, l => l.toUpperCase());
 
     return (
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Container maxWidth="xl" sx={{
+            py: { xs: 0, sm: 0, md: 4 },
+        }}
+        >
             {/* Breadcrumbs */}
             <Breadcrumbs sx={{ mb: 3 }}>
                 <Link

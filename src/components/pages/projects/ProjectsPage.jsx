@@ -83,7 +83,7 @@ export default function ProjectsPage() {
                             chip: "COMPLETED",
                             color: "success",
                             image:
-                                "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=500&fit=crop",
+                                "https://plus.unsplash.com/premium_photo-1725408023149-e9235667309b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1025",
                             type: "delivered",
                         },
                         {
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                             chip: "UPCOMING",
                             color: "warning",
                             image:
-                                "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=500&fit=crop",
+                                "https://plus.unsplash.com/premium_photo-1661963428055-4b25a7ebd3a9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1116",
                             type: "upcoming",
                         },
                     ].map((project, index) => (

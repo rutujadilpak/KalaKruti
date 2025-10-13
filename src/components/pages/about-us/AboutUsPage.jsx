@@ -19,7 +19,7 @@ export default function AboutUsPage() {
                     position: 'relative',
                     width: '100%',
                     height: { xs: '60vh', sm: '70vh', md: '80vh' },
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2016&q=80")',
+                    backgroundImage: 'url("https://images.unsplash.com/photo-1541194577687-8c63bf9e7ee3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1469")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -33,7 +33,7 @@ export default function AboutUsPage() {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(44, 17, 17, 0.3)',
+                        backgroundColor: 'rgba(46, 50, 52, 0.3)',
                         zIndex: 1,
                     }
                 }}
@@ -118,7 +118,7 @@ export default function AboutUsPage() {
                             fontWeight: 'bold',
                             mb: 3,
                             color: 'white',
-                            textShadow: '2px 2px 4px rgba(121, 124, 113, 0.9)',
+                            textShadow: '2px 2px 4px rgba(46, 50, 52, 0.9)',
                             fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' }
                         }}
                     >
@@ -129,7 +129,7 @@ export default function AboutUsPage() {
                         sx={{
                             fontWeight: 'normal',
                             color: 'white',
-                            textShadow: '1px 1px 2px rgba(129, 131, 125, 0.9)',
+                            textShadow: '1px 1px 2px rgba(46, 50, 52, 0.9)',
                             fontSize: { xs: '1.2rem', sm: '1.4rem', md: '1.6rem' },
                             lineHeight: 1.4
                         }}
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
             </Box>
 
             {/* Main Content Section */}
-            <Box sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
+            <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
                 <Container maxWidth="lg">
                     <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
                         {/* <Typography 
@@ -173,7 +173,7 @@ export default function AboutUsPage() {
                             <Grid item xs={12} md={6}>
                                 <Card sx={{ height: '100%', p: 3 }}>
                                     <CardContent>
-                                        <Typography variant="h5" gutterBottom sx={{ color: '#a09e9cff', fontWeight: 'bold' }}>
+                                        <Typography variant="h5" gutterBottom sx={{ color: 'secondary.main', fontWeight: 'bold' }}>
                                             Our Mission
                                         </Typography>
                                         <Typography variant="body1" sx={{ lineHeight: 1.7 }}>
@@ -188,7 +188,7 @@ export default function AboutUsPage() {
                             <Grid item xs={12} md={6}>
                                 <Card sx={{ height: '100%', p: 3 }}>
                                     <CardContent>
-                                        <Typography variant="h5" gutterBottom sx={{ color: '#585755ff', fontWeight: 'bold' }}>
+                                        <Typography variant="h5" gutterBottom sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                                             Our Vision
                                         </Typography>
                                         <Typography variant="body1" sx={{ lineHeight: 1.7 }}>
@@ -203,7 +203,7 @@ export default function AboutUsPage() {
                             <Grid item xs={12} md={6}>
                                 <Card sx={{ height: '100%', p: 3 }}>
                                     <CardContent>
-                                        <Typography variant="h5" gutterBottom sx={{ color: '#777470ff', fontWeight: 'bold' }}>
+                                        <Typography variant="h5" gutterBottom sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
                                             Why Choose KalaKruti Studio?
                                         </Typography>
                                         <Typography variant="body1" sx={{ lineHeight: 1.7 }}>
@@ -240,7 +240,7 @@ export default function AboutUsPage() {
                                         gutterBottom
                                         sx={{
                                             textAlign: 'center',
-                                            color: '#505B5F',
+                                            color: 'primary.main',
                                             fontWeight: 'bold',
                                             mb: 3
                                         }}
@@ -252,7 +252,7 @@ export default function AboutUsPage() {
                                         variant="body1"
                                         sx={{
                                             textAlign: 'center',
-                                            color: '#666',
+                                            color: 'text.secondary',
                                             maxWidth: 800,
                                             mx: 'auto',
                                             mb: 5,
@@ -270,7 +270,7 @@ export default function AboutUsPage() {
                                                         width: 60,
                                                         height: 60,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#6d6b67ff',
+                                                        backgroundColor: 'neutral.darkGray',
                                                         display: 'flex',
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
@@ -286,7 +286,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="h6"
                                                         sx={{
-                                                            color: '#505B5F',
+                                                            color: 'primary.main',
                                                             fontWeight: 'bold',
                                                             mb: 1
                                                         }}
@@ -296,7 +296,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="body1"
                                                         sx={{
-                                                            color: '#666',
+                                                            color: 'text.secondary',
                                                             lineHeight: 1.6
                                                         }}
                                                     >
@@ -314,7 +314,7 @@ export default function AboutUsPage() {
                                                         width: 60,
                                                         height: 60,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#86847fff',
+                                                        backgroundColor: 'neutral.mediumGray',
                                                         display: 'flex',
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
@@ -330,7 +330,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="h6"
                                                         sx={{
-                                                            color: '#505B5F',
+                                                            color: 'primary.main',
                                                             fontWeight: 'bold',
                                                             mb: 1
                                                         }}
@@ -340,7 +340,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="body1"
                                                         sx={{
-                                                            color: '#666',
+                                                            color: 'text.secondary',
                                                             lineHeight: 1.6
                                                         }}
                                                     >
@@ -358,7 +358,7 @@ export default function AboutUsPage() {
                                                         width: 60,
                                                         height: 60,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#999690ff',
+                                                        backgroundColor: 'secondary.dark',
                                                         display: 'flex',
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
@@ -374,7 +374,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="h6"
                                                         sx={{
-                                                            color: '#505B5F',
+                                                            color: 'primary.main',
                                                             fontWeight: 'bold',
                                                             mb: 1
                                                         }}
@@ -384,7 +384,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="body1"
                                                         sx={{
-                                                            color: '#666',
+                                                            color: 'text.secondary',
                                                             lineHeight: 1.6
                                                         }}
                                                     >
@@ -402,7 +402,7 @@ export default function AboutUsPage() {
                                                         width: 60,
                                                         height: 60,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#8b8a87ff',
+                                                        backgroundColor: 'secondary.light',
                                                         display: 'flex',
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
@@ -418,7 +418,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="h6"
                                                         sx={{
-                                                            color: '#505B5F',
+                                                            color: 'primary.main',
                                                             fontWeight: 'bold',
                                                             mb: 1
                                                         }}
@@ -428,7 +428,7 @@ export default function AboutUsPage() {
                                                     <Typography
                                                         variant="body1"
                                                         sx={{
-                                                            color: '#666',
+                                                            color: 'text.secondary',
                                                             lineHeight: 1.6
                                                         }}
                                                     >
@@ -453,7 +453,7 @@ export default function AboutUsPage() {
                                 gutterBottom
                                 sx={{
                                     textAlign: 'center',
-                                    color: '#505B5F',
+                                    color: 'primary.main',
                                     fontWeight: 'bold',
                                     mb: 6
                                 }}
@@ -483,13 +483,14 @@ export default function AboutUsPage() {
                                                     height: 120,
                                                     mx: 'auto',
                                                     mb: 3,
-                                                    border: '4px solid #8f8c88ff'
+                                                    border: '4px solid',
+                                                    borderColor: 'neutral.mediumGray'
                                                 }}
                                             />
                                             <Typography
                                                 variant="h5"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 1
                                                 }}
@@ -499,7 +500,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#B28E52',
+                                                    color: 'secondary.main',
                                                     fontWeight: 'medium',
                                                     mb: 2
                                                 }}
@@ -509,7 +510,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="body1"
                                                 sx={{
-                                                    color: '#666',
+                                                    color: 'text.secondary',
                                                     lineHeight: 1.6,
                                                     mb: 3
                                                 }}
@@ -519,19 +520,19 @@ export default function AboutUsPage() {
                                                 enhance the quality of life for our clients.
                                             </Typography>
                                             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
-                                                <IconButton size="small" sx={{ color: '#868686ff' }}>
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <LinkedInIcon />
                                                 </IconButton>
 
-                                                <IconButton size="small" sx={{ color: '#635c5eff' }}>
+                                                <IconButton size="small" sx={{ color: 'neutral.darkGray' }}>
                                                     <InstagramIcon />
                                                 </IconButton>
 
-                                                <IconButton size="small" sx={{ color: '#686868ff' }}>
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <FacebookIcon />
                                                 </IconButton>
 
-                                                <IconButton size="small" sx={{ color: '#6d6f70ff' }}>
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <TwitterIcon />
                                                 </IconButton>
                                             </Box>
@@ -560,13 +561,14 @@ export default function AboutUsPage() {
                                                     height: 120,
                                                     mx: 'auto',
                                                     mb: 3,
-                                                    border: '4px solid #B28E52'
+                                                    border: '4px solid',
+                                                    borderColor: 'secondary.main'
                                                 }}
                                             />
                                             <Typography
                                                 variant="h5"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 1
                                                 }}
@@ -576,7 +578,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#B28E52',
+                                                    color: 'secondary.main',
                                                     fontWeight: 'medium',
                                                     mb: 2
                                                 }}
@@ -586,7 +588,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="body1"
                                                 sx={{
-                                                    color: '#666',
+                                                    color: 'text.secondary',
                                                     lineHeight: 1.6,
                                                     mb: 3
                                                 }}
@@ -596,16 +598,19 @@ export default function AboutUsPage() {
                                                 ensuring each space tells a unique story.
                                             </Typography>
                                             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
-                                                <IconButton size="small" sx={{ color: '#0077B5' }}>
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <LinkedInIcon />
                                                 </IconButton>
-                                                <IconButton size="small" sx={{ color: '#E4405F' }}>
+
+                                                <IconButton size="small" sx={{ color: 'neutral.darkGray' }}>
                                                     <InstagramIcon />
                                                 </IconButton>
-                                                <IconButton size="small" sx={{ color: '#4267B2' }}>
+
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <FacebookIcon />
                                                 </IconButton>
-                                                <IconButton size="small" sx={{ color: '#1DA1F2' }}>
+
+                                                <IconButton size="small" sx={{ color: 'neutral.mediumGray' }}>
                                                     <TwitterIcon />
                                                 </IconButton>
                                             </Box>
@@ -617,7 +622,7 @@ export default function AboutUsPage() {
                     </Box>
 
                     {/* Team Section */}
-                    <Box sx={{ mt: 8, py: 6, backgroundColor: '#F8F8F8', borderRadius: 3 }}>
+                    <Box sx={{ mt: 8, py: 6, backgroundColor: 'background.default', borderRadius: 3 }}>
                         <Container maxWidth="lg">
                             <Typography
                                 variant="h4"
@@ -647,10 +652,10 @@ export default function AboutUsPage() {
                                         borderRadius: 4,
                                     },
                                     '&::-webkit-scrollbar-thumb': {
-                                        backgroundColor: '#B28E52',
+                                        backgroundColor: 'secondary.main',
                                         borderRadius: 4,
                                         '&:hover': {
-                                            backgroundColor: '#9A7A45',
+                                            backgroundColor: 'secondary.dark',
                                         },
                                     },
                                 }}
@@ -686,13 +691,14 @@ export default function AboutUsPage() {
                                                     height: 80,
                                                     mx: 'auto',
                                                     mb: 2,
-                                                    border: '3px solid #B28E52'
+                                                    border: '3px solid',
+                                                    borderColor: 'secondary.main'
                                                 }}
                                             />
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 0.5
                                                 }}
@@ -702,7 +708,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="body2"
                                                 sx={{
-                                                    color: '#B28E52',
+                                                    color: 'secondary.main',
                                                     fontWeight: 'medium'
                                                 }}
                                             >
@@ -715,8 +721,8 @@ export default function AboutUsPage() {
                         </Container>
                     </Box>
 
-                    {/* Stats Section */}
-                    <Box sx={{ mt: 8, py: 6, backgroundColor: '#F8F8F8', borderRadius: 3 }}>
+                    {/* Stats Section 
+                    <Box sx={{ mt: 8, py: 6, backgroundColor: 'background.default', borderRadius: 3 }}>
                         <Container maxWidth="lg">
                             <Typography
                                 variant="h4"
@@ -757,7 +763,7 @@ export default function AboutUsPage() {
                                                     width: 100,
                                                     height: 100,
                                                     borderRadius: '50%',
-                                                    backgroundColor: '#ECE9E3',
+                                                    backgroundColor: 'neutral.offWhite',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
@@ -766,7 +772,7 @@ export default function AboutUsPage() {
                                                     position: 'relative'
                                                 }}
                                             >
-                                                <PeopleIcon sx={{ fontSize: 50, color: '#B28E52' }} />
+                                                <PeopleIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
                                                 <Box
                                                     sx={{
                                                         position: 'absolute',
@@ -775,7 +781,7 @@ export default function AboutUsPage() {
                                                         width: 24,
                                                         height: 24,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#B28E52',
+                                                        backgroundColor: 'secondary.main',
                                                         border: '2px solid white',
                                                         display: 'flex',
                                                         alignItems: 'center',
@@ -790,7 +796,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h3"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 1,
                                                     fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
@@ -801,7 +807,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'normal',
                                                     fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' }
                                                 }}
@@ -836,7 +842,7 @@ export default function AboutUsPage() {
                                                     width: 100,
                                                     height: 100,
                                                     borderRadius: '50%',
-                                                    backgroundColor: '#ECE9E3',
+                                                    backgroundColor: 'neutral.offWhite',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
@@ -845,7 +851,7 @@ export default function AboutUsPage() {
                                                     position: 'relative'
                                                 }}
                                             >
-                                                <DesignServicesIcon sx={{ fontSize: 50, color: '#B28E52' }} />
+                                                <DesignServicesIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
                                                 <Box
                                                     sx={{
                                                         position: 'absolute',
@@ -854,7 +860,7 @@ export default function AboutUsPage() {
                                                         width: 24,
                                                         height: 24,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#B28E52',
+                                                        backgroundColor: 'secondary.main',
                                                         border: '2px solid white',
                                                         display: 'flex',
                                                         alignItems: 'center',
@@ -869,7 +875,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h3"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 1,
                                                     fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
@@ -880,7 +886,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'normal',
                                                     fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' }
                                                 }}
@@ -915,7 +921,7 @@ export default function AboutUsPage() {
                                                     width: 100,
                                                     height: 100,
                                                     borderRadius: '50%',
-                                                    backgroundColor: '#ECE9E3',
+                                                    backgroundColor: 'neutral.offWhite',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
@@ -924,7 +930,7 @@ export default function AboutUsPage() {
                                                     position: 'relative'
                                                 }}
                                             >
-                                                <PublicIcon sx={{ fontSize: 50, color: '#B28E52' }} />
+                                                <PublicIcon sx={{ fontSize: 50, color: 'secondary.main' }} />
                                                 <Box
                                                     sx={{
                                                         position: 'absolute',
@@ -933,7 +939,7 @@ export default function AboutUsPage() {
                                                         width: 24,
                                                         height: 24,
                                                         borderRadius: '50%',
-                                                        backgroundColor: '#B28E52',
+                                                        backgroundColor: 'secondary.main',
                                                         border: '2px solid white',
                                                         display: 'flex',
                                                         alignItems: 'center',
@@ -948,7 +954,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h3"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'bold',
                                                     mb: 1,
                                                     fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
@@ -959,7 +965,7 @@ export default function AboutUsPage() {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    color: '#505B5F',
+                                                    color: 'primary.main',
                                                     fontWeight: 'normal',
                                                     fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' }
                                                 }}
@@ -971,7 +977,7 @@ export default function AboutUsPage() {
                                 </Grid>
                             </Grid>
                         </Container>
-                    </Box>
+                    </Box>*/}
                 </Container>
             </Box>
         </Box>

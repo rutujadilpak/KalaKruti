@@ -7,7 +7,7 @@ export default function KitchenHeroSection() {
     const navigate = useNavigate();
 
     const image =
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200";
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1476";
 
     return (
         <Box

@@ -249,7 +249,7 @@ export default function HowItWorks() {
         <Box sx={{ position: "relative", minHeight: "100vh" }}>
             {/* Hero Section with Full-Width Image */}
             <HeroSection>
-                {/* Breadcrumb Navigation */}
+                {/* Breadcrumb Navigation 
                 <BreadcrumbContainer>
                     <Breadcrumbs
                         separator="/"
@@ -300,7 +300,7 @@ export default function HowItWorks() {
                             How it works
                         </Typography>
                     </Breadcrumbs>
-                </BreadcrumbContainer>
+                </BreadcrumbContainer>*/}
             </HeroSection>
 
             {/* Main Content Section */}

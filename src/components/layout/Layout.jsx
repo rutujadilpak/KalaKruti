@@ -17,8 +17,8 @@ export default function Layout() {
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    pt: isMobile ? '110px' : '170px',
-                    pb: isMobile ? '80px' : 0,
+                    pt: isMobile ? '72px' : '170px',
+                    pb: isMobile ? '0px' : 0,
                 }}
             >
                 <Outlet />

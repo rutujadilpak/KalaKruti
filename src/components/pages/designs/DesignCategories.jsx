@@ -57,7 +57,10 @@ export default function DesignCategories() {
     ];
 
     return (
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Container maxWidth="lg" sx={{
+            py: { xs: 0, sm: 0, md: 4 },
+        }}
+        >
             <Typography variant="h3" component="h1" gutterBottom textAlign="center">
                 Design Categories
             </Typography>
