@@ -81,13 +81,17 @@ export default function FeaturedProjectDetail() {
     };
 
     return (
-        <Container maxWidth="xl" sx={{ py: 6 }}>
+        <Container maxWidth="xl" sx={{
+            py: 0,
+        }}>
             {/* Back Button */}
             <Button
                 startIcon={<ArrowBack />}
                 onClick={() => navigate("/projects/featured")}
-                sx={{ mb: 4 }}
-            >
+                sx={{
+                    py: 0,
+                    mt: { xs: 0, sm: 0, md: 6 }, // 0 on mobile/small, 6 on medium and up
+                }}            >
                 Back to Featured Projects
             </Button>
 

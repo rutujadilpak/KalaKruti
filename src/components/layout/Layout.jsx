@@ -12,23 +12,18 @@ export default function Layout() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />
-
-            {/* Headertwo - Desktop: at top, Mobile: at bottom */}
             {!isMobile && <Headertwo />}
-
             <Box
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    pt: isMobile ? '110px' : '170px', // Mobile: only header, Desktop: both headers
-                    pb: isMobile ? '80px' : 0, // Mobile: space for bottom Headertwo
+                    pt: isMobile ? '110px' : '170px',
+                    pb: isMobile ? '80px' : 0,
                 }}
             >
                 <Outlet />
             </Box>
-
             <Footer />
-
             {/* Headertwo at bottom for mobile */}
             {isMobile && <Headertwo />}
         </Box>

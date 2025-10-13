@@ -47,7 +47,10 @@ export default function AllDesigns() {
     ];
 
     return (
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Container maxWidth="xl" sx={{
+            py: { xs: 0, sm: 0, md: 4 },
+        }}
+        >
             {/* Header Section */}
             <Box sx={{ mb: 6, textAlign: 'left' }}>
                 <Typography

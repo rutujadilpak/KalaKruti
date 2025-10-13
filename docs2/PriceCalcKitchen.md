@@ -1,4 +1,4 @@
-Kitchen Price Calculator — API Documentation (Main Packages)
+Kitchen Price Calculator — API Documentation 
 
 Base URL
 https://yourdomain.com/api/kitchen

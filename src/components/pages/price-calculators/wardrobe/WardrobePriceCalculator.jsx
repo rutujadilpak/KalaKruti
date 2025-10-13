@@ -8,11 +8,15 @@ import WardrobeEstimatorFAQs from "./WardrobeEstimatorFAQs";
 export default function WardrobePriceCalculator() {
     return (
         <>
-            <WardrobeHeroSection />
-            <WardrobeHero />
-            <WardrobeCarousel />
-            <WardrobeHowItWorks />
-            <WardrobeEstimatorFAQs />
+            <div style={{ overflowX: "hidden" }}>
+                <WardrobeHeroSection />
+                <WardrobeHero />
+                <WardrobeCarousel />
+                <WardrobeHowItWorks />
+                <WardrobeEstimatorFAQs />
+
+            </div>
+
         </>
     );
 }
