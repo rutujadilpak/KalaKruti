@@ -15,12 +15,12 @@ This endpoint is called automatically when the user reaches the “Estimate” p
 
 Query Parameters
 
-Parameter	Type		        Example	      Description
-layout	    string		       "l-shaped"	 Selected kitchen layout
-A	        number		        4.5	         Primary dimension (ft)
-B	        number		        4.9	         Secondary dimension (if applicable)
-C	        number		        5.0	         Third dimension (U-shaped layouts only)
-package	    string		       "premium"	 Kitchen package selected by the user (essentials, premium, luxe)
+Parameter	  Type		        Example	       Description
+layout	    string		      "l-shaped"	   Selected kitchen layout
+A	          number		       4.5	         Primary dimension (ft)
+B	          number		       4.9	         Secondary dimension (if applicable)
+C	          number		       5.0	         Third dimension (U-shaped layouts only)
+package	    string		       "premium"	   Kitchen package selected by the user (essentials, premium, luxe)
 
 
 Example Request
@@ -40,10 +40,10 @@ Example Response
 }
 
 Response Codes
-Code	Meaning
-200	    Estimate calculated successfully
-400	    Missing or invalid parameters
-500	    Internal server error
+Code	   Meaning
+200	     Estimate calculated successfully
+400	     Missing or invalid parameters
+500	     Internal server error
 
 
 

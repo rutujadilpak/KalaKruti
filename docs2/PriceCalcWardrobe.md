@@ -49,7 +49,7 @@ Response
 }
 
 Response Codes
-Code	 Meaning
+Code	   Meaning
 200	     Successfully calculated estimate
 400	     Missing or invalid parameters
 500	     Internal calculation error
@@ -97,7 +97,7 @@ Example Response
 }
 
 Response  Codes
-Code	  Meaning
+Code	    Meaning
 200	      Estimate submitted successfully
 400	      Validation error (missing fields)
 500	      Internal server error

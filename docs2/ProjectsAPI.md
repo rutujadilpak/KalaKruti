@@ -2,7 +2,7 @@ Interior Design Website — API Documentation
 
 Module: Projects
 
-**Base URL**
+Base URL
 https://yourdomain.com/api/projects
 
 
@@ -18,7 +18,7 @@ Example Request
 GET /api/projects/featured
 
 
-### Example Response
+Example Response
 ```json
 [
   {
@@ -36,10 +36,10 @@ GET /api/projects/featured
 ]
 
 Response Codes
-Code	Meaning
-200	Successfully fetched all featured projects
-404	No featured projects found
-500	Server error
+Code	   Meaning
+200	     Successfully fetched all featured projects
+404	     No featured projects found
+500	     Server error
 
 
 
@@ -84,10 +84,10 @@ json
 
 
 Response Codes
-Code	Meaning
-200	    Successfully fetched featured project details
-404	    Featured project not found
-500	    Server error
+Code	   Meaning
+200	     Successfully fetched featured project details
+404	     Featured project not found
+500	     Server error
 
 
 
@@ -124,10 +124,10 @@ json
 
 
 Response Codes
-Code	Meaning
-200	    Successfully fetched all delivered projects
-404	    No delivered projects found
-500	    Server error
+Code	   Meaning
+200	     Successfully fetched all delivered projects
+404	     No delivered projects found
+500	     Server error
 
 
 
@@ -171,10 +171,10 @@ json
 
 
 Response Codes
-Code	Meaning
-200	    Successfully fetched delivered project details
-404	    Delivered project not found
-500	    Server error
+Code	   Meaning
+200	     Successfully fetched delivered project details
+404	     Delivered project not found
+500	     Server error
 
 
 
@@ -213,10 +213,10 @@ json
 
 
 Response Codes
-Code	Meaning
-200	    Successfully fetched all upcoming projects
-404	    No upcoming projects found
-500	    Server error
+Code	   Meaning
+200	     Successfully fetched all upcoming projects
+404	     No upcoming projects found
+500	     Server error
 
 
 
@@ -264,8 +264,8 @@ json
 
 
 Response Codes
-Code	Meaning
-200	    Successfully fetched upcoming project details
-404	    Upcoming project not found
-500	    Server error
+Code	   Meaning
+200	     Successfully fetched upcoming project details
+404	     Upcoming project not found
+500	     Server error
 
