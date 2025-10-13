@@ -88,16 +88,11 @@ export default function Header() {
                 onClick={handleDrawerToggle}
             >
                 <Box
-                    component="img"
-                    src={logo}
-                    alt="Kalakruti Logo"
+
                     sx={{
-                        height: 80,
-                        width: 80,
-                        objectFit: "contain",
-                        filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.1))",
-                        transition: "transform 0.2s ease",
-                        "&:hover": { transform: "scale(1.05)" },
+                        height: 50,
+                        width: 50,
+
                     }}
                 />
 
@@ -110,7 +105,6 @@ export default function Header() {
                             letterSpacing: "0.1em",
                         }}
                     >
-                        KALAKRUTI
                     </Typography>
                     <Typography
                         sx={{
@@ -120,7 +114,6 @@ export default function Header() {
                             lineHeight: 1,
                         }}
                     >
-                        STUDIO
                     </Typography>
                 </Box>
             </Box>
@@ -166,13 +159,16 @@ export default function Header() {
         >
             <Container maxWidth="false">
                 <Toolbar
+                    disableGutters
                     sx={{
                         justifyContent: "space-between",
-                        minHeight: "100px !important",
-                        py: 1,
+                        alignItems: "center",
+                        px: { xs: 2, sm: 3, md: 4 },
+                        py: { xs: 0, sm: 0.5, md: 1 },
+                        minHeight: { xs: 70, sm: 80, md: 100 },
                     }}
                 >
-                    {/* Logo Section */}
+                    {/* Logo + Name */}
                     <Box
                         component={Link}
                         to="/"
@@ -180,16 +176,21 @@ export default function Header() {
                             display: "flex",
                             alignItems: "center",
                             textDecoration: "none",
+                            transformOrigin: "left center",
+                            gap: { xs: 1.5, sm: 2, md: 2.5 },
+                            flex: { xs: 1, md: 0 },
                             "&:hover": { transform: "scale(1.02)" },
+                            transition: "transform 0.2s ease",
                         }}
                     >
+                        {/* Logo */}
                         <Box
                             component="img"
                             src={logo}
                             alt="Kalakruti Logo"
                             sx={{
-                                height: { xs: 70, md: 100 },
-                                width: { xs: 70, md: 100 },
+                                height: { xs: 70, sm: 65, md: 100 },
+                                width: { xs: 70, sm: 65, md: 100 },
                                 objectFit: "contain",
                                 filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.1))",
                                 transition: "transform 0.2s ease",
@@ -197,21 +198,23 @@ export default function Header() {
                             }}
                         />
 
+                        {/* Text */}
                         <Box
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
+                                justifyContent: "center",
                                 textAlign: "center",
-                                ml: 0,
                             }}
                         >
                             <Typography
                                 sx={{
                                     color: theme.palette.primary.dark,
                                     fontWeight: "bold",
-                                    fontSize: "2.2rem",
+                                    fontSize: { xs: "1.6rem", sm: "1.8rem", md: "2.2rem" },
                                     letterSpacing: "0.1em",
+                                    lineHeight: 1,
                                 }}
                             >
                                 KALAKRUTI
@@ -219,8 +222,9 @@ export default function Header() {
                             <Typography
                                 sx={{
                                     color: theme.palette.primary.dark,
-                                    fontSize: "1rem",
+                                    fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
                                     letterSpacing: "0.2em",
+                                    lineHeight: 1.1,
                                 }}
                             >
                                 STUDIO
@@ -232,16 +236,17 @@ export default function Header() {
                     {isMobile ? (
                         <IconButton
                             color="inherit"
-                            edge="start"
+                            edge="end"
                             onClick={handleDrawerToggle}
                             sx={{
                                 color: theme.palette.text.primary,
+                                flexShrink: 0,
                                 "&:hover": {
                                     backgroundColor: theme.palette.action.hover,
                                 },
                             }}
                         >
-                            <MenuIcon />
+                            <MenuIcon sx={{ fontSize: { xs: 28, sm: 30 } }} />
                         </IconButton>
                     ) : (
                         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
@@ -251,7 +256,7 @@ export default function Header() {
                                         key={item.label}
                                         trigger={["hover"]}
                                         getPopupContainer={() => document.body}
-                                        overlayStyle={{ zIndex: 9999 }} // ✅ CRITICAL FIX: Much higher z-index
+                                        overlayStyle={{ zIndex: 9999 }}
                                         dropdownRender={() => (
                                             <Box
                                                 sx={{

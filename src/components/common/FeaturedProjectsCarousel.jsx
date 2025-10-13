@@ -10,13 +10,16 @@ import {
     Chip,
     IconButton,
     useTheme,
+    useMediaQuery,
 } from "@mui/material";
-import { ArrowForward, ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
     const navigate = useNavigate();
     const theme = useTheme();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
     const handleProjectClick = (projectId) => {
         navigate(`/projects/featured/${projectId}`);
@@ -35,8 +38,9 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
     };
 
     const getVisibleProjects = () => {
+        const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
         const visible = [];
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < visibleCount; i++) {
             const index = (currentIndex + i) % projects.length;
             visible.push(projects[index]);
         }
@@ -44,51 +48,64 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
     };
 
     return (
-        <Box sx={{ position: "relative", width: "100%" }}>
-            {/* Navigation Arrows */}
+        <Box
+            sx={{
+                position: "relative",
+                width: "100%",
+                overflow: "hidden",
+                px: { xs: 1, sm: 2, md: 4 },
+                py: { xs: 2, sm: 3, md: 6 },
+            }}
+        >
+            {/* Navigation Arrows (visible on all screens) */}
             <IconButton
                 onClick={handlePrevious}
                 sx={{
                     position: "absolute",
-                    left: -20,
+                    left: { xs: 6, sm: 10 },
                     top: "50%",
                     transform: "translateY(-50%)",
                     zIndex: 2,
                     backgroundColor: "white",
-                    boxShadow: theme.shadows[4],
+                    boxShadow: theme.shadows[3],
                     "&:hover": {
                         backgroundColor: "grey.100",
                     },
+                    width: { xs: 36, sm: 44 },
+                    height: { xs: 36, sm: 44 },
                 }}
             >
-                <ChevronLeft />
+                <ChevronLeft fontSize={isMobile ? "small" : "medium"} />
             </IconButton>
 
             <IconButton
                 onClick={handleNext}
                 sx={{
                     position: "absolute",
-                    right: -20,
+                    right: { xs: 6, sm: 10 },
                     top: "50%",
                     transform: "translateY(-50%)",
                     zIndex: 2,
                     backgroundColor: "white",
-                    boxShadow: theme.shadows[4],
+                    boxShadow: theme.shadows[3],
                     "&:hover": {
                         backgroundColor: "grey.100",
                     },
+                    width: { xs: 36, sm: 44 },
+                    height: { xs: 36, sm: 44 },
                 }}
             >
-                <ChevronRight />
+                <ChevronRight fontSize={isMobile ? "small" : "medium"} />
             </IconButton>
 
             {/* Carousel Container */}
             <Box
                 sx={{
                     display: "flex",
-                    gap: 3,
-                    overflow: "hidden",
-                    px: 2,
+                    justifyContent: "center",
+                    alignItems: "stretch",
+                    gap: { xs: 2, sm: 3 },
+                    transition: "transform 0.5s ease",
                 }}
             >
                 {getVisibleProjects().map((project, index) => (
@@ -96,28 +113,30 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
                         key={`${project.id}-${currentIndex}-${index}`}
                         onClick={() => handleProjectClick(project.id)}
                         sx={{
-                            minWidth: 350,
-                            maxWidth: 400,
+                            flex: isMobile ? "1 1 100%" : isTablet ? "1 1 45%" : "1 1 30%",
                             cursor: "pointer",
                             borderRadius: "16px",
                             overflow: "hidden",
-                            boxShadow: theme.shadows[4],
+                            boxShadow: theme.shadows[3],
                             transition: "all 0.35s ease",
                             "&:hover": {
-                                transform: "translateY(-5px)",
+                                transform: "translateY(-6px)",
                                 boxShadow: theme.shadows[10],
                             },
-                            height: 500,
+                            height: { xs: 420, sm: 450, md: 500 },
+                            backgroundColor: theme.palette.background.paper,
                         }}
                     >
                         <Box sx={{ position: "relative" }}>
                             <CardMedia
                                 component="img"
-                                height="250"
+                                height={isMobile ? 200 : 250}
                                 image={project.image}
                                 alt={project.title}
                                 sx={{ objectFit: "cover" }}
                             />
+
+                            {/* Overlay Chips */}
                             <Chip
                                 label={`${project.images.length} Images`}
                                 size="small"
@@ -155,7 +174,8 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
                                 />
                             )}
                         </Box>
-                        <CardContent sx={{ p: 3 }}>
+
+                        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -165,11 +185,17 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
                                     WebkitLineClamp: 2,
                                     WebkitBoxOrient: "vertical",
                                     overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    height: "3.5rem",
                                 }}
                             >
                                 {project.title}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                            <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{ mb: 1.2 }}
+                            >
                                 {project.location}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
@@ -182,6 +208,7 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
                             >
                                 {project.pricing}
                             </Typography>
+
                             <Button
                                 variant="outlined"
                                 fullWidth
@@ -217,9 +244,10 @@ export default function FeaturedProjectsCarousel({ projects, onViewAll }) {
                             width: 8,
                             height: 8,
                             borderRadius: "50%",
-                            backgroundColor: index === currentIndex
-                                ? theme.palette.primary.main
-                                : theme.palette.grey[300],
+                            backgroundColor:
+                                index === currentIndex
+                                    ? theme.palette.primary.main
+                                    : theme.palette.grey[300],
                             cursor: "pointer",
                             transition: "all 0.3s ease",
                             "&:hover": {

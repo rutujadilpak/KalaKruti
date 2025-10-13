@@ -199,7 +199,7 @@ function ModularInteriors() {
 
                     {/* What we offer section */}
                     <Box sx={{
-                        mt: 8,
+                        mt: 1,
                         backgroundColor: theme.palette.background.default,
                         borderRadius: 2,
                         p: 4
@@ -273,21 +273,7 @@ function ModularInteriors() {
                                         >
                                             Expert design consultation and space planning to create your dream home.
                                         </Typography>
-                                        <Typography
-                                            component={Link}
-                                            to="/offerings/learn-more"
-                                            sx={{
-                                                color: themeNeutral.palette.primary.main,
-                                                textDecoration: 'none',
-                                                fontSize: '0.9rem',
-                                                fontWeight: 'bold',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                }
-                                            }}
-                                        >
-                                            Learn more →
-                                        </Typography>
+
                                     </Box>
                                 </CardContent>
                             </Card>
@@ -334,21 +320,7 @@ function ModularInteriors() {
                                         >
                                             Professional construction and installation services for all your interior needs.
                                         </Typography>
-                                        <Typography
-                                            component={Link}
-                                            to="/offerings/learn-more"
-                                            sx={{
-                                                color: themeNeutral.palette.primary.main,
-                                                textDecoration: 'none',
-                                                fontSize: '0.9rem',
-                                                fontWeight: 'bold',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                }
-                                            }}
-                                        >
-                                            Learn more →
-                                        </Typography>
+
                                     </Box>
                                 </CardContent>
                             </Card>
@@ -395,21 +367,7 @@ function ModularInteriors() {
                                         >
                                             Modern kitchen designs with premium materials and smart storage solutions.
                                         </Typography>
-                                        <Typography
-                                            component={Link}
-                                            to="/offerings/learn-more"
-                                            sx={{
-                                                color: themeNeutral.palette.primary.main,
-                                                textDecoration: 'none',
-                                                fontSize: '0.9rem',
-                                                fontWeight: 'bold',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                }
-                                            }}
-                                        >
-                                            Learn more →
-                                        </Typography>
+
                                     </Box>
                                 </CardContent>
                             </Card>
@@ -464,31 +422,7 @@ function ModularInteriors() {
                                 </Typography>
                             </Box>
 
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    borderColor: theme.palette.secondary.main,
-                                    color: theme.palette.secondary.main,
-                                    textTransform: 'uppercase',
-                                    fontWeight: 'bold',
-                                    px: 3,
-                                    py: 1.5,
-                                    fontSize: '0.9rem',
-                                    borderRadius: '4px',
-                                    borderWidth: '2px',
-                                    '&:hover': {
-                                        borderColor: theme.palette.text.secondary,
-                                        backgroundColor: theme.palette.text.secondary,
-                                        color: 'white',
-                                        borderWidth: '2px'
-                                    },
-                                    transition: 'all 0.3s ease',
-                                    flexShrink: 0,
-                                    ml: 4
-                                }}
-                            >
-                                Learn More
-                            </Button>
+
                         </Box>
 
                         {/* Cards Layout */}

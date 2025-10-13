@@ -364,22 +364,7 @@ export default function Footer() {
                                         care@kalakruti.com
                                     </Link>
                                 </Box>
-                                <Box sx={{ mt: 2 }}>
-                                    <Link
-                                        component={RouterLink}
-                                        to="/contact"
-                                        sx={{
-                                            color: theme.palette.secondary.contrastText,
-                                            textDecoration: 'none',
-                                            fontSize: { xs: '1rem', md: '1.1rem' },
-                                            opacity: 0.8,
-                                            py: 0.5,
-                                            '&:hover': { opacity: 1, textDecoration: 'underline' }
-                                        }}
-                                    >
-                                        Contact Form
-                                    </Link>
-                                </Box>
+
                             </Box>
                         </Grid>
                     </Grid>

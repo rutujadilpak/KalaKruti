@@ -26,7 +26,7 @@ Content-Type: `application/json`
 # Request Payload
 
 | Field     | Type   | Required  | Description                   |     Validation Rules                                    |
-|--------   |------  |-----------|--------------                 |------------------                                       |
+|--------   |------  |-----------|-------------------------------|---------------------------------------------------------|
 | `name`    | String | Yes       | Full name of the sender       | Must contain only letters and spaces; min. 2 characters |
 | `email`   | String | Yes       | Sender’s email address        | Must be a valid email format (e.g., `user@example.com`) |
 | `phone`   | String | Yes       | 10-digit mobile number        | Must be exactly 10 digits; numeric only                 |
@@ -37,7 +37,7 @@ Content-Type: `application/json`
 
 # Example Request
 
-```http
+http
 POST /api/contact
 Content-Type: application/json
 Request Body:
@@ -64,7 +64,6 @@ HTTP Status: 200 OK
 
 Example Validation Error Response
 json
-Copy code
 {
   "success": false,
   "errors": {

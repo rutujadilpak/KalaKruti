@@ -34,8 +34,12 @@ export default function ProjectsPage() {
         <Box sx={{ overflowX: "hidden" }}>
             <Container maxWidth="lg">
                 {/* 🧭 Breadcrumbs and Page Intro */}
-                <Box sx={{ mb: 8, mt: 6 }}>
-                    <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
+                <Box
+                    sx={{
+                        mb: 8,
+                        mt: { xs: 0, sm: 0, md: 6 }, // ✅ 0 on mobile & small, 6 on medium and above
+                    }}
+                >                    <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
                         <Link
                             underline="hover"
                             color="inherit"
@@ -70,7 +74,7 @@ export default function ProjectsPage() {
                 </Box>
 
                 {/* 🧱 Project Categories Section */}
-                <Grid container spacing={6} sx={{ mb: 12, justifyContent: "center" }}>
+                <Grid container spacing={6} sx={{ mb: { xs: 0, sm: 0, md: 12 }, justifyContent: "center" }}>
                     {[
                         {
                             title: "Delivered Projects",
