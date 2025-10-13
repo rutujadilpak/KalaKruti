@@ -29,68 +29,76 @@ export default function HomeInteriorCalculatorSteps() {
         <Box sx={{ minHeight: '100vh', backgroundColor: theme.palette.background.default }}>
             <Container maxWidth="lg">
                 {/* Progress Header */}
-                <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    py: 3,
-                    mb: 2
-                }}>
-                    <Typography
-                        variant="h5"
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        py: 3,
+                        mb: 2,
+                        flexWrap: "wrap", // ✅ allows wrapping on small screens
+                        gap: { xs: 2, md: 0 }, // ✅ add spacing when wrapped
+                    }}
+                >
+                    {/* Left Title */}
+
+
+                    {/* Steps */}
+                    <Box
                         sx={{
-                            fontWeight: 'bold',
-                            color: theme.palette.text.primary,
-                            fontFamily: theme.typography.fontFamily
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 2,
+                            flex: 1,
+                            mx: { xs: 0, md: 4 },
+                            overflowX: { xs: "auto", md: "visible" }, // ✅ scrolls horizontally on mobile
+                            scrollbarWidth: "none", // ✅ hides scrollbar (Firefox)
+                            "&::-webkit-scrollbar": { display: "none" }, // ✅ hides scrollbar (Chrome/Safari)
                         }}
                     >
-                        KALAKRUTI
-                    </Typography>
-
-                    <Box sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 2,
-                        flex: 1,
-                        mx: 4
-                    }}>
                         {steps.map((step, index) => (
                             <Box
                                 key={step.id}
                                 sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    flex: 1
+                                    display: "flex",
+                                    alignItems: "center",
+                                    flexShrink: 0, // ✅ prevents shrinking on scroll
+                                    pr: 2,
                                 }}
                             >
                                 <Box
                                     sx={{
                                         width: 32,
                                         height: 32,
-                                        borderRadius: '50%',
-                                        backgroundColor: index <= currentStepIndex
-                                            ? theme.palette.primary.main
-                                            : theme.palette.neutral.lightGray,
-                                        color: index <= currentStepIndex ? theme.palette.primary.contrastText : theme.palette.text.secondary,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontSize: '14px',
-                                        fontWeight: 'bold',
-                                        mr: 1
+                                        borderRadius: "50%",
+                                        backgroundColor:
+                                            index <= currentStepIndex
+                                                ? theme.palette.primary.main
+                                                : theme.palette.neutral.lightGray,
+                                        color:
+                                            index <= currentStepIndex
+                                                ? theme.palette.primary.contrastText
+                                                : theme.palette.text.secondary,
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: "14px",
+                                        fontWeight: "bold",
+                                        mr: 1,
                                     }}
                                 >
-                                    {index < currentStepIndex ? '✓' : index + 1}
+                                    {index < currentStepIndex ? "✓" : index + 1}
                                 </Box>
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        fontWeight: index <= currentStepIndex ? 'bold' : 'normal',
-                                        color: index <= currentStepIndex
-                                            ? theme.palette.primary.main
-                                            : theme.palette.text.secondary,
-                                        fontSize: '12px',
-                                        fontFamily: theme.typography.fontFamily
+                                        fontWeight: index <= currentStepIndex ? "bold" : "normal",
+                                        color:
+                                            index <= currentStepIndex
+                                                ? theme.palette.primary.main
+                                                : theme.palette.text.secondary,
+                                        fontSize: "12px",
+                                        whiteSpace: "nowrap", // ✅ prevents text wrapping
                                     }}
                                 >
                                     {step.label}
@@ -99,12 +107,14 @@ export default function HomeInteriorCalculatorSteps() {
                         ))}
                     </Box>
 
+                    {/* Right Counter */}
                     <Typography
                         variant="body2"
                         sx={{
-                            fontWeight: 'bold',
+                            fontWeight: "bold",
                             color: theme.palette.text.secondary,
-                            fontFamily: theme.typography.fontFamily
+                            fontFamily: theme.typography.fontFamily,
+                            flexShrink: 0,
                         }}
                     >
                         {currentStepIndex + 1}/4
@@ -119,11 +129,12 @@ export default function HomeInteriorCalculatorSteps() {
                         height: 4,
                         borderRadius: 2,
                         backgroundColor: theme.palette.neutral.lightGray,
-                        '& .MuiLinearProgress-bar': {
-                            backgroundColor: theme.palette.primary.main
-                        }
+                        "& .MuiLinearProgress-bar": {
+                            backgroundColor: theme.palette.primary.main,
+                        },
                     }}
                 />
+
 
                 {/* Step Content */}
                 <Box sx={{ py: 4 }}>

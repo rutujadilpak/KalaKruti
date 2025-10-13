@@ -16,25 +16,25 @@ export default function EstimateSteps() {
 
     const steps = [
         {
-            icon: "https://cdn-icons-png.flaticon.com/128/489/489870.png", // 🏠 BHK type icon
+            icon: "https://cdn-icons-png.flaticon.com/128/489/489870.png", // 
             title: "Choose your BHK type",
             description:
                 "The type of house helps us understand the configuration of your home.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/128/3638/3638360.png", // 📏 Size of house
+            icon: "https://cdn-icons-png.flaticon.com/128/3638/3638360.png", // 
             title: "Select the size of your house",
             description:
                 "This will help us give you a more accurate estimate for your interiors.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/128/5436/5436184.png", // 🏡 Rooms to design
+            icon: "https://cdn-icons-png.flaticon.com/128/5436/5436184.png", // 
             title: "Pick the rooms to be designed",
             description:
                 "This will help us understand the scope of work for your home interiors.",
         },
         {
-            icon: "https://cdn-icons-png.flaticon.com/128/1442/1442912.png", // 🧾 Package
+            icon: "https://cdn-icons-png.flaticon.com/128/1442/1442912.png", // 
             title: "Pick a package as per your preference",
             description:
                 "This helps us fine tune the calculation based on the products and accessories that match your lifestyle.",

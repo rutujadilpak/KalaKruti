@@ -7,12 +7,14 @@ import KitchenEstimatorFAQs from "./KitchenEstimatorFAQs";
 
 export default function KitchenPriceCalculator() {
     return (
-        <>
+        <><div style={{ overflowX: "hidden", width: "100%" }}>
             <KitchenHeroSection />
             <KitchenHero />
             <KitchenLayoutSelector />
             <KitchenHowItWorks />
             <KitchenEstimatorFAQs />
+        </div>
+
         </>
     );
 }
