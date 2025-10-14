@@ -78,7 +78,7 @@ export default function HomeInspiration() {
                                     sx={{ width: '100%', height: 200, objectFit: 'cover' }}
                                 />
                                 <Box sx={{ p: 2, background: '#fff' }}>
-                                    <Typography fontWeight={600} sx={{ color: 'white' }}>{item.title}</Typography>
+                                    <Typography fontWeight={600} sx={{ color: 'Black' }}>{item.title}</Typography>
                                 </Box>
                             </Box>
                         ))}

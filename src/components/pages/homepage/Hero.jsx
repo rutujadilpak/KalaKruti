@@ -8,16 +8,37 @@ export default function Hero() {
     const navigate = useNavigate();
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const images = [
-        "https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074",
-        "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200",
-        "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",];
+    const slides = [
+        {
+            image:
+                "https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?q=80&w=1074&auto=format&fit=crop",
+            title: "We Create Dream Spaces",
+            subtitle: "Transform your home with elegant and functional design."
+        },
+        {
+            image:
+                "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?auto=format&fit=crop&q=80&w=1074",
+            title: "Modern Designs for Modern Living",
+            subtitle: "From concept to completion, we craft experiences that inspire."
+        },
+        {
+            image:
+                "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200",
+            title: "Your Vision, Our Expertise",
+            subtitle: "Collaborate with our experts to bring your dream interiors to life."
+        },
+        {
+            image:
+                "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1074&auto=format&fit=crop",
+            title: "Luxury That Speaks for Itself",
+            subtitle: "Every detail designed with precision, passion, and purpose."
+        }
+    ];
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
         {
             loop: true,
-            align: 'start',
+            align: "start",
             skipSnaps: false,
             dragFree: false
         },
@@ -41,10 +62,10 @@ export default function Hero() {
 
     return (
         <Box sx={{ position: "relative", height: "80vh", overflow: "hidden" }}>
-            {/* Embla wrapper */}
+            {/* Embla Carousel */}
             <div className="embla" ref={emblaRef}>
                 <div className="embla__container" style={{ display: "flex" }}>
-                    {images.map((img, index) => (
+                    {slides.map((slide, index) => (
                         <div
                             className="embla__slide"
                             key={index}
@@ -52,7 +73,7 @@ export default function Hero() {
                         >
                             <Box
                                 sx={{
-                                    backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${img})`,
+                                    backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${slide.image})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                     height: "80vh",
@@ -60,31 +81,45 @@ export default function Hero() {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     color: "white",
-                                    textAlign: "center",
+                                    textAlign: "center"
                                 }}
                             >
                                 <Container maxWidth="md">
                                     <Typography
-                                        variant="h2"
+                                        variant="h3"
                                         component="h1"
                                         gutterBottom
-                                        sx={{ fontWeight: "bold", color: "#ffffff" }} // Force white
+                                        sx={{
+                                            fontWeight: "bold",
+                                            color: "#ffffff",
+                                            textShadow: "2px 2px 10px rgba(0,0,0,0.4)"
+                                        }}
                                     >
-                                        We Create Dream Spaces
+                                        {slide.title}
                                     </Typography>
                                     <Typography
-                                        variant="h5"
+                                        variant="h6"
                                         gutterBottom
-                                        sx={{ mb: 4, color: "#f5f5f5" }} // Softer white for subtitle
+                                        sx={{
+                                            mb: 4,
+                                            color: "#f5f5f5",
+                                            textShadow: "1px 1px 8px rgba(0,0,0,0.4)"
+                                        }}
                                     >
-                                        Transform your space with our expert interior design services
+                                        {slide.subtitle}
                                     </Typography>
 
                                     <Button
                                         variant="contained"
                                         size="large"
                                         onClick={() => navigate("/contact")}
-                                        sx={{ px: 4, py: 2 }}
+                                        sx={{
+                                            px: 4,
+                                            py: 2,
+                                            borderRadius: 2,
+                                            textTransform: "none",
+                                            fontWeight: 600
+                                        }}
                                     >
                                         Book Consultation
                                     </Button>
@@ -103,10 +138,10 @@ export default function Hero() {
                     left: "50%",
                     transform: "translateX(-50%)",
                     display: "flex",
-                    gap: 1,
+                    gap: 1
                 }}
             >
-                {images.map((_, i) => (
+                {slides.map((_, i) => (
                     <Box
                         key={i}
                         onClick={() => emblaApi && emblaApi.scrollTo(i)}
@@ -114,11 +149,17 @@ export default function Hero() {
                             width: 12,
                             height: 12,
                             borderRadius: "50%",
-                            bgcolor: i === selectedIndex ? "white" : "rgba(255, 255, 255, 0.5)",
+                            bgcolor:
+                                i === selectedIndex
+                                    ? "white"
+                                    : "rgba(255, 255, 255, 0.5)",
                             cursor: "pointer",
                             transition: "all 0.3s ease",
                             "&:hover": {
-                                bgcolor: i === selectedIndex ? "white" : "rgba(255, 255, 255, 0.8)",
+                                bgcolor:
+                                    i === selectedIndex
+                                        ? "white"
+                                        : "rgba(255, 255, 255, 0.8)",
                                 transform: "scale(1.2)"
                             }
                         }}

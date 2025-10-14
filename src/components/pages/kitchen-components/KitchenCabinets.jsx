@@ -119,7 +119,7 @@ export default function KitchenCabinets() {
                 description: "Traditional wall cabinets with solid doors for concealed storage of kitchen items.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Standard"],
-               // price: "Starting from ₹11,000"
+                // price: "Starting from ₹11,000"
             },
             {
                 id: 3,
@@ -127,7 +127,7 @@ export default function KitchenCabinets() {
                 description: "Open wall shelves for easy access to frequently used items and decorative display.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Modern", "Open Design"],
-               // price: "Starting from ₹8,000"
+                // price: "Starting from ₹8,000"
             },
             {
                 id: 4,
@@ -135,9 +135,9 @@ export default function KitchenCabinets() {
                 description: "Open wall shelves for easy access to frequently used items and decorative display.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Modern", "Open Design"],
-               // price: "Starting from ₹8,000"
+                // price: "Starting from ₹8,000"
             },
-             {
+            {
                 id: 5,
                 title: "Glass Door Wall Unit",
                 description: "Upper-level cabinets with glass doors to showcase your beautiful dinnerware and glassware.",
@@ -145,13 +145,13 @@ export default function KitchenCabinets() {
                 tags: ["Premium", "Glass Doors"],
                 // price: "Starting from ₹14,000"
             },
-             {
+            {
                 id: 2,
                 title: "Solid Door Wall Unit",
                 description: "Traditional wall cabinets with solid doors for concealed storage of kitchen items.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Standard"],
-               // price: "Starting from ₹11,000"
+                // price: "Starting from ₹11,000"
             }
         ],
         tallUnits: [
@@ -161,7 +161,7 @@ export default function KitchenCabinets() {
                 description: "Full-height cabinets perfect for pantry storage with multiple shelves and compartments.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Premium", "Pantry Storage"],
-               // price: "Starting from ₹25,000"
+                // price: "Starting from ₹25,000"
             },
             {
                 id: 2,
@@ -179,7 +179,7 @@ export default function KitchenCabinets() {
                 tags: ["Utility Storage"],
                 // price: "Starting from ₹22,000"
             },
-             {
+            {
                 id: 4,
                 title: "Appliance Tall Unit",
                 description: "Tall cabinets designed to house large appliances like ovens, microwaves, and refrigerators.",
@@ -201,7 +201,7 @@ export default function KitchenCabinets() {
                 description: "Full-height cabinets perfect for pantry storage with multiple shelves and compartments.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Premium", "Pantry Storage"],
-               // price: "Starting from ₹25,000"
+                // price: "Starting from ₹25,000"
             },
         ],
         midTallUnits: [
@@ -229,8 +229,8 @@ export default function KitchenCabinets() {
                 tags: ["Appliance Storage"],
                 // price: "Starting from ₹16,000"
             },
-             {
-                 id: 4,
+            {
+                id: 4,
                 title: "Breakfast Nook Unit",
                 description: "Mid-height cabinets designed for breakfast nooks and casual dining areas.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
@@ -391,9 +391,9 @@ export default function KitchenCabinets() {
                     </Typography>
 
                     {/* Cabinet Types Grid */}
-                    <Box sx={{ 
-                        display: 'flex', 
-                        flexWrap: 'wrap', 
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
                         gap: 3,
                         justifyContent: { xs: 'center', md: 'flex-start' }
                     }}>
@@ -415,8 +415,8 @@ export default function KitchenCabinets() {
                                     }
                                 }}
                             >
-                                <Box sx={{ 
-                                    height: '200px', 
+                                <Box sx={{
+                                    height: '200px',
                                     overflow: 'hidden',
                                     borderRadius: '8px 8px 0 0'
                                 }}>
@@ -425,7 +425,7 @@ export default function KitchenCabinets() {
                                         height="100%"
                                         image={cabinet.image}
                                         alt={cabinet.title}
-                                        sx={{ 
+                                        sx={{
                                             objectFit: 'cover',
                                             width: '100%',
                                             height: '100%'
@@ -433,11 +433,11 @@ export default function KitchenCabinets() {
                                     />
                                 </Box>
                                 <CardContent sx={{ p: 2.5, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                                    <Typography 
-                                        variant="h6" 
-                                        component="h3" 
-                                        sx={{ 
-                                            mb: 1.5, 
+                                    <Typography
+                                        variant="h6"
+                                        component="h3"
+                                        sx={{
+                                            mb: 1.5,
                                             fontWeight: 'bold',
                                             fontSize: '1.1rem',
                                             color: theme.palette.text.primary,
@@ -446,7 +446,7 @@ export default function KitchenCabinets() {
                                     >
                                         {cabinet.title}
                                     </Typography>
-                                    
+
                                     <Box sx={{ mb: 2, flexGrow: 1 }}>
                                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                                             {cabinet.tags.map((tag, index) => (
@@ -455,7 +455,7 @@ export default function KitchenCabinets() {
                                                     label={tag}
                                                     size="small"
                                                     variant="outlined"
-                                                    sx={{ 
+                                                    sx={{
                                                         fontSize: '0.7rem',
                                                         height: '24px',
                                                         backgroundColor: '#f5f5f5',
@@ -470,16 +470,16 @@ export default function KitchenCabinets() {
                                         </Box>
                                     </Box>
 
-                                    <Box sx={{ 
-                                        display: 'flex', 
-                                        justifyContent: 'space-between', 
+                                    <Box sx={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
                                         alignItems: 'center',
                                         mt: 'auto'
                                     }}>
-                                        <Typography 
-                                            variant="body2" 
-                                            color="primary" 
-                                            sx={{ 
+                                        <Typography
+                                            variant="body2"
+                                            color="primary"
+                                            sx={{
                                                 fontWeight: 'bold',
                                                 fontSize: '0.9rem'
                                             }}
@@ -505,7 +505,7 @@ export default function KitchenCabinets() {
                         ))}
                     </Box>
 
-             
+
                 </Container>
             </Box>
         </Box>
