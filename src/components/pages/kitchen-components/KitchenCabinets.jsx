@@ -59,48 +59,60 @@ export default function KitchenCabinets() {
                 id: 1,
                 title: "Sink Unit",
                 description: "Specialized base cabinet designed to house your kitchen sink with proper plumbing access.",
+                shortOverview: "A durable under-sink base unit with easy access doors—ideal for water lines and cleaning supplies.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2625972-original/short-base-unit.jpg",
                 tags: ["Aarambh by KalaKruti", "Premium"],
+                inStock: "Yes",
                 // price: "Starting from ₹18,000"
             },
             {
                 id: 2,
                 title: "Blind Corner Unit, 1 Shelf",
                 description: "Smart corner solutions with single shelf for organized storage in corner spaces.",
+                shortOverview: "Maximize corner space with this smart storage solution featuring a single shelf for organized corner storage.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2626143-original/base-unit-3-ss-drawers-2m-1l.jpg",
                 tags: ["Semi Modular Metal"],
+                inStock: "Yes",
                 // price: "Starting from ₹15,000"
             },
             {
                 id: 3,
                 title: "Blind Corner Unit, 2 Dee Trays",
                 description: "Advanced corner solutions with two Dee-shaped pull-out trays for maximum corner utilization.",
+                shortOverview: "Advanced corner storage with two Dee-shaped pull-out trays for maximum space utilization and easy access.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2630147-original/short-base-unit.jpg",
                 tags: ["Premium"],
+                inStock: "Yes",
                 // price: "Starting from ₹22,000"
             },
             {
                 id: 4,
                 title: "Sink Unit",
                 description: "Specialized base cabinet designed to house your kitchen sink with proper plumbing access.",
+                shortOverview: "A durable under-sink base unit with easy access doors—ideal for water lines and cleaning supplies.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2625972-original/short-base-unit.jpg",
                 tags: ["Aarambh by KalaKruti", "Premium"],
+                inStock: "Yes",
                 // price: "Starting from ₹18,000"
             },
             {
                 id: 5,
                 title: "Blind Corner Unit, 1 Shelf",
                 description: "Smart corner solutions with single shelf for organized storage in corner spaces.",
+                shortOverview: "Maximize corner space with this smart storage solution featuring a single shelf for organized corner storage.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2626143-original/base-unit-3-ss-drawers-2m-1l.jpg",
                 tags: ["Semi Modular Metal"],
+                inStock: "Yes",
                 // price: "Starting from ₹15,000"
             },
             {
                 id: 6,
                 title: "Blind Corner Unit, 2 Dee Trays",
                 description: "Advanced corner solutions with two Dee-shaped pull-out trays for maximum corner utilization.",
+                shortOverview: "Advanced corner storage with two Dee-shaped pull-out trays for maximum space utilization and easy access.",
                 image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2630147-original/short-base-unit.jpg",
                 tags: ["Premium"],
+                inStock: "Yes",
                 // price: "Starting from ₹22,000"
             }
         ],
@@ -109,48 +121,60 @@ export default function KitchenCabinets() {
                 id: 1,
                 title: "Glass Door Wall Unit",
                 description: "Upper-level cabinets with glass doors to showcase your beautiful dinnerware and glassware.",
+                shortOverview: "Elegant wall storage with glass doors to display your finest dinnerware and glassware collection.",
                 image: "https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/04/Frameless-Glass-Partition-07-0503070034.jpg",
                 tags: ["Premium", "Glass Doors"],
+                inStock: "Yes",
                 // price: "Starting from ₹14,000"
             },
             {
                 id: 2,
                 title: "Solid Door Wall Unit",
                 description: "Traditional wall cabinets with solid doors for concealed storage of kitchen items.",
+                shortOverview: "Classic wall storage with solid doors for concealed storage of kitchen essentials and cookware.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Standard"],
+                inStock: "Yes",
                 // price: "Starting from ₹11,000"
             },
             {
                 id: 3,
                 title: "Open Wall Shelving",
                 description: "Open wall shelves for easy access to frequently used items and decorative display.",
+                shortOverview: "Modern open shelving for easy access to frequently used items and stylish decorative display.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Modern", "Open Design"],
+                inStock: "Yes",
                 // price: "Starting from ₹8,000"
             },
             {
                 id: 4,
                 title: "Open Wall Shelving",
                 description: "Open wall shelves for easy access to frequently used items and decorative display.",
+                shortOverview: "Modern open shelving for easy access to frequently used items and stylish decorative display.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Modern", "Open Design"],
+                inStock: "Yes",
                 // price: "Starting from ₹8,000"
             },
             {
                 id: 5,
                 title: "Glass Door Wall Unit",
                 description: "Upper-level cabinets with glass doors to showcase your beautiful dinnerware and glassware.",
+                shortOverview: "Elegant wall storage with glass doors to display your finest dinnerware and glassware collection.",
                 image: "https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/04/Frameless-Glass-Partition-07-0503070034.jpg",
                 tags: ["Premium", "Glass Doors"],
+                inStock: "Yes",
                 // price: "Starting from ₹14,000"
             },
             {
-                id: 2,
+                id: 6,
                 title: "Solid Door Wall Unit",
                 description: "Traditional wall cabinets with solid doors for concealed storage of kitchen items.",
+                shortOverview: "Classic wall storage with solid doors for concealed storage of kitchen essentials and cookware.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Standard"],
+                inStock: "Yes",
                 // price: "Starting from ₹11,000"
             }
         ],
@@ -159,48 +183,60 @@ export default function KitchenCabinets() {
                 id: 1,
                 title: "Pantry Tall Unit",
                 description: "Full-height cabinets perfect for pantry storage with multiple shelves and compartments.",
+                shortOverview: "Maximize vertical storage with this full-height pantry unit featuring multiple shelves and compartments.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Premium", "Pantry Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹25,000"
             },
             {
                 id: 2,
                 title: "Appliance Tall Unit",
                 description: "Tall cabinets designed to house large appliances like ovens, microwaves, and refrigerators.",
+                shortOverview: "Full-height storage designed to house large appliances like ovens, microwaves, and refrigerators.",
                 image: "https://suntechinteriors.com/wp-content/uploads/photo-gallery/imported_from_media_libray/wooden-tall-units-for-kitchen-1.jpg?bwg=1641281851",
                 tags: ["Appliance Housing"],
+                inStock: "Yes",
                 // price: "Starting from ₹30,000"
             },
             {
                 id: 3,
                 title: "Utility Tall Unit",
                 description: "Multi-purpose tall cabinets for cleaning supplies, brooms, and other utility items.",
+                shortOverview: "Multi-purpose tall storage for cleaning supplies, brooms, and other utility items with organized compartments.",
                 image: "https://m.media-amazon.com/images/I/51YOCXTO6WL.jpg",
                 tags: ["Utility Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹22,000"
             },
             {
                 id: 4,
                 title: "Appliance Tall Unit",
                 description: "Tall cabinets designed to house large appliances like ovens, microwaves, and refrigerators.",
+                shortOverview: "Full-height storage designed to house large appliances like ovens, microwaves, and refrigerators.",
                 image: "https://suntechinteriors.com/wp-content/uploads/photo-gallery/imported_from_media_libray/wooden-tall-units-for-kitchen-1.jpg?bwg=1641281851",
                 tags: ["Appliance Housing"],
+                inStock: "Yes",
                 // price: "Starting from ₹30,000"
             },
             {
                 id: 5,
                 title: "Utility Tall Unit",
                 description: "Multi-purpose tall cabinets for cleaning supplies, brooms, and other utility items.",
+                shortOverview: "Multi-purpose tall storage for cleaning supplies, brooms, and other utility items with organized compartments.",
                 image: "https://m.media-amazon.com/images/I/51YOCXTO6WL.jpg",
                 tags: ["Utility Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹22,000"
             },
             {
                 id: 6,
                 title: "Pantry Tall Unit",
                 description: "Full-height cabinets perfect for pantry storage with multiple shelves and compartments.",
+                shortOverview: "Maximize vertical storage with this full-height pantry unit featuring multiple shelves and compartments.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Premium", "Pantry Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹25,000"
             },
         ],
@@ -209,48 +245,60 @@ export default function KitchenCabinets() {
                 id: 1,
                 title: "Mid-Height Storage Unit",
                 description: "Medium-height cabinets perfect for countertop appliances and additional storage.",
+                shortOverview: "Versatile mid-height storage perfect for countertop appliances and additional kitchen storage needs.",
                 image: "https://s3-blog.homelane.com/design-ideas-pre/wp-content/uploads/2021/08/budget-friendly-modular-kitchen.jpg",
                 tags: ["Standard", "Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹18,000"
             },
             {
                 id: 2,
                 title: "Breakfast Nook Unit",
                 description: "Mid-height cabinets designed for breakfast nooks and casual dining areas.",
+                shortOverview: "Perfect mid-height solution for breakfast nooks and casual dining areas with elegant design.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
                 tags: ["Premium", "Dining"],
+                inStock: "Yes",
                 // price: "Starting from ₹20,000"
             },
             {
                 id: 3,
                 title: "Appliance Mid Unit",
                 description: "Specialized mid-height units for housing countertop appliances with easy access.",
+                shortOverview: "Specialized mid-height storage for countertop appliances with easy access and organized compartments.",
                 image: "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2017/8/15/1/IO_Suzanne-Childress_Avenue-Arts-Crafts_3.jpg.rend.hgtvcom.616.924.85.suffix/1502820159839.webp",
                 tags: ["Appliance Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹16,000"
             },
             {
                 id: 4,
                 title: "Breakfast Nook Unit",
                 description: "Mid-height cabinets designed for breakfast nooks and casual dining areas.",
+                shortOverview: "Perfect mid-height solution for breakfast nooks and casual dining areas with elegant design.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
                 tags: ["Premium", "Dining"],
+                inStock: "Yes",
                 // price: "Starting from ₹20,000"
             },
             {
                 id: 5,
                 title: "Appliance Mid Unit",
                 description: "Specialized mid-height units for housing countertop appliances with easy access.",
+                shortOverview: "Specialized mid-height storage for countertop appliances with easy access and organized compartments.",
                 image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                 tags: ["Appliance Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹16,000"
             },
             {
                 id: 6,
                 title: "Appliance Mid Unit",
                 description: "Specialized mid-height units for housing countertop appliances with easy access.",
+                shortOverview: "Specialized mid-height storage for countertop appliances with easy access and organized compartments.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
                 tags: ["Appliance Storage"],
+                inStock: "Yes",
                 // price: "Starting from ₹16,000"
             }
         ]
@@ -400,6 +448,7 @@ export default function KitchenCabinets() {
                         {currentData.map((cabinet) => (
                             <Card
                                 key={cabinet.id}
+                                onClick={() => navigate(`/kitchen/components/cabinets/${tabKeys[activeTab]}/${cabinet.id}`)}
                                 sx={{
                                     width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                                     maxWidth: '350px',
@@ -409,6 +458,7 @@ export default function KitchenCabinets() {
                                     borderRadius: 2,
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    cursor: 'pointer',
                                     '&:hover': {
                                         transform: 'translateY(-4px)',
                                         boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
@@ -437,7 +487,7 @@ export default function KitchenCabinets() {
                                         variant="h6"
                                         component="h3"
                                         sx={{
-                                            mb: 1.5,
+                                            mb: 1,
                                             fontWeight: 'bold',
                                             fontSize: '1.1rem',
                                             color: theme.palette.text.primary,
@@ -445,6 +495,23 @@ export default function KitchenCabinets() {
                                         }}
                                     >
                                         {cabinet.title}
+                                    </Typography>
+
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            mb: 1.5,
+                                            color: theme.palette.text.secondary,
+                                            fontSize: '0.85rem',
+                                            lineHeight: 1.4,
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: 2,
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis'
+                                        }}
+                                    >
+                                        {cabinet.shortOverview}
                                     </Typography>
 
                                     <Box sx={{ mb: 2, flexGrow: 1 }}>
@@ -470,36 +537,6 @@ export default function KitchenCabinets() {
                                         </Box>
                                     </Box>
 
-                                    <Box sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        mt: 'auto'
-                                    }}>
-                                        <Typography
-                                            variant="body2"
-                                            color="primary"
-                                            sx={{
-                                                fontWeight: 'bold',
-                                                fontSize: '0.9rem'
-                                            }}
-                                        >
-                                            {cabinet.price}
-                                        </Typography>
-                                        {/* <Button
-                                            variant="contained"
-                                            size="small"
-                                            sx={{ 
-                                                textTransform: 'none',
-                                                fontSize: '0.8rem',
-                                                px: 2,
-                                                py: 0.5,
-                                                minWidth: 'auto'
-                                            }}
-                                        >
-                                            Get Quote
-                                        </Button> */}
-                                    </Box>
                                 </CardContent>
                             </Card>
                         ))}

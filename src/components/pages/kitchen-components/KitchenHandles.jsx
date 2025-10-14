@@ -109,10 +109,10 @@ export default function KitchenHandles() {
                     }}
                 >
                     <Typography
-                        variant="h1"
+                        variant="h2"
                         component="h1"
                         sx={{
-                            fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' },
+                            fontSize: { xs: '1.8rem', md: '2.5rem', lg: '3rem' },
                             fontWeight: 'bold',
                             lineHeight: 1.2,
                             mb: 3,
@@ -174,7 +174,7 @@ export default function KitchenHandles() {
                     </Breadcrumbs>
 
                     {/* Section Title */}
-                    <Typography variant="h4" component="h2" sx={{ mb: 2, fontWeight: 'bold', color: theme.palette.text.primary }}>
+                    <Typography variant="h5" component="h2" sx={{ mb: 2, fontWeight: 'bold', color: theme.palette.text.primary, fontSize: { xs: '1.3rem', md: '1.5rem' } }}>
                         Kitchen Handles & Knobs
                     </Typography>
 
@@ -184,15 +184,16 @@ export default function KitchenHandles() {
                     </Typography>
 
                     {/* Handles Grid */}
-                    <Box sx={{ 
-                        display: 'flex', 
-                        flexWrap: 'wrap', 
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
                         gap: 3,
                         justifyContent: { xs: 'center', md: 'flex-start' }
                     }}>
                         {handlesData.map((handle) => (
                             <Card
                                 key={handle.id}
+                                onClick={() => navigate(`/kitchen/components/handles/${handle.id}`)}
                                 sx={{
                                     width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                                     maxWidth: '350px',
@@ -202,14 +203,15 @@ export default function KitchenHandles() {
                                     borderRadius: 2,
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    cursor: 'pointer',
                                     '&:hover': {
                                         transform: 'translateY(-4px)',
                                         boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
                                     }
                                 }}
                             >
-                                <Box sx={{ 
-                                    height: '200px', 
+                                <Box sx={{
+                                    height: '200px',
                                     overflow: 'hidden',
                                     borderRadius: '8px 8px 0 0'
                                 }}>
@@ -218,7 +220,7 @@ export default function KitchenHandles() {
                                         height="100%"
                                         image={handle.image}
                                         alt={handle.title}
-                                        sx={{ 
+                                        sx={{
                                             objectFit: 'cover',
                                             width: '100%',
                                             height: '100%'
@@ -226,11 +228,11 @@ export default function KitchenHandles() {
                                     />
                                 </Box>
                                 <CardContent sx={{ p: 2.5, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                                    <Typography 
-                                        variant="h6" 
-                                        component="h3" 
-                                        sx={{ 
-                                            mb: 1.5, 
+                                    <Typography
+                                        variant="h6"
+                                        component="h3"
+                                        sx={{
+                                            mb: 1.5,
                                             fontWeight: 'bold',
                                             fontSize: '1.1rem',
                                             color: theme.palette.text.primary,
@@ -239,11 +241,11 @@ export default function KitchenHandles() {
                                     >
                                         {handle.title}
                                     </Typography>
-                                    
-                                    <Typography 
-                                        variant="body2" 
-                                        sx={{ 
-                                            mb: 2, 
+
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            mb: 2,
                                             color: theme.palette.text.secondary,
                                             lineHeight: 1.4,
                                             flexGrow: 1
@@ -251,7 +253,7 @@ export default function KitchenHandles() {
                                     >
                                         {handle.description}
                                     </Typography>
-                                    
+
                                     <Box sx={{ mb: 2 }}>
                                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                                             {handle.tags.map((tag, index) => (
@@ -260,7 +262,7 @@ export default function KitchenHandles() {
                                                     label={tag}
                                                     size="small"
                                                     variant="outlined"
-                                                    sx={{ 
+                                                    sx={{
                                                         fontSize: '0.7rem',
                                                         height: '24px',
                                                         backgroundColor: '#f5f5f5',
@@ -279,7 +281,7 @@ export default function KitchenHandles() {
                         ))}
                     </Box>
 
-             
+
                 </Container>
             </Box>
         </Box>

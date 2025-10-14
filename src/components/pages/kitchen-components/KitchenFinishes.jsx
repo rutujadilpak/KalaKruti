@@ -59,7 +59,7 @@ export default function KitchenFinishes() {
                 id: 1,
                 title: "Wood Grain Laminate",
                 description: "Premium wood grain laminate finish that mimics natural wood textures with excellent durability.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2625972-original/short-base-unit.jpg",
+                image: "https://img.freepik.com/free-photo/brown-wood-textured-background-with-design-space_53876-160425.jpg?semt=ais_hybrid&w=740&q=80",
                 tags: ["Premium", "Wood Finish"],
                 // price: "Starting from ₹18,000"
             },
@@ -67,7 +67,7 @@ export default function KitchenFinishes() {
                 id: 2,
                 title: "Solid Color Laminate",
                 description: "Modern solid color laminates available in various shades to match your kitchen theme.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2626143-original/base-unit-3-ss-drawers-2m-1l.jpg",
+                image: "https://materialdepot-images-hbh2cjbvbtfmanhx.z02.azurefd.net/V000664/4142-a-8-cappuccino-8-ft-x-4-ft-texture-finish-decorative-laminate-1-mm/4142-a-8-cappuccino-8-ft-x-4-ft-texture-finish-decorative-laminate-1-mm/1.png?width=500",
                 tags: ["Modern", "Color Options"],
                 // price: "Starting from ₹15,000"
             },
@@ -75,7 +75,7 @@ export default function KitchenFinishes() {
                 id: 3,
                 title: "Textured Laminate",
                 description: "Textured laminate finishes that add depth and character to your kitchen cabinets.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2630147-original/short-base-unit.jpg",
+                image: "https://m.media-amazon.com/images/I/31LJxNUv0eL._UF1000,1000_QL80_.jpg",
                 tags: ["Textured", "Premium"],
                 // price: "Starting from ₹22,000"
             },
@@ -83,7 +83,7 @@ export default function KitchenFinishes() {
                 id: 4,
                 title: "High Gloss Laminate",
                 description: "High gloss laminate finish that provides a sleek, modern look with easy maintenance.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2625972-original/short-base-unit.jpg",
+                image: "https://royaletouche.gumlet.io/wp-content/uploads/2023/02/04171422/CRYSTAL_1284_A4_Image.jpg?compress=true&quality=80&w=600&dpr=2.6",
                 tags: ["High Gloss", "Modern"],
                 // price: "Starting from ₹18,000"
             },
@@ -91,7 +91,7 @@ export default function KitchenFinishes() {
                 id: 5,
                 title: "Matt Finish Laminate",
                 description: "Matt finish laminate that offers a sophisticated, non-reflective surface.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2626143-original/base-unit-3-ss-drawers-2m-1l.jpg",
+                image: "https://5.imimg.com/data5/GR/LD/MY-9022244/matte-laminate-sheet.jpg",
                 tags: ["Matt Finish", "Elegant"],
                 // price: "Starting from ₹15,000"
             },
@@ -99,7 +99,7 @@ export default function KitchenFinishes() {
                 id: 6,
                 title: "Metallic Laminate",
                 description: "Metallic laminate finishes that add a contemporary touch to your kitchen design.",
-                image: "https://images.livspace-cdn.com/w:654/h:450/plain/https://imgs.livspace.com/2630147-original/short-base-unit.jpg",
+                image: "https://cdn.ready-market.com.tw/aed8e971/Templates/pic/lcm-A138-top-2.jpg?v=f152ef27",
                 tags: ["Metallic", "Contemporary"],
                 // price: "Starting from ₹22,000"
             }
@@ -109,7 +109,7 @@ export default function KitchenFinishes() {
                 id: 1,
                 title: "High Gloss Acrylic",
                 description: "Premium high gloss acrylic finish that provides a mirror-like reflective surface.",
-                image: "https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/04/Frameless-Glass-Partition-07-0503070034.jpg",
+                image: "https://image.made-in-china.com/229f0j00mQKUVoZnwlkA/%E5%89%AA%E5%BD%B1%C2%B7%E6%8B%8D%E6%8B%8D-20240426.mp4.webp",
                 tags: ["High Gloss", "Premium"],
                 // price: "Starting from ₹14,000"
             },
@@ -119,7 +119,7 @@ export default function KitchenFinishes() {
                 description: "Matt acrylic finish that offers a smooth, non-reflective surface with modern appeal.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Matt Finish", "Modern"],
-               // price: "Starting from ₹11,000"
+                // price: "Starting from ₹11,000"
             },
             {
                 id: 3,
@@ -127,7 +127,7 @@ export default function KitchenFinishes() {
                 description: "Vibrant solid color acrylic finishes available in a wide range of colors.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Color Options", "Vibrant"],
-               // price: "Starting from ₹8,000"
+                // price: "Starting from ₹8,000"
             },
             {
                 id: 4,
@@ -135,9 +135,9 @@ export default function KitchenFinishes() {
                 description: "Textured acrylic finishes that add visual interest and depth to cabinet surfaces.",
                 image: "https://i.pinimg.com/736x/c2/c7/5b/c2c75bf50e263c265bed11c15562e8d9.jpg",
                 tags: ["Textured", "Visual Interest"],
-               // price: "Starting from ₹8,000"
+                // price: "Starting from ₹8,000"
             },
-             {
+            {
                 id: 5,
                 title: "Metallic Acrylic",
                 description: "Metallic acrylic finishes that provide a luxurious, contemporary appearance.",
@@ -145,13 +145,13 @@ export default function KitchenFinishes() {
                 tags: ["Metallic", "Luxury"],
                 // price: "Starting from ₹14,000"
             },
-             {
+            {
                 id: 6,
                 title: "Transparent Acrylic",
                 description: "Transparent acrylic finishes that allow the underlying material to show through.",
                 image: "https://i.pinimg.com/564x/9e/7a/be/9e7abe4f7deebfbd441e7935b6553e90.jpg",
                 tags: ["Transparent", "Unique"],
-               // price: "Starting from ₹11,000"
+                // price: "Starting from ₹11,000"
             }
         ],
         membrane: [
@@ -161,7 +161,7 @@ export default function KitchenFinishes() {
                 description: "Soft touch membrane finish that provides a luxurious, tactile experience.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Soft Touch", "Luxury"],
-               // price: "Starting from ₹25,000"
+                // price: "Starting from ₹25,000"
             },
             {
                 id: 2,
@@ -179,7 +179,7 @@ export default function KitchenFinishes() {
                 tags: ["Matt Finish", "Sophisticated"],
                 // price: "Starting from ₹22,000"
             },
-             {
+            {
                 id: 4,
                 title: "Textured Membrane",
                 description: "Textured membrane finishes that add depth and character to cabinet surfaces.",
@@ -201,7 +201,7 @@ export default function KitchenFinishes() {
                 description: "Wood grain membrane finish that mimics natural wood textures with enhanced durability.",
                 image: "https://assets-news.housing.com/news/wp-content/uploads/2022/03/17140031/Tall-unit-kitchen-cabinet-ideas-Why-are-they-popular-in-modern-kitchens-02.jpg",
                 tags: ["Wood Grain", "Durable"],
-               // price: "Starting from ₹25,000"
+                // price: "Starting from ₹25,000"
             },
         ],
         puPoint: [
@@ -229,8 +229,8 @@ export default function KitchenFinishes() {
                 tags: ["Satin", "Subtle Sheen"],
                 // price: "Starting from ₹16,000"
             },
-             {
-                 id: 4,
+            {
+                id: 4,
                 title: "Textured PU",
                 description: "Textured PU finish that adds visual interest and depth to cabinet surfaces.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
@@ -279,8 +279,8 @@ export default function KitchenFinishes() {
                 tags: ["Tinted", "Color Options"],
                 // price: "Starting from ₹16,000"
             },
-             {
-                 id: 4,
+            {
+                id: 4,
                 title: "Textured Glass",
                 description: "Textured glass finish that adds visual interest and depth to cabinet doors.",
                 image: "https://huvu.in/wp-content/uploads/2024/08/Breakfast-Counter.webp",
@@ -442,15 +442,16 @@ export default function KitchenFinishes() {
                     </Typography>
 
                     {/* Finish Types Grid */}
-                    <Box sx={{ 
-                        display: 'flex', 
-                        flexWrap: 'wrap', 
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
                         gap: 3,
                         justifyContent: { xs: 'center', md: 'flex-start' }
                     }}>
                         {currentData.map((finish) => (
                             <Card
                                 key={finish.id}
+                                onClick={() => navigate(`/kitchen/components/finishes/${tabKeys[activeTab]}/${finish.id}`)}
                                 sx={{
                                     width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' },
                                     maxWidth: '350px',
@@ -460,14 +461,15 @@ export default function KitchenFinishes() {
                                     borderRadius: 2,
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    cursor: 'pointer',
                                     '&:hover': {
                                         transform: 'translateY(-4px)',
                                         boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
                                     }
                                 }}
                             >
-                                <Box sx={{ 
-                                    height: '200px', 
+                                <Box sx={{
+                                    height: '200px',
                                     overflow: 'hidden',
                                     borderRadius: '8px 8px 0 0'
                                 }}>
@@ -476,7 +478,7 @@ export default function KitchenFinishes() {
                                         height="100%"
                                         image={finish.image}
                                         alt={finish.title}
-                                        sx={{ 
+                                        sx={{
                                             objectFit: 'cover',
                                             width: '100%',
                                             height: '100%'
@@ -484,11 +486,11 @@ export default function KitchenFinishes() {
                                     />
                                 </Box>
                                 <CardContent sx={{ p: 2.5, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                                    <Typography 
-                                        variant="h6" 
-                                        component="h3" 
-                                        sx={{ 
-                                            mb: 1.5, 
+                                    <Typography
+                                        variant="h6"
+                                        component="h3"
+                                        sx={{
+                                            mb: 1.5,
                                             fontWeight: 'bold',
                                             fontSize: '1.1rem',
                                             color: theme.palette.text.primary,
@@ -497,7 +499,7 @@ export default function KitchenFinishes() {
                                     >
                                         {finish.title}
                                     </Typography>
-                                    
+
                                     <Box sx={{ mb: 2, flexGrow: 1 }}>
                                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                                             {finish.tags.map((tag, index) => (
@@ -506,7 +508,7 @@ export default function KitchenFinishes() {
                                                     label={tag}
                                                     size="small"
                                                     variant="outlined"
-                                                    sx={{ 
+                                                    sx={{
                                                         fontSize: '0.7rem',
                                                         height: '24px',
                                                         backgroundColor: '#f5f5f5',
@@ -521,16 +523,16 @@ export default function KitchenFinishes() {
                                         </Box>
                                     </Box>
 
-                                    <Box sx={{ 
-                                        display: 'flex', 
-                                        justifyContent: 'space-between', 
+                                    <Box sx={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
                                         alignItems: 'center',
                                         mt: 'auto'
                                     }}>
-                                        <Typography 
-                                            variant="body2" 
-                                            color="primary" 
-                                            sx={{ 
+                                        <Typography
+                                            variant="body2"
+                                            color="primary"
+                                            sx={{
                                                 fontWeight: 'bold',
                                                 fontSize: '0.9rem'
                                             }}
@@ -556,7 +558,7 @@ export default function KitchenFinishes() {
                         ))}
                     </Box>
 
-             
+
                 </Container>
             </Box>
         </Box>

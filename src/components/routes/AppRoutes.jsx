@@ -44,8 +44,11 @@ import ProjectGallery from "../pages/projects/ProjectGallery";
 
 // Kitchen Components
 import KitchenCabinets from "../pages/kitchen-components/KitchenCabinets";
+import KitchenCabinetDetail from "../pages/kitchen-components/KitchenCabinetDetail";
 import KitchenHandles from "../pages/kitchen-components/KitchenHandles";
+import KitchenHandlesDetails from "../pages/kitchen-components/KitchenHandlesDetails";
 import KitchenFinishes from "../pages/kitchen-components/KitchenFinishes";
+import KitchenFinishesDetails from "../pages/kitchen-components/KitchenFinishesDetails";
 // Wardrobe Components
 import WardrobeCabinets from "../pages/wardrobe-components/WardrobeCabinets";
 import WardrobeHandles from "../pages/wardrobe-components/WardrobeHandles";
@@ -102,7 +105,12 @@ export default function AppRoutes() {
                     <Route path="kitchen/price-calculator" element={<OfferingPage />} />
                     <Route path="kitchen/components" element={<OfferingPage />} />
                     <Route path="kitchen/components/cabinets" element={<KitchenCabinets />} />
+                    <Route path="kitchen/components/cabinets/:category/:id" element={<KitchenCabinetDetail />} />
+
                     <Route path="kitchen/components/handles" element={<KitchenHandles />} />
+                    <Route path="kitchen/components/finishes/:category/:id" element={<KitchenFinishesDetails />} />
+                    <Route path="kitchen/components/handles/:id" element={<KitchenHandlesDetails />} />
+
                     <Route path="kitchen/components/finishes" element={<KitchenFinishes />} />
                     <Route path="wardrobe/know-your-wardrobe" element={<OfferingPage />} />
                     <Route path="wardrobe/price-calculator" element={<OfferingPage />} />
@@ -115,6 +123,7 @@ export default function AppRoutes() {
                     <Route path="offerings/learn-more" element={<LearnMore />} />
                     <Route path="enquiries/quote-form" element={<QuoteForm />} />
                     <Route path="*" element={<NotFound />} />
+
                 </Route>
             </Routes>
         </BrowserRouter>
